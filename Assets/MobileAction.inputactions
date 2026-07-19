@@ -1,0 +1,108 @@
+{
+    "version": 1,
+    "name": "MobileAction",
+    "maps": [
+        {
+            "name": "Mobile",
+            "id": "f2a30cb4-5626-47d9-a1d9-ae3efac680ef",
+            "actions": [
+                {
+                    "name": "MoveDelta",
+                    "type": "Value",
+                    "id": "b4f53495-bf97-44c2-ab97-30e2f234250f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Pressed",
+                    "type": "Button",
+                    "id": "a2978fc0-81fe-4893-a546-880e48d09933",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SecondaryTouchPosition",
+                    "type": "Value",
+                    "id": "e1b8a2d0-91aa-46ad-be02-5aa1b6751267",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8cc8d02b-26f8-4c88-bdee-843529adfca4",
+                    "path": "<Touchscreen>/primaryTouch/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "81fe7d5e-917c-48c0-999a-5b10ba5ea06b",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4daf7cc0-24ed-4c48-9a01-2ecf6e4f0fcd",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bce3b611-74b3-4941-8e61-e26be74b06a7",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87ce6618-b7d7-4b81-ada6-bacec35c1bc8",
+                    "path": "<Touchscreen>/touch1/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryTouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f60930d-269e-4e78-8c34-47a0da45fd89",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryTouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
