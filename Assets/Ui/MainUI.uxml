@@ -1,19 +1,26 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Ui/UI%20USS/tabs.uss?fileID=7433441132597879392&amp;guid=a06c8e8998b43964d97642a3297e6f5c&amp;type=3#tabs"/>
-    <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; align-items: flex-start; align-self: auto; align-content: flex-start; transform-origin: top; top: 0%; position: absolute; left: 50%;">
-        <ui:Label text="Label"/>
-        <ui:Label text="Label"/>
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; align-items: flex-start; align-self: center; align-content: center; transform-origin: center; top: 0%; position: absolute; left: 50%; translate: -50% 0; padding-right: 0; flex-shrink: 1; flex-basis: auto; width: 90%;">
+        <ui:VisualElement name="CashPanel" class="topPanel" style="flex-grow: 1;">
+            <ui:Label text="$100" class="topPanelLabel" style="flex-direction: column;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="PerHourPanel" class="topPanel" style="flex-grow: 1;">
+            <ui:Label text="10/hr" name="PerHour" class="topPanelLabel"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="PremiumPanel" class="topPanel" style="flex-grow: 1;">
+            <ui:Label text="0 gem" name="Premium" class="topPanelLabel"/>
+        </ui:VisualElement>
     </ui:VisualElement>
-    <ui:TabView name="TabView" class="unity-tab-view" style="font-size: 24px; opacity: 1; min-width: 100%; width: 100%; height: auto; left: 50px; right: auto; min-height: auto; padding-left: 10px; margin-left: 0; padding-right: 10px; margin-top: 0; margin-right: 0; margin-bottom: 0; -unity-font-style: bold; color: rgb(39, 255, 0); justify-content: flex-end; align-self: center; align-items: center; -unity-text-outline-width: 0; -unity-text-outline-color: rgb(255, 0, 0); flex-grow: 0; transform-origin: bottom; flex-basis: auto; bottom: 0%; position: absolute;">
-        <ui:Tab label="Building" name="Buiilding-tab" focusable="false" class="unity-tab" style="flex-direction: row; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgb(0, 0, 0); -unity-text-align: upper-center; flex-grow: 1;">
-            <ui:VisualElement style="flex-grow: 1; background-color: rgb(110, 134, 139);">
+    <ui:TabView name="BottomTab" class="unity-tab-view unity-tab_header" style="font-size: 24px; opacity: 1; min-width: auto; width: 100%; height: auto; left: auto; right: auto; min-height: auto; padding-left: 0; margin-left: 0; padding-right: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; -unity-font-style: bold; color: rgb(0, 0, 0); justify-content: flex-end; align-self: center; align-items: center; -unity-text-outline-width: 0; -unity-text-outline-color: rgb(0, 0, 0); flex-grow: 0; transform-origin: bottom; flex-basis: auto; bottom: 0%; position: absolute; align-content: flex-end; flex-direction: column-reverse;">
+        <ui:Tab label="Building" name="Buiilding-tab" focusable="false" class="unity-tab bottomTabs" style="flex-direction: row; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgb(0, 0, 0); -unity-text-align: upper-center; flex-grow: 1;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgb(110, 134, 139);">
                 <ui:ScrollView>
                     <ui:VisualElement style="flex-grow: 1;"/>
                     <ui:Label text="Label"/>
                 </ui:ScrollView>
             </ui:VisualElement>
         </ui:Tab>
-        <ui:Tab label="Base" name="Base-tab" class="unity-tab unity-tab_header-label"/>
-        <ui:Tab label="Shop" name="Shop-tab" class="unity-tab unity-tab_header-label"/>
+        <ui:Tab label="Base" name="Base-tab" class="unity-tab unity-tab_header-label bottomTabs"/>
+        <ui:Tab label="Shop" name="Shop-tab" class="unity-tab unity-tab_header-label bottomTabs"/>
     </ui:TabView>
 </ui:UXML>
