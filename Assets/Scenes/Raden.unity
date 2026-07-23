@@ -451,6 +451,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraControl
   moveSpeedx: 11.25
   moveSpeedy: 40
+  zoomSpeed: 1
+  cinemachine: {fileID: 61160500}
 --- !u!114 &839908203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,8 +488,8 @@ MonoBehaviour:
     m_ActionName: 'Mobile/PrimaryTouchContact[/Touchscreen/press,/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e1b8a2d0-91aa-46ad-be02-5aa1b6751267
-    m_ActionName: 'Mobile/SecondaryTouchPosition[/Touchscreen/touch1/position,/Mouse/scroll]'
+    m_ActionId: a981f3c7-aaa5-42e6-95b4-efd946e1c514
+    m_ActionName: 'Mobile/Scroll[/Mouse/scroll]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Mobile

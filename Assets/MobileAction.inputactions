@@ -25,9 +25,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SecondaryTouchPosition",
+                    "name": "Scroll",
                     "type": "Value",
-                    "id": "e1b8a2d0-91aa-46ad-be02-5aa1b6751267",
+                    "id": "a981f3c7-aaa5-42e6-95b4-efd946e1c514",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -81,23 +81,12 @@
                 },
                 {
                     "name": "",
-                    "id": "87ce6618-b7d7-4b81-ada6-bacec35c1bc8",
-                    "path": "<Touchscreen>/touch1/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SecondaryTouchPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0f60930d-269e-4e78-8c34-47a0da45fd89",
+                    "id": "4c1af62b-9117-43fd-868f-0da7c2c44d08",
                     "path": "<Mouse>/scroll",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SecondaryTouchPosition",
+                    "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

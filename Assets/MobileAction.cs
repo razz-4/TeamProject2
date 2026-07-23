@@ -111,9 +111,9 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SecondaryTouchPosition"",
+                    ""name"": ""Scroll"",
                     ""type"": ""Value"",
-                    ""id"": ""e1b8a2d0-91aa-46ad-be02-5aa1b6751267"",
+                    ""id"": ""a981f3c7-aaa5-42e6-95b4-efd946e1c514"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -167,23 +167,12 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""87ce6618-b7d7-4b81-ada6-bacec35c1bc8"",
-                    ""path"": ""<Touchscreen>/touch1/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SecondaryTouchPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0f60930d-269e-4e78-8c34-47a0da45fd89"",
+                    ""id"": ""4c1af62b-9117-43fd-868f-0da7c2c44d08"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SecondaryTouchPosition"",
+                    ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -196,7 +185,7 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
         m_Mobile = asset.FindActionMap("Mobile", throwIfNotFound: true);
         m_Mobile_MoveDelta = m_Mobile.FindAction("MoveDelta", throwIfNotFound: true);
         m_Mobile_Pressed = m_Mobile.FindAction("Pressed", throwIfNotFound: true);
-        m_Mobile_SecondaryTouchPosition = m_Mobile.FindAction("SecondaryTouchPosition", throwIfNotFound: true);
+        m_Mobile_Scroll = m_Mobile.FindAction("Scroll", throwIfNotFound: true);
     }
 
     ~@MobileAction()
@@ -279,7 +268,7 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
     private List<IMobileActions> m_MobileActionsCallbackInterfaces = new List<IMobileActions>();
     private readonly InputAction m_Mobile_MoveDelta;
     private readonly InputAction m_Mobile_Pressed;
-    private readonly InputAction m_Mobile_SecondaryTouchPosition;
+    private readonly InputAction m_Mobile_Scroll;
     /// <summary>
     /// Provides access to input actions defined in input action map "Mobile".
     /// </summary>
@@ -300,9 +289,9 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Pressed => m_Wrapper.m_Mobile_Pressed;
         /// <summary>
-        /// Provides access to the underlying input action "Mobile/SecondaryTouchPosition".
+        /// Provides access to the underlying input action "Mobile/Scroll".
         /// </summary>
-        public InputAction @SecondaryTouchPosition => m_Wrapper.m_Mobile_SecondaryTouchPosition;
+        public InputAction @Scroll => m_Wrapper.m_Mobile_Scroll;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -335,9 +324,9 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
             @Pressed.started += instance.OnPressed;
             @Pressed.performed += instance.OnPressed;
             @Pressed.canceled += instance.OnPressed;
-            @SecondaryTouchPosition.started += instance.OnSecondaryTouchPosition;
-            @SecondaryTouchPosition.performed += instance.OnSecondaryTouchPosition;
-            @SecondaryTouchPosition.canceled += instance.OnSecondaryTouchPosition;
+            @Scroll.started += instance.OnScroll;
+            @Scroll.performed += instance.OnScroll;
+            @Scroll.canceled += instance.OnScroll;
         }
 
         /// <summary>
@@ -355,9 +344,9 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
             @Pressed.started -= instance.OnPressed;
             @Pressed.performed -= instance.OnPressed;
             @Pressed.canceled -= instance.OnPressed;
-            @SecondaryTouchPosition.started -= instance.OnSecondaryTouchPosition;
-            @SecondaryTouchPosition.performed -= instance.OnSecondaryTouchPosition;
-            @SecondaryTouchPosition.canceled -= instance.OnSecondaryTouchPosition;
+            @Scroll.started -= instance.OnScroll;
+            @Scroll.performed -= instance.OnScroll;
+            @Scroll.canceled -= instance.OnScroll;
         }
 
         /// <summary>
@@ -413,11 +402,11 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPressed(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "SecondaryTouchPosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Scroll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSecondaryTouchPosition(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
     }
 }
