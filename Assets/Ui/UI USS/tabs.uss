@@ -56,39 +56,14 @@
     height: 50%;
 }
 
-#BottomTab #unity-tab-view__header-container {
-    width: auto;
-    flex-grow: 1;
-    align-self: stretch;
-    flex-direction: row;
-    min-height: 100%;
-}
 
-#BottomTab .unity-tab__header {
-    flex-grow: 1;
-    flex-basis: auto;
-    flex-shrink: 1;
-    align-self: auto;
-    flex-direction: column-reverse;
-    flex-wrap: nowrap;
-    font-size: 14px;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-right: 1px;
-    max-width: 33.33%;
-    translate: 1% 0;
-    padding-left: 1px;
-    min-width: 33.33%;
-    min-height: auto;
-    max-height: none;
-    aspect-ratio: auto;
-    -unity-text-align: middle-center;
-}
 
-#BottomTab .unity-tab-view__content-viewport {
-    flex-grow: 0;
-    width: 100%;
-    height: 10%;
+
+
+.customButton {
+    background-color: rgb(255, 211, 114);
+    border-left-width: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
 }
