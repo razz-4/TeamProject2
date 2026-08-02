@@ -25,8 +25,9 @@ public class ItemManager : MonoBehaviour
         foreach (IngredientRequirement req in drug.recipe)
         {
             Ingredient stock = ingredients.FirstOrDefault(i => i.id == req.ingredient.id);
+            int needed = req.amount * drug.perSecond;
 
-            if (stock != null || stock.quantity < req.amount)
+            if (stock == null || stock.quantity < needed)
             {
                 Debug.Log($"Not enough {req.ingredient.name} to synthesize {drug.name}");
                 return false;
@@ -37,10 +38,10 @@ public class ItemManager : MonoBehaviour
         foreach (IngredientRequirement req in drug.recipe)
         {
             Ingredient stock = ingredients.First(i => i.id == req.ingredient.id);
-            stock.quantity -= req.amount;
+            stock.quantity -= req.amount * drug.perSecond;
         }
 
-        drug.quantity += 1;
+        drug.quantity += drug.perSecond;
 
         return true;
     }
