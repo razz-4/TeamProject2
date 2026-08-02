@@ -20,8 +20,12 @@
         <ui:Button text="Bullding" name="Building-button" enable-rich-text="true" emoji-fallback-support="true" enabled="true" class="customButton" style="left: 20px; bottom: 20px; width: 16%; height: 9%; position: absolute;"/>
         <ui:VisualElement name="BuildingPanel-Panel" enabled="true" style="flex-grow: 1; background-color: rgb(110, 134, 139); position: absolute; bottom: 0; max-height: none; max-width: 100%; display: none;">
             <ui:VisualElement name="BuildingTopPanel-Panel" enabled="true" style="flex-grow: 1; flex-direction: row; background-color: rgb(224, 152, 7); width: auto; height: auto;">
-                <ui:Label text="Buildings" name="Building-label" style="position: relative; height: 24px; width: 61px; top: 50%; translate: 0% -50%; margin-left: 3%; margin-bottom: 4px; margin-top: 0; padding-left: 0; padding-right: 0;"/>
-                <ui:Button text="X&#10;" name="Close-button" style="right: auto; height: 60%; left: 58%; flex-direction: column; top: 50%; translate: 0% -50%;"/>
+                <ui:VisualElement name="Left-Panel" style="flex-grow: 1;">
+                    <ui:Label text="Buildings" name="Building-label" style="position: relative; height: 24px; width: 61px; top: 50%; translate: 0% -50%; margin-left: 3%; margin-bottom: 4px; margin-top: 0; padding-left: 0; padding-right: 0;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="Right-Panel" style="flex-grow: 1; flex-direction: row-reverse;">
+                    <ui:Button text="X&#10;" name="Close-button" style="right: auto; height: 60%; left: auto; flex-direction: column; top: 50%; translate: 0% -50%;"/>
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" mouse-wheel-scroll-size="18" name="Building-ScrollView" style="flex-direction: column; align-items: stretch; align-content: flex-start; align-self: flex-start;">
                 <ui:VisualElement style="flex-grow: 1; align-items: stretch; min-width: 150px; background-color: rgb(241, 42, 42); min-height: 150px;"/>
