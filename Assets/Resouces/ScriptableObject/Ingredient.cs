@@ -9,5 +9,6 @@ public class Ingredient : ScriptableObject
     public Sprite icon;
     public bool isLocked;
     public int quantity;
+    public int value;
     public int perSecond;
 }

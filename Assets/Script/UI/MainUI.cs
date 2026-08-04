@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -18,8 +19,9 @@ public class MainUI : MonoBehaviour
 
         // Buttons
         var buildingBtn = root.Q<VisualElement>("Building-button");
-        var shopBtn = root.Q<VisualElement>("ShopButtonPanel-Panel");
-        var closeBtn = 
+        var shopBtn = root.Q<VisualElement>("Shop-Button");
+        var buildingCloseBtn = root.Q<VisualElement>("Close-button");
+        var shopCloseBtn = root.Q<VisualElement>("ShopClose-Button");
 
         // Panels 
         buildingPanel = root.Q<VisualElement>("BuildingPanel-Panel");
@@ -27,21 +29,34 @@ public class MainUI : MonoBehaviour
 
         buildingBtn.RegisterCallback<ClickEvent>(onBuildingBtnPress);
         shopBtn.RegisterCallback<ClickEvent>(onShopBtnPress);
-    }
+        buildingCloseBtn.RegisterCallback<ClickEvent>(onBuildingCloseBtnPress);
+        shopCloseBtn.RegisterCallback<ClickEvent>(onShopCloseBthPress);
 
-   
-    void Update()
-    {
-        
+        Debug.Log(buildingBtn.ToString());
+        Debug.Log(shopBtn.ToString());
     }
 
     private void onBuildingBtnPress(ClickEvent evt)
     {
         buildingPanel.style.display = DisplayStyle.Flex;
+        Debug.Log("Building button clicked");
     }
 
+    private void onBuildingCloseBtnPress(ClickEvent evt)
+    {
+        buildingPanel.style.display = DisplayStyle.None;
+        Debug.Log("Building Close button clicked");
+    }
     private void onShopBtnPress(ClickEvent evt)
     {
         shopPanel.style.display = DisplayStyle.Flex;
+        Debug.Log("Shop button clicked");
+    }
+
+    private void onShopCloseBthPress(ClickEvent evt)
+    {
+        shopPanel.style.display = DisplayStyle.None;
+        Debug.Log("Shop Close Button Clicked");
     }
 }
+
