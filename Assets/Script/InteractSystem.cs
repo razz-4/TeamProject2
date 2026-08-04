@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class InteractSystem : MonoBehaviour
 {
     MobileAction input;
-    [SerializeField] GameObject BuildingUI;
     GameObject buildingSelected = null;
+    [SerializeField] UIBuildingManager UIBuildingManagerComp;
     private void Awake()
     {
         input = new MobileAction();
@@ -46,15 +46,6 @@ public class InteractSystem : MonoBehaviour
         shootRaycast();
     }
 
-    private void hideUI()
-    {
-        BuildingUI.SetActive(false);
-    }
-
-    private void showUI()
-    {
-        BuildingUI.SetActive(true);
-    }
     private void shootRaycast()
     {
         //VARIABLES
@@ -73,12 +64,15 @@ public class InteractSystem : MonoBehaviour
             if (hit.collider.gameObject.layer == interactableLayer)
             {
                 buildingSelected = hit.collider.gameObject;
-                showUI();
+                BuildingClass building = buildingSelected.GetComponent<BuildingClass>();
+                string currentBuildingType = building.buildingType;
+                UIBuildingManagerComp.showUI(currentBuildingType);
+                
             }
             else
             {
                buildingSelected = null;
-               hideUI();
+               UIBuildingManagerComp.hideUI();
             }
         }
     }
@@ -86,6 +80,6 @@ public class InteractSystem : MonoBehaviour
     public void deleteBuilding()
     {
         Destroy(buildingSelected);
-        hideUI();
+        UIBuildingManagerComp.hideUI();
     }
 }
