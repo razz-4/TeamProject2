@@ -53,10 +53,15 @@ public class CameraControl : MonoBehaviour
         }
     }
 
+
+
+
     void Update()
     {
         moveCamera();
     }
+
+
 
 
 }

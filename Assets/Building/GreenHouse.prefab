@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576421394612820762}
   - component: {fileID: 384419347367255773}
+  - component: {fileID: 8973858945689767513}
   m_Layer: 0
   m_Name: GreenHouse
   m_TagString: Untagged
@@ -143,6 +144,27 @@ MonoBehaviour:
   - level: 1
     icon: {fileID: 0}
     mesh: {fileID: 7925136904801777000}
+--- !u!65 &8973858945689767513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222997645844290822}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6292243, y: 2.1814847, z: 0.5869198}
+  m_Center: {x: -0.17410588, y: 0.9615054, z: 0.20654011}
 --- !u!1 &7925136904801777000
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +176,7 @@ GameObject:
   - component: {fileID: 4587958069168961680}
   - component: {fileID: 9045608211131660626}
   - component: {fileID: 7714116561449754285}
+  - component: {fileID: 8214500575658082710}
   m_Layer: 0
   m_Name: Mesh_Level_1
   m_TagString: Untagged
@@ -233,3 +256,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8214500575658082710
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925136904801777000}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -280,6 +280,8 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Mobile_MoveDelta;
     private readonly InputAction m_Mobile_Pressed;
     private readonly InputAction m_Mobile_SecondaryTouchPosition;
+    
+
     /// <summary>
     /// Provides access to input actions defined in input action map "Mobile".
     /// </summary>
