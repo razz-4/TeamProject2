@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8258cabda73e31141b5b9cca9fb8a7b3, type: 3}
-  m_Name: Coco
+  m_Name: Fungi
   m_EditorClassIdentifier: Assembly-CSharp::Items
-  name: Coco
-  id: 0001
-  icon: {fileID: 0}
+  itemName: Fungi
+  icon: {fileID: -3361639, guid: edacdc8098146aa4bb00a9e00cd5528e, type: 3}
+  id: 0003
+  quantity: 8
+  value: 19
+  perSecond: 4
   isLocked: 0
-  quantity: 0
-  perSecond: 0
