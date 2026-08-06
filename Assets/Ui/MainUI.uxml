@@ -1,43 +1,47 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Ui/UI%20USS/tabs.uss?fileID=7433441132597879392&amp;guid=a06c8e8998b43964d97642a3297e6f5c&amp;type=3#tabs"/>
-    <ui:VisualElement name="MainUI" style="flex-grow: 1;">
-        <ui:VisualElement name="UpperPanel" style="flex-grow: 1; position: relative;">
-            <ui:VisualElement name="TopPanel" style="flex-grow: 1; flex-direction: row; align-items: flex-start; align-self: center; align-content: center; transform-origin: center; top: 0; position: absolute; left: 50%; translate: -50% 0; padding-right: 0; flex-shrink: 1; flex-basis: auto; width: 90%; scale: 1 1; height: 10%;">
-                <ui:VisualElement name="CashPanel" class="topPanel" style="flex-grow: 1;">
-                    <ui:Label text="$100" name="Cash" class="topPanelLabel" style="flex-direction: column; align-self: center; justify-content: flex-start; align-items: auto; left: auto; top: 50%; translate: 0% -50%;"/>
+    <ui:VisualElement name="MainUI" focusable="false" picking-mode="Ignore" style="flex-grow: 1;">
+        <ui:Button text="Bullding" name="Building-button" enable-rich-text="true" emoji-fallback-support="true" enabled="true" class="customButton" style="left: 20px; bottom: 20px; width: 16%; height: 9%; position: absolute;"/>
+        <ui:VisualElement name="Top" picking-mode="Ignore" style="flex-grow: 1;">
+            <ui:VisualElement name="UpperPanel" picking-mode="Ignore" style="flex-grow: 0; position: relative; max-height: none; min-height: auto; height: auto;">
+                <ui:VisualElement name="TopPanel" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; align-items: flex-start; align-self: center; align-content: center; transform-origin: center; top: 0; position: relative; left: 46%; translate: -50% 0; padding-right: 0; flex-shrink: 1; flex-basis: auto; width: 90%; scale: 1 1; height: 10%;">
+                    <ui:VisualElement name="CashPanel" class="topPanel" style="flex-grow: 1; flex-shrink: 0;">
+                        <ui:Label text="$100" name="Cash" class="topPanelLabel" style="flex-direction: column; align-self: center; justify-content: flex-start; align-items: auto; left: auto; top: 50%; translate: 0% -50%;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PerHourPanel" class="topPanel" style="flex-grow: 1; flex-shrink: 0;">
+                        <ui:Label text="10/hr" name="PerHour" class="topPanelLabel"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PremiumPanel" class="topPanel" style="flex-grow: 1; flex-shrink: 0;">
+                        <ui:Label text="0 gem" name="Premium" class="topPanelLabel"/>
+                    </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="PerHourPanel" class="topPanel" style="flex-grow: 1;">
-                    <ui:Label text="10/hr" name="PerHour" class="topPanelLabel"/>
+                <ui:VisualElement name="ShopButtonPanel-Panel" picking-mode="Ignore" style="flex-grow: 0; top: 10%; flex-direction: row-reverse;">
+                    <ui:Button text="Shop" name="Shop-Button" class="customButton" style="width: 16%; height: auto; top: auto; right: 3px;"/>
                 </ui:VisualElement>
-                <ui:VisualElement name="PremiumPanel" class="topPanel" style="flex-grow: 1;">
-                    <ui:Label text="0 gem" name="Premium" class="topPanelLabel"/>
-                </ui:VisualElement>
-            </ui:VisualElement>
-            <ui:VisualElement name="ShopButtonPanel-Panel" style="flex-grow: 0; top: 10%; flex-direction: row-reverse;">
-                <ui:Button text="Shop" name="Shop-Button" class="customButton" style="width: 16%; height: auto; top: auto; right: 3px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Button text="Bullding" name="Building-button" enable-rich-text="true" emoji-fallback-support="true" enabled="true" class="customButton" style="left: 20px; bottom: 20px; width: 16%; height: 9%; position: absolute;"/>
-        <ui:VisualElement name="BuildingPanel-Panel" enabled="true" style="flex-grow: 1; background-color: rgb(110, 134, 139); position: absolute; bottom: 0; max-height: none; max-width: 100%; display: none;">
-            <ui:VisualElement name="BuildingTopPanel-Panel" enabled="true" style="flex-grow: 1; flex-direction: row; background-color: rgb(224, 152, 7); width: auto; height: auto;">
-                <ui:VisualElement name="Left-Panel" style="flex-grow: 1;">
-                    <ui:Label text="Buildings" name="Building-label" style="position: relative; height: 24px; width: 61px; top: 50%; translate: 0% -50%; margin-left: 3%; margin-bottom: 4px; margin-top: 0; padding-left: 0; padding-right: 0;"/>
+        <ui:VisualElement name="Bottom" picking-mode="Ignore" style="flex-grow: 1; flex-direction: column-reverse; max-height: none;">
+            <ui:VisualElement name="BuildingPanel-Panel" enabled="true" style="flex-grow: 0; background-color: rgb(110, 134, 139); position: relative; bottom: 0; max-height: none; max-width: 100%; display: none;">
+                <ui:VisualElement name="BuildingTopPanel-Panel" enabled="true" style="flex-grow: 0; flex-direction: row; background-color: rgb(224, 152, 7); width: auto; height: auto;">
+                    <ui:VisualElement name="Left-Panel" style="flex-grow: 1;">
+                        <ui:Label text="Buildings" name="Building-label" style="position: relative; height: 24px; width: 61px; top: 50%; translate: 0% -50%; margin-left: 7%; margin-bottom: 0; margin-top: 0; padding-left: 0; padding-right: 0; margin-right: 3px; padding-top: 0; padding-bottom: 0;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Right-Panel" style="flex-grow: 1; flex-direction: row-reverse;">
+                        <ui:Button text="X&#10;" name="Close-button" style="right: auto; height: 60%; left: auto; flex-direction: column; top: 50%; translate: 0% -55%; margin-top: 2px; margin-left: 2px; margin-right: 6px; padding-top: 6px; padding-bottom: 6px; margin-bottom: 2px;"/>
+                    </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="Right-Panel" style="flex-grow: 1; flex-direction: row-reverse;">
-                    <ui:Button text="X&#10;" name="Close-button" style="right: auto; height: 60%; left: auto; flex-direction: column; top: 50%; translate: 0% -50%;"/>
-                </ui:VisualElement>
+                <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" mouse-wheel-scroll-size="18" name="Building-ScrollView" style="flex-direction: column; align-items: stretch; align-content: flex-start; align-self: flex-start;">
+                    <ui:VisualElement style="flex-grow: 1; align-items: stretch; min-width: 150px; background-color: rgb(241, 42, 42); min-height: 150px;"/>
+                    <ui:VisualElement style="flex-grow: 1; background-color: rgb(255, 249, 119); min-width: 150px; min-height: 150px;"/>
+                    <ui:VisualElement style="flex-grow: 1; min-width: 150px; min-height: 150px;"/>
+                </ui:ScrollView>
             </ui:VisualElement>
-            <ui:ScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" mouse-wheel-scroll-size="18" name="Building-ScrollView" style="flex-direction: column; align-items: stretch; align-content: flex-start; align-self: flex-start;">
-                <ui:VisualElement style="flex-grow: 1; align-items: stretch; min-width: 150px; background-color: rgb(241, 42, 42); min-height: 150px;"/>
-                <ui:VisualElement style="flex-grow: 1; background-color: rgb(255, 249, 119); min-width: 150px; min-height: 150px;"/>
-                <ui:VisualElement style="flex-grow: 1; min-width: 150px; min-height: 150px;"/>
-            </ui:ScrollView>
         </ui:VisualElement>
         <ui:VisualElement name="Shop-Panel" style="flex-grow: 1; position: absolute; width: 100%; height: 100%; background-color: rgba(209, 164, 100, 0.36); display: none;">
             <ui:VisualElement name="TopHBox-Panel" style="flex-grow: 1; display: flex; max-width: 100%; max-height: 20%;">
                 <ui:Button text="Button" name="ShopClose-Button"/>
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1;"/>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 1;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

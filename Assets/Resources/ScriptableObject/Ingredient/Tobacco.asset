@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8258cabda73e31141b5b9cca9fb8a7b3, type: 3}
-  m_Name: Fungi
+  m_Name: Tobacco
   m_EditorClassIdentifier: Assembly-CSharp::Items
-  name: Fungi
-  id: 0003
-  icon: {fileID: 0}
-  isLocked: 0
-  quantity: 0
-  perSecond: 0
+  itemName: Tobacco
+  icon: {fileID: -3361639, guid: edacdc8098146aa4bb00a9e00cd5528e, type: 3}
+  id: 0004
+  quantity: 6
+  value: 22
+  perSecond: 11
+  isLocked: 1

@@ -43,6 +43,7 @@ public class ItemManager : MonoBehaviour
 
         drug.quantity += drug.perSecond;
 
+        EventManager.Instance.InvokeInventoryChanged();
         return true;
     }
 }
