@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8258cabda73e31141b5b9cca9fb8a7b3, type: 3}
   m_Name: Salvia
   m_EditorClassIdentifier: Assembly-CSharp::Items
-  name: 
+  name: Salvia
   id: 
   icon: {fileID: 0}
-  quantity: 0
+  isLocked: 0
+  produce: 1
+  quantity: 49.44389
+  value: 1
   perSecond: 0
+  CurrentPerSecond: 3

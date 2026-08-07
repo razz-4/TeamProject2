@@ -1,9 +1,11 @@
+using Unity.VisualScripting;
 using UnityEditor.Rendering.Universal;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GreenHouse : BuildingClass
 {
-    [SerializeField] Ingredient[] ingredients;
+
 
     private void Awake()
     {
@@ -11,10 +13,18 @@ public class GreenHouse : BuildingClass
         placable = true;
         level = 1;
         isLock = false;
+
     }
 
-    void openUI()
+    public void ProductIngredients(Ingredient targetIngredient)
     {
-
+        foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
+        {
+            if (ingredient == targetIngredient)
+            {
+                ingredient.CurrentPerSecond += ingredient.perSecond;
+            }
+        }
     }
+
 }

@@ -16,5 +16,8 @@ MonoBehaviour:
   id: 0003
   icon: {fileID: 0}
   isLocked: 0
-  quantity: 0
-  perSecond: 0
+  produce: 1
+  quantity: 88.20755
+  value: 1
+  perSecond: 4
+  CurrentPerSecond: 8

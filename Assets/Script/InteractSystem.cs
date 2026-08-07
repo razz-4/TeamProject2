@@ -8,6 +8,7 @@ public class InteractSystem : MonoBehaviour
     MobileAction input;
     GameObject buildingSelected = null;
     [SerializeField] UIBuildingManager UIBuildingManagerComp;
+    [SerializeField] ItemList itemList;
     private void Awake()
     {
         input = new MobileAction();
@@ -66,13 +67,14 @@ public class InteractSystem : MonoBehaviour
                 buildingSelected = hit.collider.gameObject;
                 BuildingClass building = buildingSelected.GetComponent<BuildingClass>();
                 string currentBuildingType = building.buildingType;
-                UIBuildingManagerComp.showUI(currentBuildingType);
+                UIBuildingManagerComp.ShowUI(currentBuildingType);
+                itemList.Greenhouse = buildingSelected;
                 
             }
             else
             {
                buildingSelected = null;
-               UIBuildingManagerComp.hideUI();
+               UIBuildingManagerComp.HideUI();
             }
         }
     }
@@ -80,6 +82,6 @@ public class InteractSystem : MonoBehaviour
     public void deleteBuilding()
     {
         Destroy(buildingSelected);
-        UIBuildingManagerComp.hideUI();
+        UIBuildingManagerComp.HideUI();
     }
 }
