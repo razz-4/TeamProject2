@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class CameraControl : MonoBehaviour
@@ -28,7 +29,7 @@ public class CameraControl : MonoBehaviour
         inputs.Enable();
 
         //moving = true if touched and false if let go
-        inputs.Mobile.Pressed.started += _ => moving = true;
+        inputs.Mobile.Pressed.started += _ => checkPointer();
         inputs.Mobile.Pressed.canceled += _ => moving = false;
 
         inputs.Mobile.Scroll.performed += ctx => zoomCamera(ctx.ReadValue<Vector2>());
@@ -39,13 +40,40 @@ public class CameraControl : MonoBehaviour
     {
         inputs.Disable();
     }
-    
+
+    bool IsPointerOverUI()
+    {
+        if (EventSystem.current == null) return false;
+
+        // Check Touchscreen touches (Mobile)
+        if (Touchscreen.current != null && Touchscreen.current.touches.Count > 0)
+        {
+            var touch = Touchscreen.current.primaryTouch;
+            return EventSystem.current.IsPointerOverGameObject(touch.touchId.ReadValue());
+        }
+
+        // Fallback for Mouse (PC / Editor)
+        return EventSystem.current.IsPointerOverGameObject();
+    }
+
+    void checkPointer()
+    {
+        if (IsPointerOverUI())
+        {
+            moving = false;
+            return;
+        }
+        else
+        {
+            moving = true;
+        }
+    }
     //only for mouse input but not touchscreen
     void zoomCamera(Vector2 scrollDelta)
     {
         float zoomAmount = scrollDelta.y;
         cinemachine.Lens.OrthographicSize -= zoomAmount * zoomSpeed;
-        Debug.Log(zoomAmount);
+        
     }
     void moveCamera()
     {

@@ -3,20 +3,32 @@ using System.Linq;
 
 public class ItemManager : MonoBehaviour
 {
-    public static ItemManager Instance;
-
+    public static ItemManager Instance { get; private set; }
+    
+    //Store ingredients and drugs
     public Ingredient[] ingredients;
-
     public Drug[] drugs;
+    public int[] numbers;
+
     public void Awake()
     {
-        Instance = this;
+        //Check for duplicate and delete
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        Instance = this;
+    /*
+     * DOESNT WORK
         ingredients = Utils.GetAllIngredientInstances<Ingredient>();
         ingredients = ingredients.OrderBy(p => p.id).ToArray();
 
+
         drugs = Utils.GetAllDrugInstances<Drug>();
         drugs = drugs.OrderBy(p => p.id).ToArray();
+    */
     }
 
 
@@ -45,6 +57,20 @@ public class ItemManager : MonoBehaviour
 
         EventManager.Instance.InvokeInventoryChanged();
         return true;
+    }
+
+    void GenerateIngredients()
+    {
+        foreach (Ingredient ingredient in Instance.ingredients)
+        {
+            ingredient.quantity += ingredient.value * ingredient.CurrentPerSecond * Time.deltaTime;
+        }
+    }
+
+    private void Update()
+    {
+        //Suggestion add a timer
+        GenerateIngredients();
     }
 }
 

@@ -118,6 +118,15 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4896920-5386-40b9-8923-abb8fec29bab"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -175,6 +184,28 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
                     ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""288cf720-3094-4dea-a22f-1688ee5d1050"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc160af4-33da-4d87-8ce5-fbe23009ee9c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +217,7 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
         m_Mobile_MoveDelta = m_Mobile.FindAction("MoveDelta", throwIfNotFound: true);
         m_Mobile_Pressed = m_Mobile.FindAction("Pressed", throwIfNotFound: true);
         m_Mobile_Scroll = m_Mobile.FindAction("Scroll", throwIfNotFound: true);
+        m_Mobile_Interact = m_Mobile.FindAction("Interact", throwIfNotFound: true);
     }
 
     ~@MobileAction()
@@ -269,6 +301,7 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Mobile_MoveDelta;
     private readonly InputAction m_Mobile_Pressed;
     private readonly InputAction m_Mobile_Scroll;
+    private readonly InputAction m_Mobile_Interact;
     /// <summary>
     /// Provides access to input actions defined in input action map "Mobile".
     /// </summary>
@@ -292,6 +325,10 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Mobile/Scroll".
         /// </summary>
         public InputAction @Scroll => m_Wrapper.m_Mobile_Scroll;
+        /// <summary>
+        /// Provides access to the underlying input action "Mobile/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Mobile_Interact;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -327,6 +364,9 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
             @Scroll.started += instance.OnScroll;
             @Scroll.performed += instance.OnScroll;
             @Scroll.canceled += instance.OnScroll;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         /// <summary>
@@ -347,6 +387,9 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
             @Scroll.started -= instance.OnScroll;
             @Scroll.performed -= instance.OnScroll;
             @Scroll.canceled -= instance.OnScroll;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         /// <summary>
@@ -408,5 +451,12 @@ public partial class @MobileAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnScroll(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
