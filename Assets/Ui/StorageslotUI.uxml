@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Ui/UI%20USS/tabs.uss?fileID=7433441132597879392&amp;guid=a06c8e8998b43964d97642a3297e6f5c&amp;type=3#tabs"/>
+    <ui:VisualElement name="StorageSlotPanel" style="flex-grow: 0; min-height: 10%; max-height: 10%; background-color: rgba(0, 0, 0, 0.24); flex-direction: row; margin-bottom: 0; margin-top: 0; flex-shrink: 1;">
+        <ui:VisualElement name="LeftPanel" style="flex-grow: initial; padding-right: 3%; padding-top: 3%; padding-bottom: 3%; padding-left: 3%; flex-direction: row; width: auto; min-width: 60%; max-width: 60%;">
+            <ui:Image name="ItemImage" scale-mode="ScaleToFit" style="width: 32px; height: 32px; margin-left: 13px;"/>
+            <ui:Label text="Item Name" name="ItemName" style="-unity-font-style: normal; -unity-text-outline-color: rgb(0, 0, 0); color: rgb(255, 255, 255); margin-left: 22px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="RightPanel" style="flex-grow: 1; flex-direction: row-reverse; padding-top: 3%; padding-right: 3%; padding-bottom: 3%; padding-left: 3%;">
+            <ui:Label text="" name="Amount" style="flex-grow: initial; color: rgb(255, 255, 255); margin-right: 6%; -unity-text-align: upper-center; width: 70%;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
