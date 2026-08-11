@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8258cabda73e31141b5b9cca9fb8a7b3, type: 3}
   m_Name: Cannabis
   m_EditorClassIdentifier: Assembly-CSharp::Items
-  name: Cannabis
+  itemName: Cannabis
   id: 0000
+<<<<<<< Updated upstream:Assets/Resources/ScriptableObject/Ingredient/Cannabis.asset
+  icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
+  quantity: 73
+=======
   icon: {fileID: 0}
   isLocked: 0
   produce: 1
-  quantity: 73.10896
+  quantity: 88.01238
+>>>>>>> Stashed changes:Assets/Resouces/ScriptableObject/Ingredient/Cannabis.asset
   value: 1
   perSecond: 2
-  CurrentPerSecond: 2
+  currentPerSecond: 0
+  isLocked: 0
+  produce: 1

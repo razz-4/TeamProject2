@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using System.Threading;
 
 public class ItemManager : MonoBehaviour
 {
@@ -20,16 +21,28 @@ public class ItemManager : MonoBehaviour
         }
 
         Instance = this;
-    /*
-     * DOESNT WORK
+<<<<<<< Updated upstream
+
         ingredients = Utils.GetAllIngredientInstances<Ingredient>();
         ingredients = ingredients.OrderBy(p => p.id).ToArray();
 
 
         drugs = Utils.GetAllDrugInstances<Drug>();
         drugs = drugs.OrderBy(p => p.id).ToArray();
-    */
+=======
+        /*
+         * DOESNT WORK
+            ingredients = Utils.GetAllIngredientInstances<Ingredient>();
+            ingredients = ingredients.OrderBy(p => p.id).ToArray();
+
+
+            drugs = Utils.GetAllDrugInstances<Drug>();
+            drugs = drugs.OrderBy(p => p.id).ToArray();
+        */
+        
+>>>>>>> Stashed changes
     }
+
 
 
     public bool synthesize(Drug drug)
@@ -60,9 +73,10 @@ public class ItemManager : MonoBehaviour
 
     void GenerateIngredients()
     {
+
         foreach (Ingredient ingredient in Instance.ingredients)
         {
-            ingredient.quantity += ingredient.value * ingredient.CurrentPerSecond * Time.deltaTime;
+            ingredient.quantity += ingredient.perSecond;
         }
     }
 
