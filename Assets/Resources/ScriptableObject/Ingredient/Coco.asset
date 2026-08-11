@@ -14,8 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Coca
   id: 0001
+<<<<<<< Updated upstream:Assets/Resources/ScriptableObject/Ingredient/Coco.asset
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
   quantity: 23
+=======
+  icon: {fileID: 0}
+  isLocked: 0
+  produce: 1
+  quantity: 887.76245
+>>>>>>> Stashed changes:Assets/Resouces/ScriptableObject/Ingredient/Coco.asset
   value: 1
   perSecond: 3
   currentPerSecond: 0

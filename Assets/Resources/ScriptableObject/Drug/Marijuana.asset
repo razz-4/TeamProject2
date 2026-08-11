@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Marijuana
   id: 1
+<<<<<<< Updated upstream:Assets/Resources/ScriptableObject/Drug/Marijuana.asset
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
   quantity: 8
   value: 2
@@ -24,3 +25,14 @@ MonoBehaviour:
     amount: 9
   - ingredient: {fileID: 11400000, guid: 42730769d6217624cbc092d4f38f2ec1, type: 2}
     amount: 13
+=======
+  Icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  quantity: 0
+  perSecond: 0
+  value: 0
+  recipe:
+  - ingredient: {fileID: 0}
+    amount: 0
+  - ingredient: {fileID: 0}
+    amount: 0
+>>>>>>> Stashed changes:Assets/Resouces/ScriptableObject/Drug/Marijuana.asset

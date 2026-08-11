@@ -14,8 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Cannabis
   id: 0000
+<<<<<<< Updated upstream:Assets/Resources/ScriptableObject/Ingredient/Cannabis.asset
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
   quantity: 73
+=======
+  icon: {fileID: 0}
+  isLocked: 0
+  produce: 1
+  quantity: 88.01238
+>>>>>>> Stashed changes:Assets/Resouces/ScriptableObject/Ingredient/Cannabis.asset
   value: 1
   perSecond: 2
   currentPerSecond: 0
