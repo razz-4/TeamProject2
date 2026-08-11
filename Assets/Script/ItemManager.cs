@@ -21,7 +21,6 @@ public class ItemManager : MonoBehaviour
         }
 
         Instance = this;
-<<<<<<< Updated upstream
 
         ingredients = Utils.GetAllIngredientInstances<Ingredient>();
         ingredients = ingredients.OrderBy(p => p.id).ToArray();
@@ -29,20 +28,7 @@ public class ItemManager : MonoBehaviour
 
         drugs = Utils.GetAllDrugInstances<Drug>();
         drugs = drugs.OrderBy(p => p.id).ToArray();
-=======
-        /*
-         * DOESNT WORK
-            ingredients = Utils.GetAllIngredientInstances<Ingredient>();
-            ingredients = ingredients.OrderBy(p => p.id).ToArray();
-
-
-            drugs = Utils.GetAllDrugInstances<Drug>();
-            drugs = drugs.OrderBy(p => p.id).ToArray();
-        */
-        
->>>>>>> Stashed changes
     }
-
 
 
     public bool synthesize(Drug drug)

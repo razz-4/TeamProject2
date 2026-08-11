@@ -14,16 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Opioids
   id: 3
-<<<<<<< Updated upstream:Assets/Resources/ScriptableObject/Drug/Opioids.asset
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
   quantity: 8
   value: 5
   perSecond: 7
   currentPerSecond: 4
-=======
-  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  quantity: 0
-  perSecond: 0
-  value: 0
->>>>>>> Stashed changes:Assets/Resouces/ScriptableObject/Drug/Opioids.asset
   recipe: []
