@@ -11,4 +11,9 @@ public static class Utils
     {
         return Resources.LoadAll<T>("ScriptableObject/Drug");
     }
+
+    public static T[] GetAllBuildingInstances<T>() where T : ScriptableObject
+    {
+        return Resources.LoadAll<T>("ScriptableObject/Building");
+    }
 }
