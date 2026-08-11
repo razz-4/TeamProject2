@@ -26,8 +26,8 @@
     justify-content: flex-start;
     align-self: auto;
     height: auto;
-    max-height: none;
-    min-height: auto;
+    max-height: 50%;
+    min-height: 50%;
     left: 0%;
     top: 0%;
     border-left-width: 1px;
@@ -56,6 +56,10 @@
     height: 50%;
 }
 
+
+
+
+
 .customButton {
     background-color: rgb(255, 211, 114);
     border-left-width: 1px;
@@ -63,22 +67,3 @@
     border-right-width: 1px;
     border-bottom-width: 1px;
 }
-
-.unity-tab-view__header-container {
-    flex-grow: 1;
-}
-
-.unity-tab__header {
-    flex-grow: 1;
-    -unity-font-style: normal;
-    -unity-text-align: upper-center;
-    max-width: 50%;
-}
-
-.unity-tab__header-label {
-    -unity-text-align: upper-center;
-    left: 50%;
-    translate: -50% 0;
-}
-
-

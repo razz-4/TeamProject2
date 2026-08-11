@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479063bd79d9cd44d983b41edbc75335, type: 3}
   m_Name: Opioids
   m_EditorClassIdentifier: Assembly-CSharp::Drug
-  itemName: Opioids
+  name: Opioid
   id: 3
-  icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
-  quantity: 8
-  value: 5
-  perSecond: 7
-  currentPerSecond: 4
+  Icon: {fileID: 0}
+  quantity: 0
+  perSecond: 0
   recipe: []

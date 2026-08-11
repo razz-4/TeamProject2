@@ -10,17 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 479063bd79d9cd44d983b41edbc75335, type: 3}
-  m_Name: Marijuana
+  m_Name: Cocaine
   m_EditorClassIdentifier: Assembly-CSharp::Drug
-  itemName: Marijuana
-  id: 1
-  icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
-  quantity: 8
-  value: 2
-  perSecond: 8
-  currentPerSecond: 0
-  recipe:
-  - ingredient: {fileID: 11400000, guid: 90d19bea77958e74682be7bca8dd4a02, type: 2}
-    amount: 9
-  - ingredient: {fileID: 11400000, guid: 42730769d6217624cbc092d4f38f2ec1, type: 2}
-    amount: 13
+  name: Cocaine
+  id: 2
+  Icon: {fileID: 0}
+  quantity: 0
+  perSecond: 0
+  recipe: []
