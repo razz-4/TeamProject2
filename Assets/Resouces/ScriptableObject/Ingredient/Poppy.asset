@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Items
   name: Poppy
   id: 0002
-  icon: {fileID: 0}
+  icon: {fileID: 736600011, guid: 212f0fc289bdab040bf5f62870f8b1d7, type: 3}
   isLocked: 0
   produce: 1
-  quantity: 0
+  quantity: 1826.231
   value: 1
   perSecond: 5
-  CurrentPerSecond: 0
+  CurrentPerSecond: 5

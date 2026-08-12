@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Items
   name: Salvia
   id: 
-  icon: {fileID: 0}
+  icon: {fileID: -566403904, guid: dbba87b0ce5b06943bf75f2a9fdfcee4, type: 3}
   isLocked: 0
   produce: 1
-  quantity: 49.44389
+  quantity: 1178.0026
   value: 1
   perSecond: 0
   CurrentPerSecond: 3

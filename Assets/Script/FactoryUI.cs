@@ -4,15 +4,18 @@ using UnityEngine.UI;
 
 public class FactoryUI : MonoBehaviour
 {
-    /*
+    private List<GameObject> drugsPrefabList = new List<GameObject>(); //List of drug prefab just in case
+
+    [Header("Prefabs")]
     public GameObject drugsPrefab;
     public GameObject ingredientPrefab;
-    public Transform scrollMenu;
-    private List<GameObject> drugsPrefabList = new List<GameObject>();
 
-    [SerializeField] private Transform itemListFactory; // Assign ItemListFactory directly in Inspector
+    [Header("For Scroll Menu")]
+    [SerializeField] private Transform scrollMenu; // Assign ItemListFactory directly in Inspector
     [SerializeField] private ToggleGroup toggleGroup;
 
+    [Header("For Ingredient List")]
+    [SerializeField] private Transform ingredientList;
     private void Start()
     {
         SpawnDrugListUI();
@@ -20,7 +23,7 @@ public class FactoryUI : MonoBehaviour
 
     private void SpawnDrugListUI()
     {
-        if (drugsPrefab == null || itemListFactory == null)
+        if (drugsPrefab == null || scrollMenu == null)
         {
             Debug.LogError("FactoryUI: Missing inspectable references!");
             return;
@@ -41,7 +44,7 @@ public class FactoryUI : MonoBehaviour
             { 
 
                 //Get reference for each toggle button (LOGIC ERROR ONLY GET FIRST)
-                GameObject spawnedDrug = Instantiate(drugsPrefab, itemListFactory);
+                GameObject spawnedDrug = Instantiate(drugsPrefab, scrollMenu);
                 ToggleDrugPrefab currentDrugPrefab = spawnedDrug.GetComponent<ToggleDrugPrefab>();
 
                 //assign drugs scriptable object into toggle button
@@ -50,6 +53,19 @@ public class FactoryUI : MonoBehaviour
                 drugsPrefabList.Add(spawnedDrug);
             }
         }
+
+        foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
+        {
+            if(ingredient != null)
+            {
+                GameObject spawnedIngredient = Instantiate(ingredientPrefab, ingredientList);
+                IngredientQuantity currentIngredientPrefab = spawnedIngredient.GetComponent<IngredientQuantity>();
+
+                currentIngredientPrefab.ingredient = ingredient;
+                Debug.Log(currentIngredientPrefab.ingredient.name);
+                //spawnedIngredient.SetActive(false);
+            }
+        }
     }
-    */
+    
 }

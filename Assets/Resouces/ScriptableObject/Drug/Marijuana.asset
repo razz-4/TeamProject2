@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   name: Marijuana
   id: 1
-  Icon: {fileID: 0}
+  Icon: {fileID: -1972365183, guid: e3901f5e072f62b40b1a23d8671b6549, type: 3}
   quantity: 0
   perSecond: 0
+  value: 0
   recipe:
-  - {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
-  - {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
+  - ingredient: {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
+    amount: 3
+  - ingredient: {fileID: 11400000, guid: ddfc4e8549f36ca4d84f4e603fff1cda, type: 2}
+    amount: 2
+  - ingredient: {fileID: 11400000, guid: 42730769d6217624cbc092d4f38f2ec1, type: 2}
+    amount: 2

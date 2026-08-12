@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   name: Opioid
   id: 3
-  Icon: {fileID: 0}
+  Icon: {fileID: 736600011, guid: 212f0fc289bdab040bf5f62870f8b1d7, type: 3}
   quantity: 0
   perSecond: 0
-  recipe: []
+  value: 0
+  recipe:
+  - ingredient: {fileID: 11400000, guid: 90d19bea77958e74682be7bca8dd4a02, type: 2}
+    amount: 3
+  - ingredient: {fileID: 11400000, guid: 9b91c1368e4339b46b9163df45f64e27, type: 2}
+    amount: 3
+  - ingredient: {fileID: 11400000, guid: ddfc4e8549f36ca4d84f4e603fff1cda, type: 2}
+    amount: 1
