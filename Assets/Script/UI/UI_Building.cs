@@ -25,7 +25,7 @@ namespace DevelopersHub.ClashOfWhatecer
 
             Vector3 position = Vector3.zero;
 
-            Building building = Instantiate(UI_Main.instance._buildingPrefabs[_prefabIndex], position, Quaternion.identity);
+            BuildingControl building = Instantiate(UI_Main.instance._buildingPrefabs[_prefabIndex], position, Quaternion.identity);
         }
 
 

@@ -3,7 +3,7 @@ namespace DevelopersHub.ClashOfWhatecer
 
     using System.Collections;
     using System.Collections.Generic;
-     using UnityEngine;
+    using UnityEngine;
     using UnityEngine.UI;
     using TMPro;
    
@@ -12,7 +12,7 @@ namespace DevelopersHub.ClashOfWhatecer
     {
         [SerializeField] public GameObject _elements = null;
         [SerializeField] private Button _shopButton = null;
-        [SerializeField] public Building[] _buildingPrefabs = null;
+        [SerializeField] public BuildingControl[] _buildingPrefabs = null;
 
         [SerializeField] public BuildGrid _grid = null;
         private static UI_Main _instance = null; public static UI_Main instance { get { return _instance; } }

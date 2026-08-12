@@ -6,10 +6,10 @@ namespace DevelopersHub.ClashOfWhatecer
     using UnityEngine;
     using UnityEngine.InputSystem;
 
-    public class Building : MonoBehaviour
+    public class BuildingControl : MonoBehaviour
     {
 
-        private static Building _instance = null; public static Building instance { get { return _instance; } set { _instance = value; } }
+        private static BuildingControl _instance = null; public static BuildingControl instance { get { return _instance; } set { _instance = value; } }
         public static bool IsBeingDragged { get; private set; } = false;
 
 

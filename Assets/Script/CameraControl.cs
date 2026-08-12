@@ -35,7 +35,7 @@ public class CameraControl : MonoBehaviour
 
     void moveCamera()
     {
-        if (Building.IsBeingDragged) return;
+        if (BuildingControl.IsBeingDragged) return;
 
         //CAMERA STILL KEEP MOVING EVEN IF NOT DRAGGING
         if (moving)
