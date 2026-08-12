@@ -1,3 +1,4 @@
+using DevelopersHub.ClashOfWhatecer;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,6 +35,7 @@ public class CameraControl : MonoBehaviour
 
     void moveCamera()
     {
+        if (Building.IsBeingDragged) return;
 
         //CAMERA STILL KEEP MOVING EVEN IF NOT DRAGGING
         if (moving)

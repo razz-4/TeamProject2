@@ -10,7 +10,7 @@ namespace DevelopersHub.ClashOfWhatecer
     {
 
         private static Building _instance = null; public static Building instance { get { return _instance; } set { _instance = value; } }
-
+        public static bool IsBeingDragged { get; private set; } = false;
 
 
 
@@ -143,6 +143,8 @@ namespace DevelopersHub.ClashOfWhatecer
             {
                 if (hit.collider.transform.IsChildOf(this.transform) || hit.collider.gameObject == this.gameObject)
                 {
+
+                    IsBeingDragged = true;
                     _isDragging = true;
                     StartMovingOnGrid();
 
@@ -172,6 +174,7 @@ namespace DevelopersHub.ClashOfWhatecer
         private void OnPointerUp()
         {
             _isDragging = false;
+            IsBeingDragged = false;
             Debug.Log("finish draging: (" + _currentX + ", " + _currentY + ")");
         }
 
