@@ -12,6 +12,8 @@ public class UIBuildingManager : MonoBehaviour
 
     private GameObject specialButton;
     private GameObject GreenHouseUI;
+    private GameObject FactoryUI;
+
     private string currentBuildingType;
 
     private void Awake()
@@ -39,12 +41,15 @@ public class UIBuildingManager : MonoBehaviour
         if (Canva != null)
         {
             GreenHouseUI = Canva.transform.Find("GreenHouseUI").gameObject;
+            FactoryUI = Canva.transform.Find("FactoryUI").gameObject;
         }
     }
 
     public void HideUI()
     {
         BuildingUI.SetActive(false);
+        GreenHouseUI.SetActive(false);
+        FactoryUI.SetActive(false);
         if (specialButton != null) specialButton.SetActive(false);
         currentBuildingType = null;
     }
@@ -78,6 +83,10 @@ public class UIBuildingManager : MonoBehaviour
                 SpecialButtonText.text = "Delivery";
                 break;
 
+            case "Factory":
+                SpecialButtonText.text = "Factory";
+                break;
+
             default:
                 break;
         }
@@ -98,6 +107,10 @@ public class UIBuildingManager : MonoBehaviour
             case "Delivery":
                 Debug.Log("Open Delivery UI");
                 //Add Delivery menu...
+                break;
+
+            case "Factory":
+                FactoryUI.SetActive(true);
                 break;
 
             default:

@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class FactoryUI : MonoBehaviour
 {
+    [Header("List of Prefabs")]
     private List<GameObject> drugsPrefabList = new List<GameObject>(); //List of drug prefab just in case
+    private List<GameObject> ingredientPrefabList = new List<GameObject>();
 
     [Header("Prefabs")]
     public GameObject drugsPrefab;
@@ -16,6 +18,7 @@ public class FactoryUI : MonoBehaviour
 
     [Header("For Ingredient List")]
     [SerializeField] private Transform ingredientList;
+
     private void Start()
     {
         SpawnDrugListUI();
@@ -58,12 +61,13 @@ public class FactoryUI : MonoBehaviour
         {
             if(ingredient != null)
             {
+                //Preload all ingredient for reusing
                 GameObject spawnedIngredient = Instantiate(ingredientPrefab, ingredientList);
                 IngredientQuantity currentIngredientPrefab = spawnedIngredient.GetComponent<IngredientQuantity>();
 
                 currentIngredientPrefab.ingredient = ingredient;
-                Debug.Log(currentIngredientPrefab.ingredient.name);
-                //spawnedIngredient.SetActive(false);
+                ingredientPrefabList.Add(spawnedIngredient);
+                spawnedIngredient.SetActive(false);
             }
         }
     }
