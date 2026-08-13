@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Peyote
   id: 0009
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
-  quantity: 3
+  quantity: 0
   value: 11
   perSecond: 14
   currentPerSecond: 2

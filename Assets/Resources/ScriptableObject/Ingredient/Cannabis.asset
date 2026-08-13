@@ -15,9 +15,9 @@ MonoBehaviour:
   itemName: Cannabis
   id: 0000
   icon: {fileID: 21300000, guid: f5553345c1a1ae941a934644806ed7eb, type: 3}
-  quantity: 19106
+  quantity: 0
   value: 1
   perSecond: 2
-  currentPerSecond: 0
+  currentPerSecond: 6
   isLocked: 0
   produce: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Tobacco
   id: 0006
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
-  quantity: 6
+  quantity: 0
   value: 7
   perSecond: 3
   currentPerSecond: 3
