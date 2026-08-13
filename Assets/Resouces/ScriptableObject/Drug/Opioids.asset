@@ -15,9 +15,9 @@ MonoBehaviour:
   name: Opioid
   id: 3
   Icon: {fileID: 736600011, guid: 212f0fc289bdab040bf5f62870f8b1d7, type: 3}
-  quantity: 0
-  perSecond: 0
-  value: 0
+  quantity: 14
+  perSecond: 8
+  value: 7
   recipe:
   - ingredient: {fileID: 11400000, guid: 90d19bea77958e74682be7bca8dd4a02, type: 2}
     amount: 3

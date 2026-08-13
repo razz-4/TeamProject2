@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: -566403904, guid: dbba87b0ce5b06943bf75f2a9fdfcee4, type: 3}
   isLocked: 0
   produce: 1
-  quantity: 21643.066
+  quantity: 36208
   value: 1
   perSecond: 3
   CurrentPerSecond: 57

@@ -15,9 +15,9 @@ MonoBehaviour:
   name: Cocaine
   id: 2
   Icon: {fileID: 21300000, guid: f5553345c1a1ae941a934644806ed7eb, type: 3}
-  quantity: 0
-  perSecond: 0
-  value: 0
+  quantity: 24
+  perSecond: 11
+  value: 19
   recipe:
   - ingredient: {fileID: 11400000, guid: 90d19bea77958e74682be7bca8dd4a02, type: 2}
     amount: 2

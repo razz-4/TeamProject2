@@ -15,9 +15,9 @@ MonoBehaviour:
   name: Marijuana
   id: 1
   Icon: {fileID: -1972365183, guid: e3901f5e072f62b40b1a23d8671b6549, type: 3}
-  quantity: 0
-  perSecond: 0
-  value: 0
+  quantity: 8
+  perSecond: 13
+  value: 8
   recipe:
   - ingredient: {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
     amount: 3

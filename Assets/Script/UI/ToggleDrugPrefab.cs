@@ -17,7 +17,7 @@ public class ToggleDrugPrefab : MonoBehaviour
         image = drugImage.GetComponent<Image>();
         
         Debug.Log("Icon");
-        image.sprite = drugAssigned.Icon;
+        image.sprite = drugAssigned.icon;
 
     }
 }
