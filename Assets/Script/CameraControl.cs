@@ -2,6 +2,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using DevelopersHub.ClashOfWhatecer;
 
 public class CameraControl : MonoBehaviour
 {
@@ -77,6 +78,12 @@ public class CameraControl : MonoBehaviour
     }
     void moveCamera()
     {
+        
+        if (BuildingControl.IsBeingDragged)
+        {
+            Debug.Log("Camera blocked by IsBeingDragged = true");
+            return;
+        }
 
         //CAMERA STILL KEEP MOVING EVEN IF NOT DRAGGING
         if (moving)
