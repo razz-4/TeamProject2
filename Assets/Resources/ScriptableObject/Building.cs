@@ -7,4 +7,7 @@ public class Building : ScriptableObject
     public Sprite icon;
     public int cost;
     public string id;
+    public GameObject buildingPrefab;
+
+    public static bool IsBeingDragged { get; internal set; }
 }
