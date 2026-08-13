@@ -22,7 +22,7 @@ public class GreenHouse : BuildingClass
         {
             if (ingredient == targetIngredient)
             {
-                ingredient.currentPerSecond += ingredient.perSecond;
+                ingredient.CurrentPerSecond += ingredient.perSecond;
             }
         }
     }
