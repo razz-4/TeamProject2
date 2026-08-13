@@ -84,7 +84,15 @@ public class FactoryUI : MonoBehaviour
     
     public void selectDrug(IngredientRequirement[] ingredientRequirement)
     {
+        //Hide all ingredients currently on screen
+        foreach (GameObject ingredientObj in ingredientPrefabList)
+        {
+            ingredientObj.SetActive(false);
+        }
+
         currentIngredientRequirement = ingredientRequirement;
+
+        //showIngredientList();
     }
 
     public void showIngredientList()
