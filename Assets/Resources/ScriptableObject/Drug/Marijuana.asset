@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Marijuana
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Marijuana
-  id: 1
+  id: 0001
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
   quantity: 8
   value: 8
