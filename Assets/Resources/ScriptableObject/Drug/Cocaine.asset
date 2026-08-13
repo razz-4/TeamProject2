@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cocaine
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Cocaine
-  id: 2
+  id: 0002
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
   quantity: 24
   value: 19

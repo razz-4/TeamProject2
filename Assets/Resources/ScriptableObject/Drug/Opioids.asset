@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Opioids
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Opioids
-  id: 3
+  id: 0003
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
   quantity: 14
   value: 7
