@@ -1842,7 +1842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &767736956
 Transform:
   m_ObjectHideFlags: 0
@@ -2379,7 +2379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1145176858
 Transform:
   m_ObjectHideFlags: 0
@@ -2407,6 +2407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bc63fa400001a49a5bf32cbecac1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StorageUI
+  storageUI: {fileID: 1145176860}
+  storageSlotTemplate: {fileID: 9197481963319205126, guid: 998aeb327411aee4b9795d78ad7deca3, type: 3}
+  slotHeight: 50
 --- !u!114 &1145176860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2474,9 +2477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd4500ef7211454b8dc69bdff6b254c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventManager
-  InventoryUpdateEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1228437522
 GameObject:
   m_ObjectHideFlags: 0
