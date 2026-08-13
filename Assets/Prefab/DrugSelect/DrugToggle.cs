@@ -13,6 +13,9 @@ public class DrugToggle : MonoBehaviour
 
         // Find the FactoryUI manager in your scene dynamically
         FactoryUI factoryUI = Object.FindAnyObjectByType<FactoryUI>();
+        GameObject toggleGroupObj = GameObject.Find("IngredientGroup");
+        ToggleGroup toggleGroup = toggleGroupObj.GetComponent<ToggleGroup>();
+        toggle.group = toggleGroup;
 
         if (factoryUI != null && toggle != null)
         {

@@ -17,6 +17,9 @@ public class IngredientQuantity : MonoBehaviour
             return;
         }
         ingredientImage.sprite = ingredient.icon;
+
+
+        
     }
 
     // Update is called once per frame
