@@ -1,3 +1,4 @@
+using DevelopersHub.ClashOfWhatecer;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class MainUI : MonoBehaviour
     [SerializeField] UIDocument uiDocument;
     [SerializeField] VisualTreeAsset buildingSlotTemplate;
     private VisualElement root;
+    [SerializeField] public BuildGrid _grid = null;
 
     public Building[] buildingPreload;
     // Panels
@@ -62,7 +64,19 @@ public class MainUI : MonoBehaviour
 
     private void OnBuildingSlotClicked(Building building)
     {
+
         Debug.Log(building.buildingName);
+        var buildingTemplate = building.buildingPrefab;
+        buildingTemplate = Instantiate(buildingTemplate, new Vector3(0, 0, 0), Quaternion.Euler(-90,0,0));
+
+        var bc = buildingTemplate.GetComponent<BuildingControl>();
+        if (bc != null && BuildGrid.Instance != null)
+        {
+            
+            bc.PlaceOnGrid(0, 0);
+            
+            BuildingControl.IsBuildingMode = true;
+        }
     }
 
     private void onBuildingBtnPress(ClickEvent evt)
