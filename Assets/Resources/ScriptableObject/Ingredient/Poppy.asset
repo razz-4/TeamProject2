@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8258cabda73e31141b5b9cca9fb8a7b3, type: 3}
   m_Name: Poppy
   m_EditorClassIdentifier: Assembly-CSharp::Items
-  name: Poppy
+  itemName: Poppy
   id: 0002
   icon: {fileID: 736600011, guid: 212f0fc289bdab040bf5f62870f8b1d7, type: 3}
-  isLocked: 0
-  produce: 1
-  quantity: 3103
+  quantity: 42638
   value: 1
   perSecond: 5
-  CurrentPerSecond: 5
+  currentPerSecond: 0
+  isLocked: 0
+  produce: 1

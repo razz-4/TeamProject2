@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8258cabda73e31141b5b9cca9fb8a7b3, type: 3}
   m_Name: Tobacco
   m_EditorClassIdentifier: Assembly-CSharp::Items
-  name: Tobacoo
+  itemName: Tobacco
   id: 0004
   icon: {fileID: 21300000, guid: f5553345c1a1ae941a934644806ed7eb, type: 3}
-  isLocked: 0
-  produce: 1
   quantity: 1088
   value: 1
   perSecond: 0
-  CurrentPerSecond: 4
+  currentPerSecond: 0
+  isLocked: 0
+  produce: 1

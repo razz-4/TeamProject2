@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8258cabda73e31141b5b9cca9fb8a7b3, type: 3}
   m_Name: Coco
   m_EditorClassIdentifier: Assembly-CSharp::Items
-  name: Coco
+  itemName: Coco
   id: 0001
   icon: {fileID: -566403904, guid: dbba87b0ce5b06943bf75f2a9fdfcee4, type: 3}
-  isLocked: 0
-  produce: 1
-  quantity: 36208
+  quantity: 59929
   value: 1
   perSecond: 3
-  CurrentPerSecond: 57
+  currentPerSecond: 0
+  isLocked: 0
+  produce: 1
