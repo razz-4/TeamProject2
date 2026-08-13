@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Ui/UI%20USS/tabs.uss?fileID=7433441132597879392&amp;guid=a06c8e8998b43964d97642a3297e6f5c&amp;type=3#tabs"/>
-    <ui:VisualElement name="MainUI" style="flex-grow: 1;">
-        <ui:VisualElement name="UpperPanel" style="flex-grow: 1; position: relative;">
-            <ui:VisualElement name="TopPanel" style="flex-grow: 1; flex-direction: row; align-items: flex-start; align-self: center; align-content: center; transform-origin: center; top: 0; position: absolute; left: 50%; translate: -50% 0; padding-right: 0; flex-shrink: 1; flex-basis: auto; width: 90%; scale: 1 1; height: 10%;">
+    <ui:VisualElement name="MainUI" picking-mode="Ignore" style="flex-grow: 1;">
+        <ui:VisualElement name="UpperPanel" picking-mode="Ignore" style="flex-grow: 1; position: relative;">
+            <ui:VisualElement name="TopPanel" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; align-items: flex-start; align-self: center; align-content: center; transform-origin: center; top: 0; position: absolute; left: 50%; translate: -50% 0; padding-right: 0; flex-shrink: 1; flex-basis: auto; width: 90%; scale: 1 1; height: 10%;">
                 <ui:VisualElement name="CashPanel" class="topPanel" style="flex-grow: 1;">
                     <ui:Label text="$100" name="Cash" class="topPanelLabel" style="flex-direction: column; align-self: center; justify-content: flex-start; align-items: auto; left: auto; top: 50%; translate: 0% -50%;"/>
                 </ui:VisualElement>
@@ -13,7 +13,7 @@
                     <ui:Label text="0 gem" name="Premium" class="topPanelLabel"/>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="ShopButtonPanel-Panel" style="flex-grow: 0; top: 10%; flex-direction: row-reverse;">
+            <ui:VisualElement name="ShopButtonPanel-Panel" picking-mode="Ignore" style="flex-grow: 0; top: 10%; flex-direction: row-reverse;">
                 <ui:Button text="Shop" name="Shop-Button" class="customButton" style="width: 16%; height: auto; top: auto; right: 3px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
