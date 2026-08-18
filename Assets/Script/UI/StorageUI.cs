@@ -16,6 +16,8 @@ public class StorageUI : MonoBehaviour
     private ListView ingredientListView;
     private ListView drugListView;
 
+    
+
     void Start()
     {
         root = storageUI.rootVisualElement;
@@ -35,6 +37,9 @@ public class StorageUI : MonoBehaviour
 
         SetupListView(ingredientListView, ItemManager.Instance.ingredients);
         SetupListView(drugListView, ItemManager.Instance.drugs);
+
+        var storageBtn = root.Q<Button>("Storage");
+        storageBtn.RegisterCallback<ClickEvent>(OpenStorageUI);
 
     }
 
@@ -82,5 +87,10 @@ public class StorageUI : MonoBehaviour
     void CloseStorageUI(ClickEvent evt)
     {
         storageUIPanel.style.display = DisplayStyle.None;
+    }
+
+    void OpenStorageUI(ClickEvent evt)
+    {
+        storageUIPanel.style.display = DisplayStyle.Flex;
     }
 }

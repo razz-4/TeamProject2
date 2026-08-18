@@ -15,10 +15,10 @@ MonoBehaviour:
   itemName: Marijuana
   id: 0001
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
-  quantity: 8
+  quantity: 0
   value: 8
   perSecond: 13
-  currentPerSecond: 0
+  currentPerSecond: 11
   recipe:
   - ingredient: {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
     amount: 3

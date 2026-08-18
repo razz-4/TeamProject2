@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Opium
   id: 0003
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
-  quantity: 8
+  quantity: 0
   value: 7
   perSecond: 12
   currentPerSecond: 9
