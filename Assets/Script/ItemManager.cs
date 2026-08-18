@@ -11,6 +11,10 @@ public class ItemManager : MonoBehaviour
     public Drug[] drugs;
     public int[] numbers;
 
+    //Timer
+    float maxTime = 1f;
+    float timer = 1f;
+
     public void Awake()
     {
         //Check for duplicate and delete
@@ -61,10 +65,15 @@ public class ItemManager : MonoBehaviour
 
     void GenerateIngredients()
     {
+        timer -= Time.deltaTime;
 
-        foreach (Ingredient ingredient in Instance.ingredients)
+        if (timer <= 0f)
         {
-            ingredient.quantity += ingredient.perSecond;
+            foreach (Ingredient ingredient in Instance.ingredients)
+            {
+                ingredient.quantity += ingredient.currentPerSecond;
+            }
+            timer = maxTime;
         }
     }
 
