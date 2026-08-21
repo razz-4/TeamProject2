@@ -27,4 +27,14 @@ public class GreenHouse : BuildingClass
         }
     }
 
+    public void CancelProductIngredients(Ingredient targetIngredient)
+    {
+        foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
+        {
+            if (ingredient == targetIngredient)
+            {
+                ingredient.currentPerSecond -= ingredient.perSecond;
+            }
+        }
+    }
 }

@@ -15,9 +15,9 @@ MonoBehaviour:
   itemName: Tobaccum
   id: 0004
   icon: {fileID: 21300000, guid: f5553345c1a1ae941a934644806ed7eb, type: 3}
-  quantity: 0
+  quantity: 36
   value: 1
   perSecond: 6
-  currentPerSecond: 4
+  currentPerSecond: 0
   isLocked: 0
   produce: 1

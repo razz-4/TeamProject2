@@ -18,6 +18,6 @@ MonoBehaviour:
   quantity: 0
   value: 4
   perSecond: 3
-  currentPerSecond: 8
+  currentPerSecond: 0
   isLocked: 0
   produce: 0

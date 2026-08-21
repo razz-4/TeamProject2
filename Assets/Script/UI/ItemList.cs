@@ -4,8 +4,10 @@ using UnityEngine.UI;
 public class ItemList : MonoBehaviour
 {
     Button[] buttons;
+    Toggle[] toggleButtons;
     public GameObject Greenhouse;
     GreenHouse greenHouseScript;
+
     private void Awake()
     {
         buttons = GetComponentsInChildren<Button>(true);
@@ -18,17 +20,28 @@ public class ItemList : MonoBehaviour
 
     private void Start()
     {
+        //Get all toggle buttons first
+        toggleButtons = GetComponentsInChildren<Toggle>(true);
 
-        for (int i = 0; i < buttons.Length; i++)
+        //For Toggle Button
+        for (int i = 0; i < toggleButtons.Length; i++)
         {
-            // CRITICAL: Capture the current index in a local variable!
-            int index = i;
-            buttons[i].onClick.AddListener(() => 
-            { 
-                greenHouseScript.ProductIngredients(ItemManager.Instance.ingredients[index]);
-                Debug.Log(ItemManager.Instance.ingredients[index].name);
-            });  
+            Debug.Log(toggleButtons[i].name);
 
+            int index = i;
+            toggleButtons[i].onValueChanged.AddListener((bool state) =>
+            {
+                if (state)
+                {
+                    greenHouseScript.ProductIngredients(ItemManager.Instance.ingredients[index]);
+                    Debug.Log(ItemManager.Instance.ingredients[index].name);
+                }
+                else
+                {
+                    greenHouseScript.CancelProductIngredients(ItemManager.Instance.ingredients[index]);
+                    Debug.Log(ItemManager.Instance.ingredients[index].name);
+                }
+            });
         }
     }
 
