@@ -73,6 +73,7 @@ public class ItemManager : MonoBehaviour
                 ingredient.quantity += ingredient.currentPerSecond;
             }
             timer = maxTime;
+            EventManager.Instance.InvokeInventoryChanged();
         }
     }
 
