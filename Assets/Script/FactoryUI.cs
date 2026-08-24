@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,12 +21,17 @@ public class FactoryUI : MonoBehaviour
     [Header("For Ingredient List")]
     [SerializeField] private Transform ingredientList;
 
+    [SerializeField] private Toggle sytesizeButton;
     IngredientRequirement[] currentIngredientRequirement;
     private int count = 0;
 
     private void Start()
     {
         SpawnDrugListUI();
+        sytesizeButton.onValueChanged.AddListener((bool state) =>
+        {
+
+        });
     }
 
     private void Update()
@@ -91,7 +97,11 @@ public class FactoryUI : MonoBehaviour
         }
 
         currentIngredientRequirement = ingredientRequirement;
-
+        
+        foreach(IngredientRequirement ingredientRequirement1 in currentIngredientRequirement)
+        {
+            Debug.Log(ingredientRequirement1.amount);
+        }
         //showIngredientList();
     }
 
@@ -112,6 +122,7 @@ public class FactoryUI : MonoBehaviour
                 if(ingredientName == ingredientRequirement)
                 {
                     listObj.SetActive(true);
+                    ingredientQuantity.updateTextAmount(currentIngredientRequirement[j]);
                 }
 
             }

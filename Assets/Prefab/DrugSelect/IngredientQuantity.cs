@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class IngredientQuantity : MonoBehaviour
 {
     [HideInInspector] public Ingredient ingredient;
+    [HideInInspector] public int amountNeeded;
+    private int amount = 0;
     [SerializeField] public TextMeshProUGUI quantityText;
     [SerializeField] Image ingredientImage;
 
@@ -17,14 +19,23 @@ public class IngredientQuantity : MonoBehaviour
             return;
         }
         ingredientImage.sprite = ingredient.icon;
+        quantityText.text = amount.ToString();
 
 
         
     }
 
+    public void updateTextAmount(IngredientRequirement ingredient)
+    {
+        if(amount < ingredient.amount)
+        {
+            quantityText.text = ingredient.amount.ToString();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        amount = ingredient.quantity;
     }
 }
