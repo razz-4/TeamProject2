@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class UIBuildingManager : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class UIBuildingManager : MonoBehaviour
     [SerializeField] private GameObject BuildingUI;
     [SerializeField] private GameObject Canva;
     [SerializeField] private TextMeshProUGUI SpecialButtonText;
+    [SerializeField] private UIDocument DeliveryUI;
 
+    private VisualElement root;
+    private VisualElement DeliveryUIPanel;
     private GameObject specialButton;
     private GameObject levelUpButton;
     private GameObject GreenHouseUI;
@@ -50,7 +54,11 @@ public class UIBuildingManager : MonoBehaviour
             GreenHouseUI.SetActive(true);
         }
     }
-
+    private void Start()
+    {
+        root = DeliveryUI.rootVisualElement;
+        DeliveryUIPanel = root.Q<VisualElement>("DeliveryUIPanel");
+    }
     public void HideUI()
     {
         BuildingUI.SetActive(false);
@@ -113,7 +121,7 @@ public class UIBuildingManager : MonoBehaviour
                 break;
 
             case "Delivery":
-                Debug.Log("Open Delivery UI");
+                DeliveryUIPanel.style.display = DisplayStyle.Flex;
                 //Add Delivery menu...
                 break;
 
