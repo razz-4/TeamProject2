@@ -11,10 +11,12 @@ public class UIBuildingManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI SpecialButtonText;
 
     private GameObject specialButton;
+    private GameObject levelUpButton;
     private GameObject GreenHouseUI;
     private GameObject FactoryUI;
 
     private string currentBuildingType;
+    private BuildingClass currentBuildingClass;
 
     private void Awake()
     {
@@ -32,9 +34,11 @@ public class UIBuildingManager : MonoBehaviour
         if (BuildingUI != null)
         {
             Transform specialBtnTransform = BuildingUI.transform.Find("SpecialButton");
+            Transform lvlUpBtnTransform = BuildingUI.transform.Find("LevelUpButton");
             if (specialBtnTransform != null)
             {
                 specialButton = specialBtnTransform.gameObject;
+                levelUpButton = lvlUpBtnTransform.gameObject;
             }
         }
 
@@ -42,6 +46,8 @@ public class UIBuildingManager : MonoBehaviour
         {
             GreenHouseUI = Canva.transform.Find("GreenHouseUI").gameObject;
             FactoryUI = Canva.transform.Find("FactoryUI").gameObject;
+
+            GreenHouseUI.SetActive(true);
         }
     }
 
@@ -62,11 +68,13 @@ public class UIBuildingManager : MonoBehaviour
         if (!string.IsNullOrEmpty(currentBuildingType))
         {
             if (specialButton != null) specialButton.SetActive(true);
+            if (levelUpButton != null) levelUpButton.SetActive(true);
             SetSpecialButton(currentBuildingType);
         }
         else
         {
             if (specialButton != null) specialButton.SetActive(false);
+            if (levelUpButton != null) levelUpButton.SetActive(false);
         }
     }
 
@@ -117,4 +125,17 @@ public class UIBuildingManager : MonoBehaviour
                 break;
         }
     }
+
+    public void upgradeBuilding()
+    {
+        currentBuildingClass.level++;
+        Debug.Log("Building Type:" + currentBuildingClass.buildingType + "Building Level: " + currentBuildingClass.level);
+    }
+    //Set building type that is selected
+    public void setBuildingClass(BuildingClass buildingClass)
+    {
+        currentBuildingClass = buildingClass;
+    }
+
+
 }

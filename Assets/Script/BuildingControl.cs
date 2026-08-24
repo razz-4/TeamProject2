@@ -70,7 +70,6 @@ namespace DevelopersHub.ClashOfWhatecer
             _X = x;
             Vector3 position = _grid.GetCenterPosition(x, y, _rows, _columns);
             transform.position = position;
-            Debug.Log("place on grid: (" + x + ", " + y + ")");
 
         }
 
@@ -158,7 +157,6 @@ namespace DevelopersHub.ClashOfWhatecer
         }
         private void OnPointerDown(Vector2 screenPos)
         {
-            Debug.Log("BuildingControl.OnPointerDown called, IsBuildingMode=" + IsBuildingMode);
             if (!IsBuildingMode) return;
             Ray ray = Camera.main.ScreenPointToRay(screenPos);
             if (Physics.Raycast(ray, out RaycastHit hit))

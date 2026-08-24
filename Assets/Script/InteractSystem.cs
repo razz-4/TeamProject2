@@ -69,8 +69,13 @@ public class InteractSystem : MonoBehaviour
                 buildingSelected = hit.collider.gameObject;
                 BuildingClass building = buildingSelected.GetComponent<BuildingClass>();
                 string currentBuildingType = building.buildingType;
+
+                //Set current building into BuildingUIManager
                 UIBuildingManagerComp.ShowUI(currentBuildingType);
-                itemList.Greenhouse = buildingSelected;
+                UIBuildingManagerComp.setBuildingClass(building);
+
+
+                itemList.CheckGreenHouse(buildingSelected);
                 
             }
             else

@@ -11,12 +11,19 @@ public class GreenHouseUI : MonoBehaviour
 
     [SerializeField] private Transform itemList;
 
+    private void Awake()
+    {
+
+    }
+
     private void Start()
     {
         SpawnIngredientList();
+        gameObject.SetActive(false);
     }
     void SpawnIngredientList()
     {
+        if (ingredientPrefabList.Count > 0) return;
         foreach(Ingredient ingredient in ItemManager.Instance.ingredients)
         {
             GameObject spawnedIngredients = Instantiate(ingredientPrefab, itemList);

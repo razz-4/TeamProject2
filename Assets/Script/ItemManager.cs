@@ -28,7 +28,6 @@ public class ItemManager : MonoBehaviour
 
         ingredients = Utils.GetAllIngredientInstances<Ingredient>();
         ingredients = ingredients.OrderBy(p => p.id).ToArray();
-        Debug.Log(ingredients.Count());
 
         drugs = Utils.GetAllDrugInstances<Drug>();
         drugs = drugs.OrderBy(p => p.id).ToArray();

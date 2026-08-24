@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class GreenHouse : BuildingClass
 {
-
+    public int maxToggle;
 
     private void Awake()
     {
         buildingType = "GreenHouse";
         placable = true;
         level = 1;
+        coinNeededForUpgrade = 10;
         isLock = false;
 
     }
