@@ -1,0 +1,35 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="BuyerSlotUI" src="project://database/Assets/Ui/BuyerSlotUI.uxml?fileID=9197481963319205126&amp;guid=925e85c3b5be1324cb6d01812c686029&amp;type=3#BuyerSlotUI"/>
+    <ui:VisualElement name="Root" style="flex-grow: 1;">
+        <ui:VisualElement name="DeliveryUIPanel" style="flex-grow: 1; max-width: 80%; max-height: 75%; left: 50%; top: 50%; translate: -50% -50%; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; background-color: rgb(111, 111, 111);">
+            <ui:VisualElement name="DeliveryLabel" style="flex-grow: 1; min-height: 10%; max-height: 10%; background-color: rgba(0, 0, 0, 0); padding-top: 2%; padding-right: 2%; padding-bottom: 2%; padding-left: 2%; flex-direction: row;">
+                <ui:VisualElement name="LeftPanel" style="flex-grow: 1;">
+                    <ui:Label text="Delivery&#10;" name="StorageLabel" style="color: rgb(255, 255, 255);"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="RightPanel" style="flex-grow: 1; flex-direction: row-reverse;">
+                    <ui:Button text="X&#10;" name="CloseButton" style="max-width: 34%;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="TopPanel" style="flex-grow: 0; height: 40%; padding-top: 4px; padding-right: 3px; padding-bottom: 4px; padding-left: 4px; background-color: rgb(94, 94, 94);">
+                <ui:Label text="Name" name="NameLabel" style="font-size: 20px; -unity-text-align: upper-center; color: rgb(221, 221, 221);"/>
+                <ui:VisualElement name="ItemsDisplayGrid" style="flex-grow: 1; opacity: 1; flex-wrap: wrap; flex-direction: row; width: auto;"/>
+                <ui:VisualElement name="SellValuePanel" style="flex-grow: 0; min-height: 20%; flex-direction: row;">
+                    <ui:VisualElement name="LeftPanel" style="flex-grow: 1; min-height: auto; height: auto; flex-direction: row; margin-left: 10px;">
+                        <ui:Image source="project://database/Assets/Placeholder/goldcoini.jpg?fileID=2800000&amp;guid=8caa8cbc5aee94341b0e71dc4d3a4dff&amp;type=3#goldcoini" scale-mode="ScaleToFit" name="CoinImage" style="width: auto; max-width: 33%; max-height: 100%; aspect-ratio: 1; top: 50%; translate: 0% -50%;"/>
+                        <ui:Label text="Label" name="ValueLabel" style="top: 0%; translate: 0% 0%; padding-left: 2px; -unity-text-align: middle-center; margin-left: 13px; color: rgb(255, 255, 255); font-size: 16px;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="RightPanel" style="flex-grow: 0; height: auto; flex-direction: column; right: 0; margin-right: 6px;">
+                        <ui:Button text="Sell" name="SellButton" style="padding-left: 15%; padding-bottom: 7%; padding-right: 15%; padding-top: 7%; margin-top: 1px; margin-right: 1%; margin-bottom: 1px; margin-left: 1%; translate: 0% 0%; right: auto; left: auto; flex-grow: 1; font-size: 20px;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Separator" style="flex-grow: 0; height: 1px; background-color: rgb(255, 255, 255); margin-top: 2px; margin-bottom: 2px;"/>
+            <ui:VisualElement name="BottomPanel" style="flex-grow: 1; max-height: none; min-height: auto; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; padding-left: 4px;">
+                <ui:ScrollView>
+                    <ui:Instance template="BuyerSlotUI"/>
+                    <ui:Instance template="BuyerSlotUI"/>
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
