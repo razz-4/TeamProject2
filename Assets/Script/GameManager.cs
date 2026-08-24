@@ -1,0 +1,71 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance { get; private set; }
+
+    [SerializeField] int gold = 500;
+    public float illegalRate = 0.7f;
+    public float drugRate = 0.7f;
+    public float illegalMultiplier = 1.5f;
+
+
+    private float itemProductionTIme = 1f;
+    private float refreshBuyerTime = 600f;
+    private float currentItemProductionTIme = 0f;
+    private float CurrentRefreshBuyerTime = 0f;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+    }
+
+    void Update()
+    {
+        currentItemProductionTIme = itemProductionTIme;
+        CurrentRefreshBuyerTime = refreshBuyerTime;
+
+        HandleProductionTimer();
+        HandleBuyerRefreshListTimer();
+        
+    }
+
+    private void HandleProductionTimer()
+    {
+        currentItemProductionTIme -= Time.deltaTime;
+
+        if (currentItemProductionTIme <= 0f)
+        {
+            EventManager.Instance.InvokeGenerateItems();
+
+            currentItemProductionTIme += itemProductionTIme;
+        }
+
+    }
+
+    private void HandleBuyerRefreshListTimer()
+    {
+        CurrentRefreshBuyerTime -= Time.deltaTime;
+
+        if (CurrentRefreshBuyerTime <= 0f)
+        {
+            EventManager.Instance.InvokeRefreshBuyerList();
+
+            CurrentRefreshBuyerTime += refreshBuyerTime;
+        }
+
+    }
+
+    public void AddGold(int gold)
+    {
+        gold += gold;
+    }
+}
