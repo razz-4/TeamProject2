@@ -62839,6 +62839,7 @@ MonoBehaviour:
   BuildingUI: {fileID: 996442511}
   Canva: {fileID: 1790843626}
   SpecialButtonText: {fileID: 1389476100}
+  DeliveryUI: {fileID: 980847893}
 --- !u!4 &645287647
 Transform:
   m_ObjectHideFlags: 0
@@ -94489,11 +94490,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b99356a4cff85148be43aee767342bb, type: 3}
---- !u!4 &981344716 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b99356a4cff85148be43aee767342bb, type: 3}
-  m_PrefabInstance: {fileID: 1338621770}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &981359002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b99356a4cff85148be43aee767342bb, type: 3}
@@ -125732,6 +125728,8 @@ Transform:
   - {fileID: 1741247693}
   - {fileID: 324440487}
   - {fileID: 307929936}
+  - {fileID: 1597725143}
+  - {fileID: 1450682565}
   m_Father: {fileID: 1737699423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1256641365
@@ -146496,6 +146494,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b99356a4cff85148be43aee767342bb, type: 3}
   m_PrefabInstance: {fileID: 1765213631}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1450682565 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b99356a4cff85148be43aee767342bb, type: 3}
+  m_PrefabInstance: {fileID: 980716314}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1451574658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151813,7 +151816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1521088655
 RectTransform:
   m_ObjectHideFlags: 0
@@ -160463,6 +160466,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b99356a4cff85148be43aee767342bb, type: 3}
   m_PrefabInstance: {fileID: 130169703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1597725143 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b99356a4cff85148be43aee767342bb, type: 3}
+  m_PrefabInstance: {fileID: 981061288}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1599747080
 PrefabInstance:
@@ -214492,7 +214500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b9c16e220db2a4e8c43e7cb96f844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemList
-  maxToggle: 0
+  maxToggle: 1
   Greenhouse: {fileID: 1233854601}
 --- !u!4 &2136030462 stripped
 Transform:

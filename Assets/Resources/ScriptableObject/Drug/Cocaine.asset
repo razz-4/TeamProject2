@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Cocaine
   id: 0002
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
-  quantity: 0
+  quantity: 24
   value: 19
   perSecond: 11
   currentPerSecond: 0
