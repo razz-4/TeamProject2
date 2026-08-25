@@ -11,6 +11,8 @@ public class ItemManager : MonoBehaviour
     public Drug[] drugs;
     public int[] numbers;
 
+
+
     //Timer
     float maxTime = 1f;
     float timer = 1f;

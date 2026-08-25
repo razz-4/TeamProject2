@@ -20,12 +20,18 @@ public class DrugToggle : MonoBehaviour
         if (factoryUI != null && toggle != null)
         {
             // Add the listener via code to pass this specific GameObject
-            toggle.onValueChanged.AddListener((isOn) =>
+            toggle.onValueChanged.AddListener((bool state) =>
             {
-                if (isOn)
+                if (state)
                 {
                     factoryUI.selectDrug(toggleDrugPrefab.drugAssigned.recipe);
-                    Debug.Log("Selected");
+                    factoryUI.currentDrug = toggleDrugPrefab.drugAssigned;
+                    Debug.Log($"Current Drug: {factoryUI.currentDrug.name}");
+                    
+                }
+                else
+                {
+
                 }
             });
 

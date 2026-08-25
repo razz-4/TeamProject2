@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class FactoryUI : MonoBehaviour
     [Header("List of Prefabs")]
     private List<GameObject> drugsPrefabList = new List<GameObject>(); //List of drug prefab just in case
     private List<GameObject> ingredientPrefabList = new List<GameObject>();
+
+    //List of Toggle buttons
+    private List<Toggle> toggleButtons = new List<Toggle>();
 
     [Header("Prefabs")]
     public GameObject drugsPrefab;
@@ -24,6 +28,8 @@ public class FactoryUI : MonoBehaviour
     [SerializeField] private Toggle sytesizeButton;
     IngredientRequirement[] currentIngredientRequirement;
     private int count = 0;
+
+    [HideInInspector] public Drug currentDrug;
 
     private void Start()
     {
@@ -65,13 +71,14 @@ public class FactoryUI : MonoBehaviour
                 GameObject spawnedDrug = Instantiate(drugsPrefab, scrollMenu);
                 ToggleDrugPrefab currentDrugPrefab = spawnedDrug.GetComponent<ToggleDrugPrefab>();
                 Toggle toggleComponent = spawnedDrug.GetComponent<Toggle>();
+
                 //assign drugs scriptable object into toggle button
                 currentDrugPrefab.drugAssigned = drug;
 
-                drugsPrefabList.Add(spawnedDrug);
-
             }
         }
+
+
 
         foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
         {
@@ -128,4 +135,10 @@ public class FactoryUI : MonoBehaviour
             }
         }
     }
+
+    public void Produce()
+    {
+        ItemManager.Instance.synthesize(currentDrug);
+    }
+
 }

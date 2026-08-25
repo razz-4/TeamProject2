@@ -75,7 +75,7 @@ public class InteractSystem : MonoBehaviour
                 UIBuildingManagerComp.setBuildingClass(building);
 
 
-                itemList.CheckGreenHouse(buildingSelected);
+                itemList.CheckGreenHouse(buildingSelected,currentBuildingType);
                 
             }
             else

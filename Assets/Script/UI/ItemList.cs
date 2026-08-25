@@ -55,8 +55,11 @@ public class ItemList : MonoBehaviour
         }
     }
 
-    public void CheckGreenHouse(GameObject greenHouse)
+    public void CheckGreenHouse(GameObject greenHouse,string currentBuildingType)
     {
+        //Safety check
+        if (currentBuildingType != "GreenHouse") return;
+
         if (greenHouse == null)
         {
             Debug.LogError("Passed Greenhouse GameObject is null!");
