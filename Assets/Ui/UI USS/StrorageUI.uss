@@ -1,0 +1,11 @@
+:root {
+}
+
+.mainPanel {
+    background-image: url("project://database/Assets/ArtAssets/UISprite/UI2.png?fileID=-72773568&guid=10c7186369d27c144a24b35215e72dc7&type=3#Menu3");
+}
+
+.tabHeader {
+    background-color: rgb(0, 0, 0);
+    background-image: url("project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=1977660974&guid=bb0eb52fcf641a0489c974d9638d0592&type=3#Menu_2");
+}
