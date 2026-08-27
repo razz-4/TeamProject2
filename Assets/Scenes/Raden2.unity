@@ -295,6 +295,7 @@ MonoBehaviour:
   level: 0
   coinNeededForUpgrade: 0
   isLock: 0
+  selectedDrugs: 
 --- !u!65 &1201257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74922,6 +74923,7 @@ MonoBehaviour:
   level: 0
   coinNeededForUpgrade: 0
   isLock: 0
+  selectedDrugs: 
 --- !u!1001 &769530159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81415,6 +81417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractSystem
   UIBuildingManagerComp: {fileID: 645287646}
   itemList: {fileID: 2135631118}
+  factoryUI: {fileID: 1521088658}
 --- !u!1001 &840813078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139810,7 +139813,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 631528754, guid: bb0eb52fcf641a0489c974d9638d0592, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -152023,9 +152026,9 @@ MonoBehaviour:
   drugsPrefab: {fileID: 7238298357023911261, guid: 4bfaad375447822418820b02251f92c8, type: 3}
   ingredientPrefab: {fileID: 6231458329302319350, guid: 90dd1d4986c6d6e4099ec86036b17dc5, type: 3}
   scrollMenu: {fileID: 1325887429}
-  toggleGroup: {fileID: 0}
   ingredientList: {fileID: 66503120}
   sytesizeButton: {fileID: 1826539708}
+  toggleGroup: {fileID: 2096608133}
   currentDrug: {fileID: 0}
 --- !u!4 &1521388474 stripped
 Transform:
@@ -182933,7 +182936,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1001 &1826659677
 PrefabInstance:
   m_ObjectHideFlags: 0

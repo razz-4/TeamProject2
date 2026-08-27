@@ -10,6 +10,7 @@ public class InteractSystem : MonoBehaviour
     GameObject buildingSelected = null;
     [SerializeField] UIBuildingManager UIBuildingManagerComp;
     [SerializeField] ItemList itemList;
+    [SerializeField] FactoryUI factoryUI;
     private void Awake()
     {
         input = new MobileAction();
@@ -76,6 +77,8 @@ public class InteractSystem : MonoBehaviour
 
 
                 itemList.CheckGreenHouse(buildingSelected,currentBuildingType);
+                factoryUI.checkFactoryUI(buildingSelected,currentBuildingType);
+                
                 
             }
             else

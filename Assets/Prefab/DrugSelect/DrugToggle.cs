@@ -5,11 +5,15 @@ public class DrugToggle : MonoBehaviour
 {
     private Toggle toggle;
     private ToggleDrugPrefab toggleDrugPrefab;
+    public int ID;
+
+    [HideInInspector] public bool isProducing = false;
 
     void Start()
     {
         toggle = GetComponent<Toggle>();
         toggleDrugPrefab = GetComponent<ToggleDrugPrefab>();
+        
 
         // Find the FactoryUI manager in your scene dynamically
         FactoryUI factoryUI = Object.FindAnyObjectByType<FactoryUI>();
@@ -24,10 +28,21 @@ public class DrugToggle : MonoBehaviour
             {
                 if (state)
                 {
-                    factoryUI.selectDrug(toggleDrugPrefab.drugAssigned.recipe);
+                    factoryUI.selectDrug(toggleDrugPrefab.drugAssigned.recipe,this);
                     factoryUI.currentDrug = toggleDrugPrefab.drugAssigned;
+
+                    if(isProducing)
+                    {
+                        factoryUI.sytesizeButton.SetIsOnWithoutNotify(true);
+                        Debug.Log("Saved");
+                    }
+                    else
+                    {
+                        factoryUI.sytesizeButton.SetIsOnWithoutNotify(false);
+                    }
+
                     Debug.Log($"Current Drug: {factoryUI.currentDrug.name}");
-                    
+
                 }
                 else
                 {
@@ -41,5 +56,15 @@ public class DrugToggle : MonoBehaviour
         {
             Debug.LogError("FactoryUI or Toggle component missing!");
         }
+    }
+
+    public void setActive()
+    {
+        isProducing = true;
+    }
+
+    public void setInactive()
+    {
+        isProducing = false;
     }
 }
