@@ -14,6 +14,32 @@ public class BuildingModeManager : MonoBehaviour
 
 
 
+    public static BuildingModeManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+
+    
+    public static void SelectBuilding(BuildingControl building)
+    {
+        if (Instance == null) 
+            return;
+        if (Instance._selectedBuilding != null && Instance._selectedBuilding != building)
+        {
+            Instance._selectedBuilding.CancelMove();
+        }
+        Instance._selectedBuilding = building;
+        // let the confirm and cancel button come out
+        Instance.Confirmbtm.gameObject.SetActive(true);
+        Instance.Cancelbtm.gameObject.SetActive(true);
+    }
+
+
 
 
     private void Start()
@@ -35,7 +61,7 @@ public class BuildingModeManager : MonoBehaviour
             _selectedBuilding = null;
             Confirmbtm.gameObject.SetActive(false);
             Cancelbtm.gameObject.SetActive(false);
-            BuildingControl.IsBuildingMode = false;   
+            BuildingControl.IsBuildingMode = false; 
         }
     }
 
@@ -47,19 +73,20 @@ public class BuildingModeManager : MonoBehaviour
             _selectedBuilding = null;
             Confirmbtm.gameObject.SetActive(false);
             Cancelbtm.gameObject.SetActive(false);
-            BuildingControl.IsBuildingMode = false;   
+            BuildingControl.IsBuildingMode = false;
         }
     }
 
     private void EnterBuildingMode()
     {
-       
         BuildingControl.IsBuildingMode = true;
-        Debug.Log("IsBuildingMode set to " + BuildingControl.IsBuildingMode);
-        _selectedBuilding = null;
+        if (_selectedBuilding != null)
+        {
+            _selectedBuilding.CancelMove(); 
+            _selectedBuilding = null;
+        }
         Confirmbtm.gameObject.SetActive(false);
         Cancelbtm.gameObject.SetActive(false);
-        Debug.Log("into building mode");
     }
 
     private void Update()
@@ -72,5 +99,7 @@ public class BuildingModeManager : MonoBehaviour
     }
 
 
-   
+    
+
+
 }

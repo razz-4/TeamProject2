@@ -26,12 +26,12 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
+        currentItemProductionTIme = itemProductionTIme;
+        CurrentRefreshBuyerTime = refreshBuyerTime;
     }
 
     void Update()
     {
-        currentItemProductionTIme = itemProductionTIme;
-        CurrentRefreshBuyerTime = refreshBuyerTime;
 
         HandleProductionTimer();
         HandleBuyerRefreshListTimer();
@@ -64,8 +64,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void AddGold(int gold)
+    public void AddGold(int amount)
     {
-        gold += gold;
+        gold += amount;
     }
 }

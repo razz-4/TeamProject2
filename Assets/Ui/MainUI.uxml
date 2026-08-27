@@ -1,23 +1,19 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Ui/UI%20USS/tabs.uss?fileID=7433441132597879392&amp;guid=a06c8e8998b43964d97642a3297e6f5c&amp;type=3#tabs"/>
+    <Style src="project://database/Assets/Ui/UI%20USS/UIDesigns.uss?fileID=7433441132597879392&amp;guid=04b8dc8cb9869c841bb514368a127c05&amp;type=3#UIDesigns"/>
     <ui:VisualElement name="MainUI" picking-mode="Ignore" style="flex-grow: 1;">
         <ui:VisualElement name="UpperPanel" picking-mode="Ignore" style="flex-grow: 1; position: relative;">
             <ui:VisualElement name="TopPanel" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; align-items: flex-start; align-self: center; align-content: center; transform-origin: center; top: 0; position: absolute; left: 50%; translate: -50% 0; padding-right: 0; flex-shrink: 1; flex-basis: auto; width: 90%; scale: 1 1; height: 10%;">
-                <ui:VisualElement name="CashPanel" class="topPanel" style="flex-grow: 1;">
+                <ui:VisualElement name="CashPanel" class="customMainUIPanel" style="flex-grow: 1; background-color: rgba(255, 211, 114, 0);">
                     <ui:Label text="$100" name="Cash" class="topPanelLabel" style="flex-direction: column; align-self: center; justify-content: flex-start; align-items: auto; left: auto; top: 50%; translate: 0% -50%;"/>
                 </ui:VisualElement>
-                <ui:VisualElement name="PerHourPanel" class="topPanel" style="flex-grow: 1;">
-                    <ui:Label text="10/hr" name="PerHour" class="topPanelLabel"/>
-                </ui:VisualElement>
-                <ui:VisualElement name="PremiumPanel" class="topPanel" style="flex-grow: 1;">
+                <ui:VisualElement name="PremiumPanel" class="customMainUIPanel" style="flex-grow: 1;">
                     <ui:Label text="0 gem" name="Premium" class="topPanelLabel"/>
                 </ui:VisualElement>
-            </ui:VisualElement>
-            <ui:VisualElement name="ShopButtonPanel-Panel" picking-mode="Ignore" style="flex-grow: 0; top: 10%; flex-direction: row-reverse;">
-                <ui:Button text="Shop" name="Shop-Button" class="customButton" style="width: 16%; height: auto; top: auto; right: 3px;"/>
+                <ui:Button text="Shop" name="Shop-Button" class="customButton customMainButton" style="width: 21%; height: 70%; top: 10%; right: auto; background-color: rgba(255, 211, 114, 0); padding-top: 2%;"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Button text="Bullding" name="Building-button" enable-rich-text="true" emoji-fallback-support="true" enabled="true" picking-mode="Position" class="customButton" style="left: 20px; bottom: 20px; width: 16%; height: 9%; position: absolute;"/>
+        <ui:Button text="Bullding" name="Building-button" enable-rich-text="true" emoji-fallback-support="true" enabled="true" picking-mode="Position" class="customButton customMainButton" style="left: 20px; bottom: 20px; width: 27%; height: 7%; position: absolute; background-color: rgba(255, 211, 114, 0); padding-top: 2%;"/>
         <ui:VisualElement name="BuildingPanel-Panel" enabled="true" picking-mode="Position" style="flex-grow: 1; background-color: rgb(110, 134, 139); position: absolute; bottom: 0; max-height: none; max-width: 100%; display: none; width: auto; min-width: 100%;">
             <ui:VisualElement name="BuildingTopPanel-Panel" enabled="true" style="flex-grow: 1; flex-direction: row; background-color: rgb(224, 152, 7); width: auto; height: auto;">
                 <ui:VisualElement name="Left-Panel" style="flex-grow: 1;">
