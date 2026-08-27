@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Iboga
   id: 0008
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
-  quantity: 100
+  quantity: 1000
   value: 12
   perSecond: 11
   currentPerSecond: 0
