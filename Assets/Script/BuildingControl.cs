@@ -47,10 +47,20 @@ namespace DevelopersHub.ClashOfWhatecer
         private Vector3 _dragBaseLocalPos;          
         private Collider _buildingCollider;
 
+        private object buildingId;
+        private Color defaultColor;
+
+
+
+
 
 
         private void Awake()
         {
+            if (_baseArea != null)
+                defaultColor = _baseArea.material.color;
+
+            buildingId = System.Guid.NewGuid().ToString();
             if (_grid == null)
             {
                 _grid = BuildGrid.Instance;
@@ -58,6 +68,7 @@ namespace DevelopersHub.ClashOfWhatecer
                     Debug.LogError("BuildGrid.Instance is null, make sure BuildGrid exists in scene!");
             }
             _buildingCollider = GetComponent<Collider>();
+
             if (_buildingCollider == null)
                 Debug.LogWarning("Building dont have collider cant drag");
         }
@@ -79,50 +90,91 @@ namespace DevelopersHub.ClashOfWhatecer
             _Y = _currentY;
             _originalX = _currentX;
             _originalY = _currentY;
-            
+
+            if (BuildingPlaceManager.Instance != null)
+                BuildingPlaceManager.Instance.UnregisterBuilding(_currentX, _currentY, _rows, _columns);
+
 
 
         }
 
         public void RemoveFromGrid()
         {
-            _instance = null;
+            BuildingPlaceManager.Instance.UnregisterBuilding(_currentX, _currentY, _rows, _columns);
             Destroy(gameObject);
-
         }
 
         public void UpdateGridPosition(Vector3 baseWorldPos, Vector3 currentWorldPos)
         {
             Vector3 dir = currentWorldPos - baseWorldPos;
-
             Vector3 localDir = _grid.transform.InverseTransformDirection(dir);
             int xDis = Mathf.RoundToInt(localDir.x / _grid.cellSize);
             int yDis = Mathf.RoundToInt(localDir.z / _grid.cellSize);
 
-            _currentX = _X + xDis;
-            _currentY = _Y + yDis;
+            int newX = _X + xDis;
+            int newY = _Y + yDis;
+            bool canPlace = BuildingPlaceManager.Instance.CanPlace(newX, newY, _rows, _columns, buildingId);
 
-            Vector3 position = _grid.GetCenterPosition(_currentX, _currentY, _rows, _columns);
-            transform.position = position;
+            if (canPlace)
+            {
+                _currentX = newX;
+                _currentY = newY;
+                Vector3 position = _grid.GetCenterPosition(_currentX, _currentY, _rows, _columns);
+                transform.position = position;
+
+                if (_baseArea != null)
+                    _baseArea.material.color = defaultColor; 
+            }
+            else
+            {
+                if (_baseArea != null)
+                    _baseArea.material.color = Color.red; 
+            }
         }
+        
 
         private void Start()
         {
             StartMovingOnGrid();
             PlaceOnGrid(_currentX, _currentY);
             UpdateGridPosition(Vector3.zero, Vector3.zero);
+            if (BuildingPlaceManager.Instance != null)
+                BuildingPlaceManager.Instance.RegisterBuilding(_currentX, _currentY, _rows, _columns, buildingId);
+            Debug.Log($"Default color: {defaultColor}");
 
         }
 
         public void ConfirmMove()
         {
-
+            bool canPlace = BuildingPlaceManager.Instance.CanPlace(_currentX, _currentY, _rows, _columns, buildingId);
+            if (canPlace)
+            { 
+                BuildingPlaceManager.Instance.RegisterBuilding(_currentX, _currentY, _rows, _columns, buildingId);
+                _originalX = _currentX;
+                _originalY = _currentY;
+                if (_baseArea != null)
+                    _baseArea.material.color = defaultColor; 
+                Debug.Log($"building {name} makesure got place ({_currentX}, {_currentY})");
+            }
+            else
+            {
+                Debug.LogWarning("here got building return");
+                CancelMove(); 
+            }
         }
 
 
         public void CancelMove()
         {
-            PlaceOnGrid(_originalX, _originalY);
+            _currentX = _originalX;
+            _currentY = _originalY;
+
+            BuildingPlaceManager.Instance.RegisterBuilding(_currentX, _currentY, _rows, _columns, buildingId);
+            PlaceOnGrid(_currentX, _currentY); 
+
+            if (_baseArea != null)
+                _baseArea.material.color = defaultColor;
+            Debug.Log($"building {name} no move cancel ({_currentX}, {_currentY})");
         }
 
         private void Update()
@@ -163,7 +215,7 @@ namespace DevelopersHub.ClashOfWhatecer
             {
                 if (hit.collider.transform.IsChildOf(this.transform) || hit.collider.gameObject == this.gameObject)
                 {
-
+                    BuildingModeManager.SelectBuilding(this);
                     IsBeingDragged = true;
                     _isDragging = true;
                     StartMovingOnGrid();
@@ -197,7 +249,11 @@ namespace DevelopersHub.ClashOfWhatecer
         {
             _isDragging = false;
             IsBeingDragged = false;
-            Debug.Log("finish draging: (" + _currentX + ", " + _currentY + ")");
+            if (_baseArea != null)
+            {
+                bool canPlace = BuildingPlaceManager.Instance.CanPlace(_currentX, _currentY, _rows, _columns, buildingId);
+                _baseArea.material.color = canPlace ? defaultColor : Color.red;
+            }
         }
 
         private Vector3 GetWorldPositionOnGrid(Vector2 screenPos)
