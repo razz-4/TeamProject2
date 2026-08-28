@@ -39,6 +39,11 @@ public class FactoryUI : MonoBehaviour
         {
             if (state)
             {
+                if(currentToggle == null)
+                {
+                    Debug.LogError("Current Toggle is Null");
+                    return;
+                }
                 EventManager.Instance.generateItems += ProduceItem;
 
                 currentToggle.isProducing = true;
