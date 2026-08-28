@@ -16,3 +16,4 @@ MonoBehaviour:
   icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
   cost: 1000
   id: 2
+  buildingPrefab: {fileID: 3968817243190920650, guid: 5173c376908079348a62779d1ad95dd0, type: 3}

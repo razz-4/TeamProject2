@@ -14,9 +14,14 @@ public class CameraControl : MonoBehaviour
     //moveSpeedx = 11.25 moveSpeedy = 40 
     [SerializeField] float moveSpeedx = 1.0f;
     [SerializeField] float moveSpeedy = 1.0f;
+    [SerializeField] private float minZoom = 2f;
+    [SerializeField] private float maxZoom = 15f;
     [SerializeField] float zoomSpeed;
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private float cameraRadius = 0.5f;
 
     [SerializeField] CinemachineCamera cinemachine;
+    
     private void Awake()
     {
         //create input Object
@@ -73,8 +78,12 @@ public class CameraControl : MonoBehaviour
     void zoomCamera(Vector2 scrollDelta)
     {
         float zoomAmount = scrollDelta.y;
-        cinemachine.Lens.OrthographicSize -= zoomAmount * zoomSpeed;
-        
+
+        float newSize = cinemachine.Lens.OrthographicSize - (zoomAmount * zoomSpeed);
+
+        // Clamp the size between your min and max bounds
+        cinemachine.Lens.OrthographicSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+
     }
     void moveCamera()
     {
@@ -95,9 +104,20 @@ public class CameraControl : MonoBehaviour
                 move.x /= Screen.width;
                 move.y /= Screen.height;
 
-                //Move opposite to where your finger swipe
-                transform.position -= transform.right.normalized * move.x * moveSpeedx;
-                transform.position -= transform.forward.normalized * move.y * moveSpeedy;
+                // Grab the current zoom level to scale our movement
+                float currentZoom = cinemachine.Lens.OrthographicSize;
+
+                // Multiply the movement by the currentZoom so it speeds up when zoomed out 
+                // and slows down when zoomed in
+                Vector3 moveDirection = (-transform.right * move.x * moveSpeedx * currentZoom) + (-transform.forward * move.y * moveSpeedy * currentZoom);
+
+                float distance = moveDirection.magnitude;
+
+                // Only move if there is no wall in the target path
+                if (!Physics.SphereCast(transform.position, cameraRadius, moveDirection.normalized, out RaycastHit hit, distance, wallLayer))
+                {
+                    transform.position += moveDirection;
+                }
             }
         }
     }
