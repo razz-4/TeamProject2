@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Divinorium
   id: 0005
-  icon: {fileID: -566403904, guid: dbba87b0ce5b06943bf75f2a9fdfcee4, type: 3}
+  icon: {fileID: 765538341, guid: efb37c55dd1b8a5449fa16c7e0c3f84d, type: 3}
   quantity: 0
   value: 1
-  perSecond: 9
-  currentPerSecond: 0
+  perSecond: 50
+  currentPerSecond: 12
   isLocked: 0
   produce: 1

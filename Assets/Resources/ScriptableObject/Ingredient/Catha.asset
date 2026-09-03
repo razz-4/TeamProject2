@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   itemName: Catha
   id: 0006
-  icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
+  icon: {fileID: 1074114562, guid: 8a08ab3098b65944a86d48b13207de4d, type: 3}
   quantity: 0
   value: 1
-  perSecond: 11
-  currentPerSecond: 0
+  perSecond: 10
+  currentPerSecond: 12
   isLocked: 0
   produce: 0

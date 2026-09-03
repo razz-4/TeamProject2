@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class ItemList : MonoBehaviour
 {
+    [SerializeField] private IngredientDescription ingredientDescription;
+    [SerializeField] private ToggleGroup toggleGroup;
+
     Toggle[] toggleButtons;
 
     public int maxToggle;
@@ -21,6 +24,11 @@ public class ItemList : MonoBehaviour
     private void Start()
     {
         toggleButtons = GetComponentsInChildren<Toggle>(true);
+        toggleButtons[0].isOn = true;
+        foreach(Toggle toggle in toggleButtons)
+        {
+            toggle.group = toggleGroup;
+        }
     }
 
     private void OnToggleChanged(int index, bool state)
@@ -33,8 +41,12 @@ public class ItemList : MonoBehaviour
         {
             if (currentToggleActive < maxToggle)
             {
-                currentToggleActive++;
+                //currentToggleActive++;
                 greenHouseScript.ProductIngredients(targetIngredient, index);
+
+                //Ingredient Description
+                ingredientDescription.currentGreenHouse = currentGreenhouseObj.GetComponent<GreenHouse>();
+                ingredientDescription.ChangeDescription(targetIngredient);
                 Debug.Log($"[Building: {currentGreenhouseObj.name}] Added index {index}: {targetIngredient.name}");
             }
             else

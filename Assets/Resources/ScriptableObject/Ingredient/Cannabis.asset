@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Cannabis
   id: 0000
-  icon: {fileID: 21300000, guid: f5553345c1a1ae941a934644806ed7eb, type: 3}
-  quantity: 52106
+  icon: {fileID: -234191829, guid: c569b3f78c318b145952c31d65abbb0d, type: 3}
+  quantity: 0
   value: 1
-  perSecond: 2
-  currentPerSecond: 10
+  perSecond: 20
+  currentPerSecond: 4
   isLocked: 0
   produce: 1

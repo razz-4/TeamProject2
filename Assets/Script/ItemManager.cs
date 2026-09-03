@@ -79,9 +79,10 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
         //Suggestion add a timer
-        GenerateIngredients();
+        //GenerateIngredients();
     }
 }

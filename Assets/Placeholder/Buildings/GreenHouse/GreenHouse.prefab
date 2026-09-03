@@ -247,6 +247,9 @@ MonoBehaviour:
   coinNeededForUpgrade: 0
   isLock: 0
   maxToggle: 0
+  Timer:
+    Duration: 0
+    CurrentTime: 0
   selectedIndices: 
 --- !u!114 &1973459894739556664
 MonoBehaviour:

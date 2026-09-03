@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   itemName: Iboga
   id: 0008
-  icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
-  quantity: 149677
+  icon: {fileID: 1616303551, guid: 5963200b90bfa1b429d34eadc0b5f1ef, type: 3}
+  quantity: 0
   value: 12
-  perSecond: 11
-  currentPerSecond: 11
+  perSecond: 30
+  currentPerSecond: 12
   isLocked: 0
   produce: 0
