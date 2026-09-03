@@ -149,3 +149,4 @@ MonoBehaviour:
   _columns: 1
   _baseArea: {fileID: 0}
   _levels: []
+  spawnGridPosition: {x: 20, y: 15}

@@ -38,6 +38,7 @@ namespace DevelopersHub.ClashOfWhatecer
 
         [SerializeField] private Level[] _levels = null;
 
+        [SerializeField] private Vector2Int spawnGridPosition = new Vector2Int(0, 0);
         private int _currentX = 0; public int currentX { get { return _currentX; } }
         private int _currentY = 0; public int currentY { get { return _currentY; } }
         private int _X = 0;
@@ -113,28 +114,34 @@ namespace DevelopersHub.ClashOfWhatecer
 
             int newX = _X + xDis;
             int newY = _Y + yDis;
+
+            //give limit let building cannot go out of grid
+            int maxX = BuildGrid.Instance._columns - _columns;
+            int maxY = BuildGrid.Instance._rows - _rows;
+            newX = Mathf.Clamp(newX, 0, maxX);
+            newY = Mathf.Clamp(newY, 0, maxY);
+
+            _currentX = newX;
+            _currentY = newY;
+            Vector3 position = _grid.GetCenterPosition(_currentX, _currentY, _rows, _columns);
+            transform.position = position;
+
             bool canPlace = BuildingPlaceManager.Instance.CanPlace(newX, newY, _rows, _columns, buildingId);
-
-            if (canPlace)
+            if (_baseArea != null)
             {
-                _currentX = newX;
-                _currentY = newY;
-                Vector3 position = _grid.GetCenterPosition(_currentX, _currentY, _rows, _columns);
-                transform.position = position;
+                _baseArea.material.color = canPlace ? defaultColor : Color.red;
+            }
 
-                if (_baseArea != null)
-                    _baseArea.material.color = defaultColor; 
-            }
-            else
-            {
-                if (_baseArea != null)
-                    _baseArea.material.color = Color.red; 
-            }
+           
         }
         
 
         private void Start()
         {
+            int maxX = BuildGrid.Instance._columns - _columns;
+            int maxY = BuildGrid.Instance._rows - _rows;
+            _currentX = Mathf.Clamp(spawnGridPosition.x, 0, maxX);
+            _currentY = Mathf.Clamp(spawnGridPosition.y, 0, maxY);
             StartMovingOnGrid();
             PlaceOnGrid(_currentX, _currentY);
             UpdateGridPosition(Vector3.zero, Vector3.zero);
@@ -177,6 +184,27 @@ namespace DevelopersHub.ClashOfWhatecer
             Debug.Log($"building {name} no move cancel ({_currentX}, {_currentY})");
         }
 
+        public void PlaceAtGridPosition(int x, int y)
+        {
+            BuildingPlaceManager.Instance.UnregisterBuilding(_currentX, _currentY, _rows, _columns);
+
+            _currentX = x;
+            _currentY = y;
+            _X = x;
+            _Y = y;
+            _originalX = x;
+            _originalY = y;
+
+            Vector3 position = _grid.GetCenterPosition(x, y, _rows, _columns);
+            transform.position = position;
+
+            BuildingPlaceManager.Instance.RegisterBuilding(x, y, _rows, _columns, buildingId);
+
+            if (_baseArea != null)
+                _baseArea.material.color = defaultColor;
+        }
+
+
         private void Update()
         {
             if (Mouse.current != null)
@@ -213,7 +241,8 @@ namespace DevelopersHub.ClashOfWhatecer
             Ray ray = Camera.main.ScreenPointToRay(screenPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.collider.transform.IsChildOf(this.transform) || hit.collider.gameObject == this.gameObject)
+                BuildingControl bc = hit.collider.GetComponentInParent<BuildingControl>();
+                if (bc == this)
                 {
                     BuildingModeManager.SelectBuilding(this);
                     IsBeingDragged = true;
@@ -227,8 +256,9 @@ namespace DevelopersHub.ClashOfWhatecer
                     }
                     else
                     {
-                        _isDragging = false;
-                        IsBeingDragged=false;
+                        _dragBaseLocalPos = _grid.transform.InverseTransformPoint(transform.position);
+                        _isDragging = true; // 保持拖拽启用
+                        IsBeingDragged = true;
                     }
                 }
             }
@@ -269,9 +299,10 @@ namespace DevelopersHub.ClashOfWhatecer
                 return ray.GetPoint(enter);
             }
             Debug.Log("GetWorldPositionOnGrid: " + screenPos);
-            return Vector3.zero;
+            Vector3 fallback = transform.position;
+            fallback.y = _grid.transform.position.y;
+            return fallback;
 
-            
         }
 
     }     

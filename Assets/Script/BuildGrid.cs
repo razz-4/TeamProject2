@@ -74,9 +74,18 @@ namespace DevelopersHub.ClashOfWhatecer
         {
             throw new NotImplementedException();
         }
+
+        public Vector2Int WorldToGrid(Vector3 worldPos)
+        {
+            Vector3 localPos = transform.InverseTransformPoint(worldPos);
+            int x = Mathf.FloorToInt(localPos.x / _cellSize);
+            int y = Mathf.FloorToInt(localPos.z / _cellSize);
+            return new Vector2Int(x, y);
+        }
 #endif
 
 
     }
+
 
 }
