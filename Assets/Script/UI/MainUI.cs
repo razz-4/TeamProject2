@@ -72,7 +72,7 @@ public class MainUI : MonoBehaviour
         if (bc != null && BuildGrid.Instance != null)
         {
             
-            bc.PlaceOnGrid(0, 0);
+            //bc.PlaceOnGrid(0, 0);
             
             BuildingControl.IsBuildingMode = true;
         }

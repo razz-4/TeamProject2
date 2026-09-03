@@ -244,7 +244,10 @@ MonoBehaviour:
   buildingType: 
   placable: 0
   level: 0
+  coinNeededForUpgrade: 0
   isLock: 0
+  maxToggle: 0
+  selectedIndices: 
 --- !u!114 &1973459894739556664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +265,7 @@ MonoBehaviour:
   _columns: 2
   _baseArea: {fileID: 5851286917966747572}
   _levels: []
+  spawnGridPosition: {x: 20, y: 15}
 --- !u!23 &5851286917966747572 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 8cbd4cfe58e3a1e459ef7b022639b375, type: 3}
