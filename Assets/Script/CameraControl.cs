@@ -77,6 +77,8 @@ public class CameraControl : MonoBehaviour
     //only for mouse input but not touchscreen
     void zoomCamera(Vector2 scrollDelta)
     {
+        if (IsPointerOverUI()) return;
+
         float zoomAmount = scrollDelta.y;
 
         float newSize = cinemachine.Lens.OrthographicSize - (zoomAmount * zoomSpeed);
