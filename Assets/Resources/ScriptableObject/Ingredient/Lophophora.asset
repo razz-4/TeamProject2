@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Lophophora
   id: 0007
   icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
-  quantity: 1000
+  quantity: 0
   value: 4
   perSecond: 3
   currentPerSecond: 0

@@ -64,7 +64,6 @@ public class MainUI : MonoBehaviour
 
     private void OnBuildingSlotClicked(Building building)
     {
-
         Debug.Log(building.buildingName);
         var buildingTemplate = building.buildingPrefab;
         buildingTemplate = Instantiate(buildingTemplate, new Vector3(0, 0, 0), Quaternion.Euler(-90,0,0));
@@ -73,7 +72,7 @@ public class MainUI : MonoBehaviour
         if (bc != null && BuildGrid.Instance != null)
         {
             
-            bc.PlaceOnGrid(0, 0);
+            //bc.PlaceOnGrid(0, 0);
             
             BuildingControl.IsBuildingMode = true;
         }

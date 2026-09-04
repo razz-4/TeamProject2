@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Fungi
   id: 0003
   icon: {fileID: -1972365183, guid: e3901f5e072f62b40b1a23d8671b6549, type: 3}
-  quantity: 952
+  quantity: 8
   value: 1
   perSecond: 4
   currentPerSecond: 0
