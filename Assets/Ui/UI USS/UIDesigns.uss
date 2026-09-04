@@ -21,10 +21,14 @@
 }
 
 .customMainUIPanel {
-    background-image: url("project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=-1926156838&guid=bb0eb52fcf641a0489c974d9638d0592&type=3#Menu_1");
+    background-image: url("project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=2056972610&guid=bb0eb52fcf641a0489c974d9638d0592&type=3#Green Menu");
     margin-right: 5%;
     margin-left: 5%;
     margin-top: 5%;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    padding-left: 0%;
+    padding-right: 0%;
 }
 
 .customMainButton {
@@ -33,4 +37,7 @@
 
 .mainPanel {
     background-image: url("project://database/Assets/ArtAssets/UISprite/UI2.png?fileID=-72773568&guid=10c7186369d27c144a24b35215e72dc7&type=3#Menu3");
+}
+
+.customGem {
 }

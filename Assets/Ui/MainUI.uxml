@@ -7,10 +7,10 @@
                 <ui:VisualElement name="CashPanel" class="customMainUIPanel" style="flex-grow: 1; background-color: rgba(255, 211, 114, 0);">
                     <ui:Label text="$100" name="Cash" class="topPanelLabel" style="flex-direction: column; align-self: center; justify-content: flex-start; align-items: auto; left: auto; top: 50%; translate: 0% -50%;"/>
                 </ui:VisualElement>
-                <ui:VisualElement name="PremiumPanel" class="customMainUIPanel" style="flex-grow: 1;">
+                <ui:VisualElement name="PremiumPanel" class="customMainUIPanel customGem" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=631528754&amp;guid=bb0eb52fcf641a0489c974d9638d0592&amp;type=3#Blue Menu&quot;);">
                     <ui:Label text="0 gem" name="Premium" class="topPanelLabel"/>
                 </ui:VisualElement>
-                <ui:Button text="Shop" name="Shop-Button" class="customButton customMainButton" style="width: 21%; height: 70%; top: 10%; right: auto; background-color: rgba(255, 211, 114, 0); padding-top: 2%;"/>
+                <ui:Button text="Shop" name="Shop-Button" class="customButton customMainButton" style="width: 21%; height: 70%; top: 10%; right: auto; background-color: rgba(255, 211, 114, 0); padding-top: 2%; margin-top: 3%;"/>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:Button text="Bullding" name="Building-button" enable-rich-text="true" emoji-fallback-support="true" enabled="true" picking-mode="Position" class="customButton customMainButton" style="left: 20px; bottom: 20px; width: 27%; height: 7%; position: absolute; background-color: rgba(255, 211, 114, 0); padding-top: 2%;"/>

@@ -2,11 +2,11 @@
     <Style src="project://database/Assets/Ui/UI%20USS/StrorageUI.uss?fileID=7433441132597879392&amp;guid=ac6ad14ae75ddc34482a05582677883d&amp;type=3#StrorageUI"/>
     <Style src="project://database/Assets/Ui/UI%20USS/tabs.uss?fileID=7433441132597879392&amp;guid=a06c8e8998b43964d97642a3297e6f5c&amp;type=3#tabs"/>
     <Style src="project://database/Assets/Ui/UI%20USS/UIDesigns.uss?fileID=7433441132597879392&amp;guid=04b8dc8cb9869c841bb514368a127c05&amp;type=3#UIDesigns"/>
-    <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1;">
+    <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; display: flex;">
         <ui:VisualElement name="StorageUiPanel" class="mainPanel" style="flex-grow: 1; top: 50%; left: 50%; translate: -50% -50% 3px; max-width: 79%; max-height: 75%; background-color: rgba(0, 0, 0, 0); display: none; padding-left: 2.5%; padding-right: 2.5%; padding-top: 17%; padding-bottom: 2%;">
             <ui:VisualElement name="StorageTopPanel" style="flex-grow: 1; min-height: 10%; max-height: 10%; background-color: rgba(0, 0, 0, 0); padding-top: 1%; padding-right: 3%; padding-bottom: 1%; padding-left: 7%; flex-direction: row; background-image: url(&quot;project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=1977660974&amp;guid=bb0eb52fcf641a0489c974d9638d0592&amp;type=3#Menu_2&quot;);">
                 <ui:VisualElement name="LeftPanel" style="flex-grow: 1;">
-                    <ui:Label text="Storage" name="StorageLabel" style="color: rgb(255, 255, 255);"/>
+                    <ui:Label text="Storage" name="StorageLabel" style="color: rgb(255, 255, 255); font-size: 20px;"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="RightPanel" style="flex-grow: 1; flex-direction: row-reverse;">
                     <ui:Button text="X&#10;" name="CloseButton" style="max-width: 34%; background-color: rgb(0, 0, 0); background-image: url(&quot;project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=-1926156838&amp;guid=bb0eb52fcf641a0489c974d9638d0592&amp;type=3#Menu_1&quot;);"/>
@@ -16,17 +16,17 @@
             <ui:VisualElement name="BottomPanel" style="flex-grow: 1; padding-left: 2.5%; padding-bottom: 2.5%; padding-right: 2.5%; padding-top: 2.5%;">
                 <ui:TabView name="TabView">
                     <ui:Tab label="Ingredient" name="IngredientTab" focusable="true">
-                        <ui:VisualElement name="Header" class="tabHeader" style="flex-grow: 1; width: 100%; height: 30px; margin-top: 6px; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
-                            <ui:Label text="Name" name="Name" style="color: rgb(255, 255, 255); margin-top: 3px; padding-left: 0%; margin-left: 28%; padding-top: 0%; padding-right: 0%; padding-bottom: 0%;"/>
-                            <ui:Label text="Qty" name="Amount" style="color: rgb(255, 255, 255); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 3px; margin-left: 34%; right: auto; transform-origin: right; translate: 0% 0%;"/>
+                        <ui:VisualElement name="Header" class="tabHeader" style="flex-grow: 1; width: 100%; height: 70px; margin-top: 6px; background-color: rgba(0, 0, 0, 0); flex-direction: row; font-size: 20px;">
+                            <ui:Label text="Name" name="Name" style="color: rgb(255, 255, 255); margin-top: 3px; padding-left: 0%; margin-left: 23%; padding-top: 0%; padding-right: 0%; padding-bottom: 0%; -unity-text-align: middle-left;"/>
+                            <ui:Label text="Qty" name="Amount" style="color: rgb(255, 255, 255); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 3px; margin-left: 30%; right: auto; transform-origin: right; translate: 0% 0%; -unity-text-align: middle-left;"/>
                         </ui:VisualElement>
                         <ui:VisualElement name="Seperator" style="flex-grow: 1; background-color: rgb(255, 255, 255); width: 100%; height: 1px;"/>
                         <ui:ListView name="IngredientListView"/>
                     </ui:Tab>
                     <ui:Tab label="Drug" name="DrugTab">
-                        <ui:VisualElement name="Header" class="tabHeader" style="flex-grow: 1; width: 100%; height: 23px; margin-top: 6px; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
-                            <ui:Label text="Name" name="Name" style="color: rgb(255, 255, 255); margin-top: 3px; padding-left: 0%; margin-left: 28%; padding-top: 0%; padding-right: 0%; padding-bottom: 0%;"/>
-                            <ui:Label text="Qty" name="Amount" style="color: rgb(255, 255, 255); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 3px; margin-left: 34%; right: auto; transform-origin: right; translate: 0% 0%;"/>
+                        <ui:VisualElement name="Header" class="tabHeader" style="flex-grow: 1; width: 100%; height: 70px; margin-top: 6px; background-color: rgba(0, 0, 0, 0); flex-direction: row; font-size: 20px;">
+                            <ui:Label text="Name" name="Name" style="color: rgb(255, 255, 255); margin-top: 3px; padding-left: 0%; margin-left: 23%; padding-top: 0%; padding-right: 0%; padding-bottom: 0%; -unity-text-align: middle-left;"/>
+                            <ui:Label text="Qty" name="Amount" style="color: rgb(255, 255, 255); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 3px; margin-left: 30%; right: auto; transform-origin: right; translate: 0% 0%; -unity-text-align: middle-left;"/>
                         </ui:VisualElement>
                         <ui:VisualElement name="Seperator" style="flex-grow: 1; background-color: rgb(255, 255, 255); width: 100%; height: 1px;"/>
                         <ui:ListView name="DrugListView"/>

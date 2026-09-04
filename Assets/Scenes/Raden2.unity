@@ -2350,7 +2350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StorageUI
   storageUI: {fileID: 1145176860}
   storageSlotTemplate: {fileID: 9197481963319205126, guid: 998aeb327411aee4b9795d78ad7deca3, type: 3}
-  slotHeight: 50
+  slotHeight: 80
 --- !u!114 &1145176860
 MonoBehaviour:
   m_ObjectHideFlags: 0

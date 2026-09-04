@@ -79,16 +79,7 @@
     -unity-text-align: upper-center;
     left: 50%;
     translate: -50% 0;
+    font-size: 19px;
 }
-
-
-
-
-
-
-
-
-
-
 
 
