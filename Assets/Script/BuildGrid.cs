@@ -9,7 +9,7 @@ namespace DevelopersHub.ClashOfWhatecer
     {
         public int _rows = 45;
         public int _columns = 45;
-        public float _cellSize = 1f;public float cellSize { get { return _cellSize; } }
+        public float _cellSize = 1f; public float cellSize { get { return _cellSize; } }
 
         public static BuildGrid Instance { get; private set; }
 
@@ -20,8 +20,7 @@ namespace DevelopersHub.ClashOfWhatecer
             else
                 Destroy(gameObject);
         }
-
-#if UNITY_EDITOR
+       
 
         public Vector3 GetStartPosition(int x, int y)
         {
@@ -82,10 +81,5 @@ namespace DevelopersHub.ClashOfWhatecer
             int y = Mathf.FloorToInt(localPos.z / _cellSize);
             return new Vector2Int(x, y);
         }
-#endif
-
-
-    }
-
-
+    } 
 }

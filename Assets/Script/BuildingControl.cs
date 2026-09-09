@@ -257,7 +257,7 @@ namespace DevelopersHub.ClashOfWhatecer
                     else
                     {
                         _dragBaseLocalPos = _grid.transform.InverseTransformPoint(transform.position);
-                        _isDragging = true; // 保持拖拽启用
+                        _isDragging = true;
                         IsBeingDragged = true;
                     }
                 }

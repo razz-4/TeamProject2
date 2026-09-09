@@ -63,6 +63,12 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    public bool SpendGold(int amount)
+    {
+        if (gold < amount) return false;
+        gold -= amount;
+        return true;
+    }
 
     public void AddGold(int amount)
     {

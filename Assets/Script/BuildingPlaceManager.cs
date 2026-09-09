@@ -48,6 +48,20 @@ public class BuildingPlaceManager : MonoBehaviour
     
     public bool CanPlace(int startX, int startY, int rows, int cols, object excludeBuildingId = null)
     {
+        //check if the cells are unlocked
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                int cellX = startX + i;
+                int cellY = startY + j;
+                if (!LandManager.Instance.IsCellUnlocked(cellX, cellY))
+                {
+                    return false; 
+                }
+            }
+        }
+        //check if the cells are occupied
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
