@@ -5,7 +5,11 @@
         <ui:VisualElement name="UpperPanel" picking-mode="Ignore" style="flex-grow: 1; position: relative;">
             <ui:VisualElement name="TopPanel" picking-mode="Ignore" style="flex-grow: 1; flex-direction: row; align-items: flex-start; align-self: center; align-content: center; transform-origin: center; top: 0; position: absolute; left: 50%; translate: -50% 0; padding-right: 0; flex-shrink: 1; flex-basis: auto; width: 90%; scale: 1 1; height: 10%;">
                 <ui:VisualElement name="CashPanel" class="customMainUIPanel" style="flex-grow: 1; background-color: rgba(255, 211, 114, 0);">
-                    <ui:Label text="$100" name="Cash" class="topPanelLabel" style="flex-direction: column; align-self: center; justify-content: flex-start; align-items: auto; left: auto; top: 50%; translate: 0% -50%;"/>
+                    <ui:Label text="$100" name="Cash" class="topPanelLabel" style="flex-direction: column; align-self: center; justify-content: flex-start; align-items: auto; left: auto; top: 50%; translate: 0% -50%;">
+                        <Bindings>
+                            <ui:DataBinding property="text" data-source-path="goldDisplay" binding-mode="ToTarget"/>
+                        </Bindings>
+                    </ui:Label>
                 </ui:VisualElement>
                 <ui:VisualElement name="PremiumPanel" class="customMainUIPanel customGem" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=631528754&amp;guid=bb0eb52fcf641a0489c974d9638d0592&amp;type=3#Blue Menu&quot;);">
                     <ui:Label text="0 gem" name="Premium" class="topPanelLabel"/>

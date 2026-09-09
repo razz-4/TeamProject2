@@ -25,6 +25,9 @@ public class MainUI : MonoBehaviour
         buildingPreload = Utils.GetAllBuildingInstances<Building>();
         buildingPreload = buildingPreload.OrderBy(p => p.id).ToArray();
 
+        Label cashLabel = root.Q<Label>("Cash");
+        cashLabel.dataSource = GameManager.Instance;
+
         // Buttons
         var buildingBtn = root.Q<VisualElement>("Building-button");
         var shopBtn = root.Q<VisualElement>("Shop-Button");
