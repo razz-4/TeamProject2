@@ -87,10 +87,12 @@ public class StorageUI : MonoBehaviour
     void CloseStorageUI(ClickEvent evt)
     {
         storageUIPanel.style.display = DisplayStyle.None;
+        SoundManager.PlaySound(SoundType.UI);
     }
 
     void OpenStorageUI(ClickEvent evt)
     {
         storageUIPanel.style.display = DisplayStyle.Flex;
+        SoundManager.PlaySound(SoundType.UI);
     }
 }

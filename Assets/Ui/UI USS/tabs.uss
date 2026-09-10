@@ -82,4 +82,6 @@
     font-size: 19px;
 }
 
-
+#MainUI > #BuildingPanel-Panel > #Building-ScrollView > #unity-content-and-vertical-scroll-container > #unity-content-viewport > #unity-content-container {
+    background-image: url("project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=-1926156838&guid=bb0eb52fcf641a0489c974d9638d0592&type=3#Menu_1");
+}

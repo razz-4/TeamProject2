@@ -135,7 +135,6 @@ public class DeliveryUI : MonoBehaviour
     {
         if (selectedBuyer == null) return;
 
-        // Check we can fulfill every requested item
         foreach (ItemSlot request in selectedBuyer.requestedItem)
         {
             Item stock = ItemManager.Instance.ingredients
@@ -155,6 +154,7 @@ public class DeliveryUI : MonoBehaviour
             request.item.quantity -= request.amount;
         }
 
+        SoundManager.PlaySound(SoundType.SOLD);
         GameManager.Instance.AddGold(selectedBuyer.totalValue);
 
         EventManager.Instance.InvokeInventoryChanged();
@@ -166,6 +166,7 @@ public class DeliveryUI : MonoBehaviour
     private void OnClosePressed(ClickEvent evt)
     {
         deliveryUIPanel.style.display = DisplayStyle.None;
+        SoundManager.PlaySound(SoundType.UI);
     }
 
 }

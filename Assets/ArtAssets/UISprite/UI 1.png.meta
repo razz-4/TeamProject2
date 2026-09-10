@@ -201,10 +201,10 @@ TextureImporter:
       name: Menu_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 973
-        width: 829
-        height: 704
+        x: 74
+        y: 987
+        width: 797
+        height: 680
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,10 +223,10 @@ TextureImporter:
       name: Menu_2
       rect:
         serializedVersion: 2
-        x: 905
-        y: 398
-        width: 841
-        height: 1273
+        x: 908
+        y: 409
+        width: 828
+        height: 1258
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,10 +245,10 @@ TextureImporter:
       name: Blue Toggle
       rect:
         serializedVersion: 2
-        x: 62
-        y: 711
-        width: 259
-        height: 250
+        x: 75
+        y: 716
+        width: 240
+        height: 242
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,10 +267,10 @@ TextureImporter:
       name: Red Toggle
       rect:
         serializedVersion: 2
-        x: 342
-        y: 709
-        width: 257
-        height: 254
+        x: 352
+        y: 716
+        width: 242
+        height: 241
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,10 +289,10 @@ TextureImporter:
       name: Menu_3
       rect:
         serializedVersion: 2
-        x: 67
-        y: 30
-        width: 769
-        height: 650
+        x: 73
+        y: 41
+        width: 756
+        height: 634
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -311,10 +311,10 @@ TextureImporter:
       name: White Toggle
       rect:
         serializedVersion: 2
-        x: 903
-        y: 144
-        width: 225
-        height: 228
+        x: 908
+        y: 152
+        width: 219
+        height: 219
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -333,10 +333,10 @@ TextureImporter:
       name: Green Menu
       rect:
         serializedVersion: 2
-        x: 1145
-        y: 216
-        width: 365
-        height: 163
+        x: 1150
+        y: 220
+        width: 354
+        height: 156
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,10 +355,10 @@ TextureImporter:
       name: Blue Menu
       rect:
         serializedVersion: 2
-        x: 1528
-        y: 207
-        width: 364
-        height: 175
+        x: 1532
+        y: 217
+        width: 353
+        height: 153
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,7 +383,7 @@ TextureImporter:
         height: 156
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 5, y: 3, z: 6, w: 3}
       customData: 
       outline: []
       physicsShape: []
@@ -488,6 +488,9 @@ TextureImporter:
       Scroll 1: 1962838206
       Scroll 2: 1773410214
       Setting: -1331942144
+      UI 1_0: 1220246643
+      UI 1_1: -1872928130
+      UI 1_2: -59110308
       White Toggle: 640165096
       WhiteBox: 2132619364
       Yellow Button: -1515502145

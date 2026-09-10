@@ -67,7 +67,6 @@ public class MainUI : MonoBehaviour
 
     private void OnBuildingSlotClicked(Building building)
     {
-        Debug.Log(building.buildingName);
         var buildingTemplate = building.buildingPrefab;
         buildingTemplate = Instantiate(buildingTemplate, new Vector3(0, 0, 0), Quaternion.Euler(-90,0,0));
 
@@ -78,26 +77,31 @@ public class MainUI : MonoBehaviour
             //bc.PlaceOnGrid(0, 0);
             
             BuildingControl.IsBuildingMode = true;
+            SoundManager.PlaySound(SoundType.BUILD);
         }
     }
 
     private void onBuildingBtnPress(ClickEvent evt)
     {
         buildingPanel.style.display = DisplayStyle.Flex;
+        SoundManager.PlaySound(SoundType.UI);
     }
 
     private void onBuildingCloseBtnPress(ClickEvent evt)
     {
         buildingPanel.style.display = DisplayStyle.None;
+        SoundManager.PlaySound(SoundType.UI);
     }
     private void onShopBtnPress(ClickEvent evt)
     {
         shopPanel.style.display = DisplayStyle.Flex;
+        SoundManager.PlaySound(SoundType.UI);
     }
 
     private void onShopCloseBthPress(ClickEvent evt)
     {
         shopPanel.style.display = DisplayStyle.None;
+        SoundManager.PlaySound(SoundType.UI);
     }
 }
 
