@@ -36,9 +36,13 @@ namespace DevelopersHub.ClashOfWhatecer
         [SerializeField]
         private MeshRenderer _baseArea = null;
 
-        [SerializeField] private Level[] _levels = null;
+        [SerializeField] 
+        private Level[] _levels = null;
 
-        [SerializeField] private Vector2Int spawnGridPosition = new Vector2Int(0, 0);
+
+        //IMPORTANT
+        [SerializeField] 
+        private Vector2Int spawnGridPosition = new Vector2Int(0, 0);
         private int _currentX = 0; public int currentX { get { return _currentX; } }
         private int _currentY = 0; public int currentY { get { return _currentY; } }
         private int _X = 0;

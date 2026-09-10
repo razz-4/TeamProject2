@@ -14,15 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Miguana
   id: 0001
-  icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
-  quantity: 0
+  icon: {fileID: 432119103, guid: 6332e48dd1810a846978607aeea580d8, type: 3}
+  quantity: 364
   value: 8
   perSecond: 13
   currentPerSecond: 11
   recipe:
-  - ingredient: {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
-    amount: 3
-  - ingredient: {fileID: 11400000, guid: ddfc4e8549f36ca4d84f4e603fff1cda, type: 2}
-    amount: 2
   - ingredient: {fileID: 11400000, guid: 42730769d6217624cbc092d4f38f2ec1, type: 2}
-    amount: 2
+    amount: 3

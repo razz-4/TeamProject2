@@ -1,18 +1,43 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(BuildingHighlight))]
+[RequireComponent(typeof(BuildingTimerController))]
+[RequireComponent(typeof(BuildingPopUpSpawner))]
 public class GreenHouse : BuildingClass
 {
     public int maxToggle;
 
+    [Header("Input System")]
+    private MobileAction input;
+
+    [Header("Green House Storage")]
+    [SerializeField] private int maxGreenHouseStorage = 50;
+    private int currentGreenHouseStorage;
+
+    [HideInInspector] public Ingredient currentIngredient;
+    [HideInInspector] private Ingredient lastIngredient;
+
+    // Component References
+    private BuildingHighlight buildingHighlight;
+    private BuildingTimerController timerController;
+    private BuildingPopUpSpawner popUpSpawner;
+
     // Save index positions instead of object references
-    public List<int> selectedIndices = new List<int>(); //{0,5}
+    public List<int> selectedIndices = new List<int>();
+    private List<Ingredient> currentGrowingIngredients = new List<Ingredient>();
 
     private void Awake()
     {
+        input = new MobileAction();
+
+        // Cache all attached modules
+        buildingHighlight = GetComponent<BuildingHighlight>();
+        timerController = GetComponent<BuildingTimerController>();
+        popUpSpawner = GetComponent<BuildingPopUpSpawner>();
+
         buildingType = "GreenHouse";
         placable = true;
         level = 1;
@@ -20,35 +45,153 @@ public class GreenHouse : BuildingClass
         isLock = false;
     }
 
-    public void ProductIngredients(Ingredient targetIngredient, int index)
+    private void OnEnable()
     {
-        if (!selectedIndices.Contains(index))
+        input.Enable();
+        input.Mobile.Interact.performed += OnInteract;
+
+        if (timerController != null && timerController.OnTimerFinished != null)
         {
-            selectedIndices.Add(index);
+            timerController.OnTimerFinished.AddListener(OnTimerFinished);
+        }
+    }
+
+    private void OnDisable()
+    {
+        input.Mobile.Interact.performed -= OnInteract;
+
+        if (timerController != null && timerController.OnTimerFinished != null)
+        {
+            timerController.OnTimerFinished.RemoveListener(OnTimerFinished);
         }
 
-        foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
+        input.Disable();
+    }
+
+    private void OnTimerFinished()
+    {
+        PlantIngredient(currentIngredient);
+        SetLayerToCollectable();
+        buildingHighlight.EnableHighlight();
+    }
+
+    #region Interaction Function
+    private void OnInteract(InputAction.CallbackContext ctx)
+    {
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
-            if (ingredient == targetIngredient)
+            return;
+        }
+
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+        {
+            int touchId = Touchscreen.current.primaryTouch.touchId.ReadValue();
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touchId))
             {
-                ingredient.currentPerSecond += ingredient.perSecond;
+                return;
+            }
+        }
+
+        CollectIngredient();
+    }
+    #endregion
+
+    public void SetIngredient(Ingredient ingredient)
+    {
+        if (lastIngredient == null)
+        {
+            lastIngredient = ingredient;
+        }
+        else
+        {
+            lastIngredient = currentIngredient;
+        }
+        currentIngredient = ingredient;
+    }
+
+    public void PlantIngredient(Ingredient ingredient)
+    {
+        currentGreenHouseStorage += ingredient.currentPerSecond;
+        if (currentGreenHouseStorage >= maxGreenHouseStorage)
+        {
+            currentGreenHouseStorage = maxGreenHouseStorage;
+            timerController.StopProductionTimer();
+        }
+
+        Debug.Log($"Current green house storage: {currentGreenHouseStorage}");
+    }
+
+    public void SetLayerToCollectable()
+    {
+        gameObject.layer = LayerMask.NameToLayer("Collectable");
+    }
+
+    public void CollectIngredient()
+    {
+        if (currentGreenHouseStorage <= 0) return;
+
+        int collectableLayer = LayerMask.GetMask("Collectable");
+        Vector2 screenPosition = Pointer.current.position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, collectableLayer, QueryTriggerInteraction.Collide))
+        {
+            if (hit.transform != transform) return;
+
+            bool wasFull = currentGreenHouseStorage >= maxGreenHouseStorage;
+
+            foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
+            {
+                if (ingredient == currentIngredient)
+                {
+                    ingredient.quantity += currentGreenHouseStorage;
+                    popUpSpawner.SpawnPopUp(currentIngredient.icon, currentGreenHouseStorage);
+
+                    Debug.Log($"Added {currentGreenHouseStorage} {ingredient.name}");
+                    Debug.Log($"Current quantity of {ingredient.name}: {ingredient.quantity}");
+
+                    currentGreenHouseStorage = 0;
+                }
+            }
+
+            gameObject.layer = LayerMask.NameToLayer("Interactable");
+            buildingHighlight.DisableHighlight();
+
+            if (wasFull)
+            {
+                StartTimer();
             }
         }
     }
 
-    public void CancelProductIngredients(Ingredient targetIngredient, int index)
+    public void CollectLastIngredient()
     {
-        if (selectedIndices.Contains(index))
-        {
-            selectedIndices.Remove(index);
-        }
-
         foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
         {
-            if (ingredient == targetIngredient)
+            if (ingredient == lastIngredient && currentGreenHouseStorage != 0)
             {
-                ingredient.currentPerSecond -= ingredient.perSecond;
+                ingredient.quantity += currentGreenHouseStorage;
+                popUpSpawner.SpawnPopUp(lastIngredient.icon, currentGreenHouseStorage);
+                lastIngredient.produce = false;
+
+                Debug.Log($"Added {currentGreenHouseStorage} {ingredient.name}");
+                Debug.Log($"Current quantity of {ingredient.name}: {ingredient.quantity}");
+
+                currentGreenHouseStorage = 0;
             }
         }
+
+        gameObject.layer = LayerMask.NameToLayer("Interactable");
+        buildingHighlight.DisableHighlight();
+    }
+
+    public void StartTimer()
+    {
+        timerController.StartProductionTimer();
+    }
+
+    public LoadingTimer GetTimer()
+    {
+        return timerController.GetTimer();
     }
 }

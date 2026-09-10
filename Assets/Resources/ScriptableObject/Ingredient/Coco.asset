@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Coco
   id: 0001
-  icon: {fileID: -566403904, guid: dbba87b0ce5b06943bf75f2a9fdfcee4, type: 3}
-  quantity: 35325
+  icon: {fileID: -1421661032, guid: 266092e958aa6be468db1fd902997c5d, type: 3}
+  quantity: 868
   value: 1
-  perSecond: 3
-  currentPerSecond: 3
+  perSecond: 30
+  currentPerSecond: 2
   isLocked: 0
   produce: 1
