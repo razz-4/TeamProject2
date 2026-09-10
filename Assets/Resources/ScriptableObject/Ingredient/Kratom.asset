@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   itemName: Kratom
   id: 0006
-  icon: {fileID: 1261771006, guid: deecd4d3a3355274e94c337915daba05, type: 3}
-  quantity: 1000
+  icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
+  quantity: 100
   value: 9
-  perSecond: 20
-  currentPerSecond: 8
+  perSecond: 6
+  currentPerSecond: 0
   isLocked: 0
   produce: 0

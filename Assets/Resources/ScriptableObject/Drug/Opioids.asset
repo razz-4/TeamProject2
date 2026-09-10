@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Ohlord
   id: 0003
   icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
-  quantity: 0
+  quantity: 100
   value: 7
   perSecond: 8
   currentPerSecond: 6

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -122,7 +123,7 @@ public class DeliveryUI : MonoBehaviour
 
             buyers.Add(new Buyer
             {
-                buyerName = "Test", //GenerateBuyerName(isIllegal)
+                buyerName = GenerateBuyerName(), //isIllegal
                 isIllegal = isIllegal,
                 requestedItem = requestedItems,
                 totalValue = payout
@@ -169,4 +170,22 @@ public class DeliveryUI : MonoBehaviour
         SoundManager.PlaySound(SoundType.UI);
     }
 
+
+    private string GenerateBuyerName() //bool isIllegal
+    {
+        BuyerName[] buyerNameAssets = Utils.GetAllBuyerNameInstances();
+
+
+        BuyerName randomAsset = buyerNameAssets[UnityEngine.Random.Range(0, buyerNameAssets.Length)];
+        string randomName = randomAsset.GetRandomName();
+
+        string temp = randomName;
+
+        //if (isIllegal)
+        //{
+        //    temp = "Illegal " + randomName;
+        //}
+
+        return temp;
+    }
 }

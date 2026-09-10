@@ -16,4 +16,9 @@ public static class Utils
     {
         return Resources.LoadAll<T>("ScriptableObject/Building");
     }
+
+    public static BuyerName[] GetAllBuyerNameInstances()
+    {
+        return Resources.LoadAll<BuyerName>("ScriptableObject/BuyerName");
+    }
 }

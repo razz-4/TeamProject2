@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler<BindablePropertyChangedEventArgs> propertyChanged;
 
     [SerializeField] int gold = 500;
-    public float illegalRate = 0.7f;
+    public float illegalRate = 0.5f;
     public float drugRate = 0.7f;
     public float illegalMultiplier = 1.5f;
 

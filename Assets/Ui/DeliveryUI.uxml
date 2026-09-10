@@ -19,7 +19,7 @@
                         <ui:Label text="Label" name="ValueLabel" style="top: 0%; translate: 0% 0%; padding-left: 2px; -unity-text-align: middle-center; margin-left: 13px; color: rgb(0, 0, 0); font-size: 16px;"/>
                     </ui:VisualElement>
                     <ui:VisualElement name="RightPanel" style="flex-grow: 0; height: auto; flex-direction: column; right: 0; margin-right: 6px;">
-                        <ui:Button text="Sell" name="SellButton" style="padding-left: 15%; padding-bottom: 7%; padding-right: 15%; padding-top: 7%; margin-top: 1px; margin-right: 1%; margin-bottom: 1px; margin-left: 1%; translate: 0% 0%; right: auto; left: auto; flex-grow: 1; font-size: 20px;"/>
+                        <ui:Button text="Sell" name="SellButton" style="padding-left: 14%; padding-bottom: 7%; padding-right: 20%; padding-top: 7%; margin-top: 1px; margin-right: 1%; margin-bottom: 1px; margin-left: 1%; translate: 0% 0%; right: auto; left: auto; flex-grow: 1; font-size: 15px; background-image: url(&quot;project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=-511196287&amp;guid=bb0eb52fcf641a0489c974d9638d0592&amp;type=3#Green Button&quot;); background-color: rgba(188, 188, 188, 0);"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
