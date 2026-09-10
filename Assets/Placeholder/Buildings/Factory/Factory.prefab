@@ -164,7 +164,7 @@ MonoBehaviour:
   _columns: 1
   _baseArea: {fileID: 0}
   _levels: []
-  spawnGridPosition: {x: 20, y: 15}
+  spawnGridPosition: {x: 40, y: 45}
 --- !u!114 &5068660245402348734
 MonoBehaviour:
   m_ObjectHideFlags: 0

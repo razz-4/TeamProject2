@@ -65,12 +65,17 @@ public class UIBuildingManager : MonoBehaviour
         GreenHouseUI.SetActive(false);
         FactoryUI.SetActive(false);
         if (specialButton != null) specialButton.SetActive(false);
+        if(currentBuildingType != null)
+        {
+            SoundManager.PlaySound(SoundType.UI, 1);
+        }
         currentBuildingType = null;
     }
 
     public void ShowUI(string buildingType)
     {
         BuildingUI.SetActive(true);
+        SoundManager.PlaySound(SoundType.UI, 1);
         currentBuildingType = buildingType;
 
         if (!string.IsNullOrEmpty(currentBuildingType))

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Factory
   m_EditorClassIdentifier: Assembly-CSharp::Building
   buildingName: Factory
-  icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
+  icon: {fileID: -1677549138, guid: bb0eb52fcf641a0489c974d9638d0592, type: 3}
   cost: 0
   id: 1
   buildingPrefab: {fileID: 5535503830481214260, guid: 7d8c589d7af422e459a18f3fe5bf48b8, type: 3}

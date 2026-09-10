@@ -279,7 +279,7 @@ MonoBehaviour:
   _columns: 2
   _baseArea: {fileID: 5851286917966747572}
   _levels: []
-  spawnGridPosition: {x: 20, y: 15}
+  spawnGridPosition: {x: 40, y: 45}
 --- !u!114 &2958428048030010170
 MonoBehaviour:
   m_ObjectHideFlags: 0

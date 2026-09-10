@@ -149,6 +149,7 @@ public class GreenHouse : BuildingClass
 
                     Debug.Log($"Added {currentGreenHouseStorage} {ingredient.name}");
                     Debug.Log($"Current quantity of {ingredient.name}: {ingredient.quantity}");
+                    SoundManager.PlaySound(SoundType.COLLECT, 1);
 
                     currentGreenHouseStorage = 0;
                 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreenHouse
   m_EditorClassIdentifier: Assembly-CSharp::Building
   buildingName: Greenhouse
-  icon: {fileID: 1818023091, guid: 32c50bb7e9ed7a0459bed79a409531ee, type: 3}
+  icon: {fileID: -61625856, guid: ee21d8f7902696b49b4e8a50e4519e85, type: 3}
   cost: 100
   id: 0
   buildingPrefab: {fileID: 5346632590392817249, guid: 35c397fb0d35cea428aad21108a44bf6, type: 3}

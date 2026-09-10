@@ -73,6 +73,8 @@ public class FactoryUI : MonoBehaviour
 
     private void OnSynthesizeToggleChanged(bool state)
     {
+        SoundManager.PlaySound(SoundType.UI, 1);
+
         if (state)
         {
             Debug.Log("Start");

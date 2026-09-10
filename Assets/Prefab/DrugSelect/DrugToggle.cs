@@ -26,12 +26,14 @@ public class DrugToggle : MonoBehaviour
             // Add the listener via code to pass this specific GameObject
             toggle.onValueChanged.AddListener((bool state) =>
             {
+                SoundManager.PlaySound(SoundType.UI, 1);
+
                 if (state)
                 {
                     factoryUI.selectDrug(toggleDrugPrefab.drugAssigned.recipe,this);
                     factoryUI.currentDrug = toggleDrugPrefab.drugAssigned;
 
-                    if(isProducing)
+                    if (isProducing)
                     {
                         factoryUI.sytesizeButton.SetIsOnWithoutNotify(true);
                         Debug.Log("Saved");

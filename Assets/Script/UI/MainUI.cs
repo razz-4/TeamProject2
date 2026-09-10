@@ -68,6 +68,10 @@ public class MainUI : MonoBehaviour
     private void OnBuildingSlotClicked(Building building)
     {
         var buildingTemplate = building.buildingPrefab;
+        if(!GameManager.Instance.SpendGold(building.cost))
+        {
+            return;
+        }
         buildingTemplate = Instantiate(buildingTemplate, new Vector3(0, 0, 0), buildingTemplate.transform.rotation); //, Quaternion.Euler(0,0,0)
 
         var bc = buildingTemplate.GetComponent<BuildingControl>();
