@@ -1,24 +1,43 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(BuildingHighlight))]
+[RequireComponent(typeof(BuildingTimerController))]
+[RequireComponent(typeof(BuildingPopUpSpawner))]
 public class GreenHouse : BuildingClass
 {
     public int maxToggle;
 
-    [Header("Timer")]
-    [SerializeField] private CountDownTimer Timer;
-    [SerializeField] private float growthDuration = 60f;
-    private bool isGrowing = false;
+    [Header("Input System")]
+    private MobileAction input;
+
+    [Header("Green House Storage")]
+    [SerializeField] private int maxGreenHouseStorage = 50;
+    private int currentGreenHouseStorage;
+
+    [HideInInspector] public Ingredient currentIngredient;
+    [HideInInspector] private Ingredient lastIngredient;
+
+    // Component References
+    private BuildingHighlight buildingHighlight;
+    private BuildingTimerController timerController;
+    private BuildingPopUpSpawner popUpSpawner;
 
     // Save index positions instead of object references
-    public List<int> selectedIndices = new List<int>(); //{0,5}
+    public List<int> selectedIndices = new List<int>();
     private List<Ingredient> currentGrowingIngredients = new List<Ingredient>();
 
     private void Awake()
     {
+        input = new MobileAction();
+
+        // Cache all attached modules
+        buildingHighlight = GetComponent<BuildingHighlight>();
+        timerController = GetComponent<BuildingTimerController>();
+        popUpSpawner = GetComponent<BuildingPopUpSpawner>();
+
         buildingType = "GreenHouse";
         placable = true;
         level = 1;
@@ -26,106 +45,153 @@ public class GreenHouse : BuildingClass
         isLock = false;
     }
 
-        private void Update()
+    private void OnEnable()
     {
-        // 1. Only tick the timer if something is actively growing
-        if (isGrowing)
+        input.Enable();
+        input.Mobile.Interact.performed += OnInteract;
+
+        if (timerController != null && timerController.OnTimerFinished != null)
         {
-            // Tick counts down. When it hits 0, it returns true.
-            if (Timer.Tick(Time.deltaTime))
+            timerController.OnTimerFinished.AddListener(OnTimerFinished);
+        }
+    }
+
+    private void OnDisable()
+    {
+        input.Mobile.Interact.performed -= OnInteract;
+
+        if (timerController != null && timerController.OnTimerFinished != null)
+        {
+            timerController.OnTimerFinished.RemoveListener(OnTimerFinished);
+        }
+
+        input.Disable();
+    }
+
+    private void OnTimerFinished()
+    {
+        PlantIngredient(currentIngredient);
+        SetLayerToCollectable();
+        buildingHighlight.EnableHighlight();
+    }
+
+    #region Interaction Function
+    private void OnInteract(InputAction.CallbackContext ctx)
+    {
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+        {
+            int touchId = Touchscreen.current.primaryTouch.touchId.ReadValue();
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touchId))
             {
-                HarvestCrop();
+                return;
             }
         }
+
+        CollectIngredient();
+    }
+    #endregion
+
+    public void SetIngredient(Ingredient ingredient)
+    {
+        if (lastIngredient == null)
+        {
+            lastIngredient = ingredient;
+        }
+        else
+        {
+            lastIngredient = currentIngredient;
+        }
+        currentIngredient = ingredient;
     }
 
-    public void ProductIngredients(Ingredient targetIngredient, int index)
+    public void PlantIngredient(Ingredient ingredient)
     {
-        if (!selectedIndices.Contains(index))
+        currentGreenHouseStorage += ingredient.currentPerSecond;
+        if (currentGreenHouseStorage >= maxGreenHouseStorage)
         {
-            selectedIndices.Add(index);
+            currentGreenHouseStorage = maxGreenHouseStorage;
+            timerController.StopProductionTimer();
         }
 
-        // Add to our active growth tracking list
-        if (!currentGrowingIngredients.Contains(targetIngredient))
-        {
-            currentGrowingIngredients.Add(targetIngredient);
-        }
-
-        // 2. Start the 60-second growth timer when the player clicks/starts production
-        if (!isGrowing)
-        {
-            Timer.Reset(growthDuration); // Sets duration to 60s and resets CurrentTime
-            isGrowing = true;
-            Debug.Log($"Growth started! Waiting {growthDuration} seconds for harvest...");
-        }
+        Debug.Log($"Current green house storage: {currentGreenHouseStorage}");
     }
 
-    // 3. This triggers automatically when the 60 seconds are up
-    private void HarvestCrop()
+    public void SetLayerToCollectable()
     {
-        Debug.Log("Crops are fully grown! Awarding ingredients to player.");
-        
-        isGrowing = false; // Stop the timer from updating further
+        gameObject.layer = LayerMask.NameToLayer("Collectable");
+    }
 
-        // Apply your perSecond modifications to your global ItemManager now that they are ready
-        foreach (Ingredient ingredient in currentGrowingIngredients)
+    public void CollectIngredient()
+    {
+        if (currentGreenHouseStorage <= 0) return;
+
+        int collectableLayer = LayerMask.GetMask("Collectable");
+        Vector2 screenPosition = Pointer.current.position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, collectableLayer, QueryTriggerInteraction.Collide))
         {
-            foreach (Ingredient globalIngredient in ItemManager.Instance.ingredients)
+            if (hit.transform != transform) return;
+
+            bool wasFull = currentGreenHouseStorage >= maxGreenHouseStorage;
+
+            foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
             {
-                if (globalIngredient == ingredient)
+                if (ingredient == currentIngredient)
                 {
-                    // Award the player their resource batch! 
-                    // (Adjust this line to match your Ingredient script's inventory variable)
-                    // globalIngredient.quantity += 1; 
-                    
-                    globalIngredient.currentPerSecond += globalIngredient.perSecond;
+                    ingredient.quantity += currentGreenHouseStorage;
+                    popUpSpawner.SpawnPopUp(currentIngredient.icon, currentGreenHouseStorage);
+
+                    Debug.Log($"Added {currentGreenHouseStorage} {ingredient.name}");
+                    Debug.Log($"Current quantity of {ingredient.name}: {ingredient.quantity}");
+
+                    currentGreenHouseStorage = 0;
                 }
             }
-        }
 
-        // Clear the batch out so the greenhouse is ready for the next plant cycle
-        currentGrowingIngredients.Clear();
-        selectedIndices.Clear(); 
+            gameObject.layer = LayerMask.NameToLayer("Interactable");
+            buildingHighlight.DisableHighlight();
+
+            if (wasFull)
+            {
+                StartTimer();
+            }
+        }
     }
 
-    public void CancelProductIngredients(Ingredient targetIngredient, int index)
+    public void CollectLastIngredient()
     {
-        if (selectedIndices.Contains(index))
-        {
-            selectedIndices.Remove(index);
-        }
-
-        if (currentGrowingIngredients.Contains(targetIngredient))
-        {
-            currentGrowingIngredients.Remove(targetIngredient);
-        }
-
-        // If the player cancels everything mid-growth, turn off the timer
-        if (selectedIndices.Count == 0)
-        {
-            isGrowing = false;
-            Timer.Reset(0f);
-        }
-
         foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
         {
-            if (ingredient == targetIngredient)
+            if (ingredient == lastIngredient && currentGreenHouseStorage != 0)
             {
-                ingredient.currentPerSecond -= ingredient.perSecond;
+                ingredient.quantity += currentGreenHouseStorage;
+                popUpSpawner.SpawnPopUp(lastIngredient.icon, currentGreenHouseStorage);
+                lastIngredient.produce = false;
+
+                Debug.Log($"Added {currentGreenHouseStorage} {ingredient.name}");
+                Debug.Log($"Current quantity of {ingredient.name}: {ingredient.quantity}");
+
+                currentGreenHouseStorage = 0;
             }
         }
+
+        gameObject.layer = LayerMask.NameToLayer("Interactable");
+        buildingHighlight.DisableHighlight();
     }
 
-    public void CollectIngredient(Ingredient ingredient)
+    public void StartTimer()
     {
-        foreach(Ingredient globalIngredient in ItemManager.Instance.ingredients)
-        {
-            if (globalIngredient == ingredient)
-            {
-                globalIngredient.quantity += ingredient.currentPerSecond;
-                Debug.Log($"Produce {ingredient.currentPerSecond} {ingredient.name}.");
-            }
-        }
+        timerController.StartProductionTimer();
+    }
+
+    public LoadingTimer GetTimer()
+    {
+        return timerController.GetTimer();
     }
 }

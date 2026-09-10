@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Kratom
   id: 0006
   icon: {fileID: 1261771006, guid: deecd4d3a3355274e94c337915daba05, type: 3}
-  quantity: 0
+  quantity: 1000
   value: 9
   perSecond: 20
   currentPerSecond: 8

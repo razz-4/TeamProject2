@@ -6,6 +6,7 @@ public class IngredientQuantity : MonoBehaviour
 {
     [HideInInspector] public Ingredient ingredient;
     [HideInInspector] public int amountNeeded;
+    [HideInInspector] private IngredientRequirement currentIngredientRequirement;
     private int amount = 0;
     [SerializeField] public TextMeshProUGUI quantityText;
     [SerializeField] Image ingredientImage;
@@ -27,9 +28,16 @@ public class IngredientQuantity : MonoBehaviour
 
     public void updateTextAmount(IngredientRequirement ingredient)
     {
+        currentIngredientRequirement = ingredient;
         if(amount < ingredient.amount)
         {
-            quantityText.text = ingredient.amount.ToString();
+            foreach(Ingredient globalIngredient in ItemManager.Instance.ingredients)
+            {
+                if (globalIngredient == this.ingredient)
+                {
+                    quantityText.text = $"{globalIngredient.quantity}/{ingredient.amount}";
+                }
+            }
         }
     }
 
@@ -37,5 +45,15 @@ public class IngredientQuantity : MonoBehaviour
     void Update()
     {
         amount = ingredient.quantity;
+        if (ingredient != null) ;
+        {
+            foreach (Ingredient globalIngredient in ItemManager.Instance.ingredients)
+            {
+                if (globalIngredient == ingredient)
+                {
+                    quantityText.text = $"{globalIngredient.quantity}/{currentIngredientRequirement.amount}";
+                }
+            }
+        }
     }
 }

@@ -27,11 +27,11 @@ public class ItemManager : MonoBehaviour
         }
 
         Instance = this;
-
-        ingredients = Utils.GetAllIngredientInstances<Ingredient>();
+        //IMPORTANT IF WANT TO AUTO OR NOT
+        //ingredients = Utils.GetAllIngredientInstances<Ingredient>();
         ingredients = ingredients.OrderBy(p => p.id).ToArray();
 
-        drugs = Utils.GetAllDrugInstances<Drug>();
+       // drugs = Utils.GetAllDrugInstances<Drug>();
         drugs = drugs.OrderBy(p => p.id).ToArray();
 
         

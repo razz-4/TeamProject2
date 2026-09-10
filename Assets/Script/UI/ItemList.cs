@@ -10,7 +10,7 @@ public class ItemList : MonoBehaviour
     [SerializeField] private IngredientDescription ingredientDescription;
     [SerializeField] private ToggleGroup toggleGroup;
 
-    Toggle[] toggleButtons;
+    [SerializeField] Toggle[] toggleButtons;
 
     public int maxToggle;
     int currentToggleActive = 0;
@@ -21,13 +21,42 @@ public class ItemList : MonoBehaviour
     // Track the currently targeted greenhouse instance
     private GameObject currentGreenhouseObj;
 
+    private void Awake()
+    {
+        InitializeToggles();
+    }
+
+    private void OnEnable()
+    {
+        // Re-bind group references when the object/panel gets enabled
+        RegisterTogglesToGroup();
+    }
+
     private void Start()
     {
-        toggleButtons = GetComponentsInChildren<Toggle>(true);
-        toggleButtons[0].isOn = true;
-        foreach(Toggle toggle in toggleButtons)
+        if (toggleButtons != null && toggleButtons.Length > 0 && toggleButtons[0] != null)
         {
-            toggle.group = toggleGroup;
+            toggleButtons[0].SetIsOnWithoutNotify(true);
+        }
+    }
+
+    private void InitializeToggles()
+    {
+        // Pass 'true' to include inactive children in hierarchy
+        toggleButtons = GetComponentsInChildren<Toggle>(true);
+        RegisterTogglesToGroup();
+    }
+
+    private void RegisterTogglesToGroup()
+    {
+        if (toggleButtons == null || toggleGroup == null) return;
+
+        foreach (Toggle toggle in toggleButtons)
+        {
+            if (toggle != null)
+            {
+                toggle.group = toggleGroup;
+            }
         }
     }
 
@@ -41,12 +70,10 @@ public class ItemList : MonoBehaviour
         {
             if (currentToggleActive < maxToggle)
             {
-                //currentToggleActive++;
-                greenHouseScript.ProductIngredients(targetIngredient, index);
 
                 //Ingredient Description
                 ingredientDescription.currentGreenHouse = currentGreenhouseObj.GetComponent<GreenHouse>();
-                ingredientDescription.ChangeDescription(targetIngredient);
+                ingredientDescription.ChangeDescription(targetIngredient,greenHouseScript);
                 Debug.Log($"[Building: {currentGreenhouseObj.name}] Added index {index}: {targetIngredient.name}");
             }
             else
@@ -60,32 +87,17 @@ public class ItemList : MonoBehaviour
         {
             if (currentToggleActive > 0)
             {
-                currentToggleActive--;
-                greenHouseScript.CancelProductIngredients(targetIngredient, index);
                 Debug.Log($"[Building: {currentGreenhouseObj.name}] Removed index {index}: {targetIngredient.name}");
             }
         }
     }
 
-    public void CheckGreenHouse(GameObject greenHouse,string currentBuildingType)
+    public void CheckGreenHouse(GameObject greenHouse, string currentBuildingType)
     {
-        //Safety check
-        if (currentBuildingType != "GreenHouse") return;
+        if (currentBuildingType != "GreenHouse" || greenHouse == null) return;
 
-        if (greenHouse == null)
-        {
-            Debug.LogError("Passed Greenhouse GameObject is null!");
-            return;
-        }
+        if (currentGreenhouseObj == greenHouse) return;
 
-        // 1. Same building selected again -> do nothing
-        if (currentGreenhouseObj == greenHouse)
-        {
-            Debug.Log("Same building re-selected. Keeping current state.");
-            return;
-        }
-
-        // 2. New building selected -> update target reference
         currentGreenhouseObj = greenHouse;
         greenHouseScript = greenHouse.GetComponent<GreenHouse>();
 
@@ -94,22 +106,23 @@ public class ItemList : MonoBehaviour
             toggleButtons = GetComponentsInChildren<Toggle>(true);
         }
 
-        // Set local toggle count to this building's saved list count
         currentToggleActive = greenHouseScript.selectedIndices.Count;
 
-        // 3. Rebind and refresh UI for each toggle
+        // Refresh description toggle UI for the newly selected building
+        if (ingredientDescription != null && ingredientDescription.currentIngredient != null)
+        {
+            ingredientDescription.ChangeDescription(ingredientDescription.currentIngredient, greenHouseScript);
+        }
+
         for (int i = 0; i < toggleButtons.Length; i++)
         {
             int index = i;
 
-            // Remove old listeners so opening UI doesn't re-trigger events
             toggleButtons[i].onValueChanged.RemoveAllListeners();
 
-            // Check if THIS greenhouse saved this index
             bool isSavedInBuilding = greenHouseScript.selectedIndices.Contains(index);
             toggleButtons[i].SetIsOnWithoutNotify(isSavedInBuilding);
 
-            // Add new listener for UI clicks
             toggleButtons[i].onValueChanged.AddListener((bool state) =>
             {
                 OnToggleChanged(index, state);

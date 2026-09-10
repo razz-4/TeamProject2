@@ -3,8 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public struct CountDownTimer
 {
-    [SerializeField] private float Duration;
-    [SerializeField] private float CurrentTime;
+    [SerializeField] public float Duration;
+    [SerializeField] public float CurrentTime;
     public bool IsFinished => CurrentTime <= 0f;
 
     public CountDownTimer(float duration)

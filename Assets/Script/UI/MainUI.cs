@@ -66,7 +66,7 @@ public class MainUI : MonoBehaviour
     {
         Debug.Log(building.buildingName);
         var buildingTemplate = building.buildingPrefab;
-        buildingTemplate = Instantiate(buildingTemplate, new Vector3(0, 0, 0), Quaternion.Euler(-90,0,0));
+        buildingTemplate = Instantiate(buildingTemplate, new Vector3(0, 0, 0), buildingTemplate.transform.rotation); //, Quaternion.Euler(0,0,0)
 
         var bc = buildingTemplate.GetComponent<BuildingControl>();
         if (bc != null && BuildGrid.Instance != null)

@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Divinorium
   id: 0005
   icon: {fileID: 765538341, guid: efb37c55dd1b8a5449fa16c7e0c3f84d, type: 3}
-  quantity: 0
+  quantity: 802
   value: 1
   perSecond: 50
   currentPerSecond: 12

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Tobaccum
   id: 0004
-  icon: {fileID: 21300000, guid: f5553345c1a1ae941a934644806ed7eb, type: 3}
-  quantity: 0
+  icon: {fileID: -2003130815, guid: 3b68ae021d767e140b8ec008dc1643c1, type: 3}
+  quantity: 1000
   value: 1
   perSecond: 10
   currentPerSecond: 9

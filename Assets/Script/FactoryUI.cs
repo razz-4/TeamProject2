@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class FactoryUI : MonoBehaviour
 {
     [Header("List Visual Trackers")]
-    private List<GameObject> drugsPrefabList = new List<GameObject>(); // List of drug prefab just in case
+    private List<GameObject> drugsPrefabList = new List<GameObject>();
     private List<GameObject> ingredientPrefabList = new List<GameObject>();
     private List<Toggle> toggleButtons = new List<Toggle>();
 
@@ -17,7 +17,7 @@ public class FactoryUI : MonoBehaviour
     public GameObject ingredientPrefab;
 
     [Header("UI Containers")]
-    [SerializeField] private Transform scrollMenu; // Assign ItemListFactory directly in Inspector
+    [SerializeField] private Transform scrollMenu;
     [SerializeField] private Transform ingredientList;
     [SerializeField] public Toggle sytesizeButton;
     [SerializeField] private ToggleGroup toggleGroup;
@@ -29,44 +29,82 @@ public class FactoryUI : MonoBehaviour
     private int currentDrugindex = -1;
     private IngredientRequirement[] currentIngredientRequirement;
     private DrugToggle currentToggle;
+
+    // Static memory of the globally last selected DrugToggle across panel open/closes
+    public static DrugToggle lastSelectedToggle;
+
     #region Unity Callbacks
+
+    private void OnEnable()
+    {
+        RestoreLastSelection();
+    }
 
     private void Start()
     {
         SpawnDrugListUI();
 
-        sytesizeButton.onValueChanged.AddListener((bool state) =>
+        sytesizeButton.onValueChanged.RemoveAllListeners();
+        sytesizeButton.onValueChanged.AddListener(OnSynthesizeToggleChanged);
+
+        // Restore selection if Start runs after OnEnable on initialization
+        RestoreLastSelection();
+    }
+
+    private void RestoreLastSelection()
+    {
+        // 1. Re-select the last chosen toggle if it exists
+        if (lastSelectedToggle != null)
         {
-            if (state)
+            Toggle toggleComp = lastSelectedToggle.GetComponent<Toggle>();
+            if (toggleComp != null)
             {
-                if(currentToggle == null)
-                {
-                    Debug.LogError("Current Toggle is Null");
-                    return;
-                }
-                EventManager.Instance.generateItems += ProduceItem;
-
-                currentToggle.isProducing = true;
-                currentFactoryScript.selectedDrugs.Add(currentToggle.ID);
-                Debug.Log(currentToggle.isProducing);
-
-                foreach (int drug in currentFactoryScript.selectedDrugs)
-                {
-                    Debug.Log(drug);
-                }
+                toggleComp.isOn = true;
+                return;
             }
-            else
+        }
+
+        // 2. Fallback to index 0 if nothing was ever selected before
+        if (toggleButtons != null && toggleButtons.Count > 0 && toggleButtons[0] != null)
+        {
+            toggleButtons[0].isOn = true;
+        }
+    }
+
+    private void OnSynthesizeToggleChanged(bool state)
+    {
+        if (state)
+        {
+            Debug.Log("Start");
+            if (currentToggle == null)
+            {
+                Debug.LogError("Current Toggle is Null");
+                return;
+            }
+
+            currentToggle.isProducing = true;
+
+            if (currentFactoryScript != null)
+            {
+                currentFactoryScript.SelectDrugToProduce(currentDrug, currentToggle.ID);
+            }
+
+            Debug.Log(currentToggle.isProducing);
+        }
+        else
+        {
+            if (currentToggle != null)
             {
                 currentToggle.isProducing = false;
-                currentFactoryScript.selectedDrugs.Remove(currentToggle.ID);
-                Debug.Log(currentToggle.isProducing);
-
-                foreach (int drug in currentFactoryScript.selectedDrugs)
-                {
-                    Debug.Log(drug);
-                }
             }
-        });
+
+            if (currentFactoryScript != null && currentToggle != null)
+            {
+                currentFactoryScript.CancelDrug(currentDrug, currentToggle.ID);
+            }
+
+            Debug.Log(currentToggle != null ? currentToggle.isProducing : false);
+        }
     }
 
     private void Update()
@@ -104,12 +142,12 @@ public class FactoryUI : MonoBehaviour
         }
 
         drugsPrefabList.Clear();
+        toggleButtons.Clear();
 
         foreach (Drug drug in ItemManager.Instance.drugs)
         {
             if (drug != null)
             {
-                // Get reference for each toggle button (LOGIC ERROR ONLY GET FIRST)
                 GameObject spawnedDrug = Instantiate(drugsPrefab, scrollMenu);
                 ToggleDrugPrefab currentDrugPrefab = spawnedDrug.GetComponent<ToggleDrugPrefab>();
                 Toggle toggleComponent = spawnedDrug.GetComponent<Toggle>();
@@ -117,12 +155,11 @@ public class FactoryUI : MonoBehaviour
                 toggleButtons.Add(toggleComponent);
                 drugsPrefabList.Add(spawnedDrug);
 
-                // Assign drugs scriptable object into toggle button
                 currentDrugPrefab.drugAssigned = drug;
             }
         }
 
-        for (int i = 0; i < toggleButtons.ToArray().Length; i++)
+        for (int i = 0; i < toggleButtons.Count; i++)
         {
             DrugToggle drugToggle = drugsPrefabList[i].GetComponent<DrugToggle>();
             drugToggle.ID = i;
@@ -132,7 +169,6 @@ public class FactoryUI : MonoBehaviour
         {
             if (ingredient != null)
             {
-                // Preload all ingredient for reusing
                 GameObject spawnedIngredient = Instantiate(ingredientPrefab, ingredientList);
                 IngredientQuantity currentIngredientPrefab = spawnedIngredient.GetComponent<IngredientQuantity>();
 
@@ -149,21 +185,23 @@ public class FactoryUI : MonoBehaviour
 
     public void selectDrug(IngredientRequirement[] ingredientRequirement, DrugToggle toggle)
     {
-        // Hide all ingredients currently on screen
         foreach (GameObject ingredientObj in ingredientPrefabList)
         {
             ingredientObj.SetActive(false);
         }
 
         currentIngredientRequirement = ingredientRequirement;
-
-        foreach (IngredientRequirement ingredientRequirement1 in currentIngredientRequirement)
-        {
-            Debug.Log(ingredientRequirement1.amount);
-        }
-
         currentToggle = toggle;
-        // showIngredientList();
+
+        // Remember this toggle globally as the last selected toggle
+        if (toggle != null)
+        {
+            lastSelectedToggle = toggle;
+            if (toggle.TryGetComponent(out ToggleDrugPrefab prefab))
+            {
+                currentDrug = prefab.drugAssigned;
+            }
+        }
     }
 
     public void showIngredientList()
@@ -189,15 +227,12 @@ public class FactoryUI : MonoBehaviour
         }
     }
 
-public void checkFactoryUI(GameObject building, string currentBuildingType)
+    public void checkFactoryUI(GameObject building, string currentBuildingType)
     {
         if (currentBuildingType != "Factory" || building == null) return;
 
         currentFactoryObj = building;
         currentFactoryScript = currentFactoryObj.GetComponent<Factory>();
-
-        // Deselect current toggle UI selection visuals
-        if (toggleGroup != null) toggleGroup.SetAllTogglesOff();
 
         // Restore factory state for all items
         for (int i = 0; i < drugsPrefabList.Count; i++)
@@ -207,11 +242,10 @@ public void checkFactoryUI(GameObject building, string currentBuildingType)
             drugToggle.isProducing = isSavedInBuilding;
         }
 
-        currentToggle = null;
-        currentIngredientRequirement = null;
-        sytesizeButton.SetIsOnWithoutNotify(false);
+        // Re-apply selection to the remembered toggle
+        RestoreLastSelection();
     }
-    
+
     private void ProduceItem()
     {
         ItemManager.Instance.synthesize(currentDrug);

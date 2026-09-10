@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Fungi
   id: 0003
-  icon: {fileID: -1972365183, guid: e3901f5e072f62b40b1a23d8671b6549, type: 3}
-  quantity: 0
+  icon: {fileID: -2133191381, guid: 3cb1b53405f4b3347a280f57778320e7, type: 3}
+  quantity: 592
   value: 1
   perSecond: 10
   currentPerSecond: 6
