@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Hallucine
   id: 0005
-  icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
-  quantity: 100
+  icon: {fileID: -1143484792, guid: af07d5a2323867f4ea731d640600b7c3, type: 3}
+  quantity: 68
   value: 13
   perSecond: 6
   currentPerSecond: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 9b91c1368e4339b46b9163df45f64e27, type: 2}
-    amount: 16
+    amount: 5

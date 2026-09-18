@@ -19,6 +19,4 @@ MonoBehaviour:
   value: 9
   perSecond: 12
   currentPerSecond: 20
-  recipe:
-  - ingredient: {fileID: 11400000, guid: ddfc4e8549f36ca4d84f4e603fff1cda, type: 2}
-    amount: 13
+  recipe: []

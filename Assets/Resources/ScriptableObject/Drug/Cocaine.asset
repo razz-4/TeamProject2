@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Coak
   id: 0002
-  icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
+  icon: {fileID: -1951486609, guid: e774972535b498e4c9cc0e8d20677c4d, type: 3}
   quantity: 100
   value: 19
   perSecond: 11
   currentPerSecond: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 90d19bea77958e74682be7bca8dd4a02, type: 2}
-    amount: 2
-  - ingredient: {fileID: 11400000, guid: c0aafecb71f06e34fa855c129d0ce88a, type: 2}
     amount: 3

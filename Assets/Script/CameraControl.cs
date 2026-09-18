@@ -6,40 +6,36 @@ using DevelopersHub.ClashOfWhatecer;
 
 public class CameraControl : MonoBehaviour
 {
-
     MobileAction inputs;
     private bool moving;
 
-    //Movement Speed
-    //moveSpeedx = 11.25 moveSpeedy = 40 
+    [Header("Movement Settings")]
     [SerializeField] float moveSpeedx = 1.0f;
     [SerializeField] float moveSpeedy = 1.0f;
-    [SerializeField] private float minZoom = 2f;
-    [SerializeField] private float maxZoom = 15f;
-    [SerializeField] float zoomSpeed;
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float cameraRadius = 0.5f;
 
+    [Header("Zoom Settings")]
+    [SerializeField] private float minZoom = 2f;
+    [SerializeField] private float maxZoom = 15f;
+    [SerializeField] float zoomSpeed = 0.05f;
+
+    [Header("References")]
     [SerializeField] CinemachineCamera cinemachine;
-    
+
     private void Awake()
     {
-        //create input Object
         inputs = new MobileAction();
         moving = false;
-
     }
 
     private void OnEnable()
     {
         inputs.Enable();
 
-        //moving = true if touched and false if let go
-        inputs.Mobile.Pressed.started += _ => checkPointer();
+        inputs.Mobile.Pressed.started += _ => CheckPointer();
         inputs.Mobile.Pressed.canceled += _ => moving = false;
-
-        inputs.Mobile.Scroll.performed += ctx => zoomCamera(ctx.ReadValue<Vector2>());
-
+        inputs.Mobile.Scroll.performed += ctx => ZoomCamera(ctx.ReadValue<Vector2>());
     }
 
     private void OnDisable()
@@ -47,75 +43,102 @@ public class CameraControl : MonoBehaviour
         inputs.Disable();
     }
 
-    bool IsPointerOverUI()
+    private bool IsPointerOverUI()
     {
         if (EventSystem.current == null) return false;
 
-        // Check Touchscreen touches (Mobile)
+        // Check active touch instances on mobile
         if (Touchscreen.current != null && Touchscreen.current.touches.Count > 0)
         {
-            var touch = Touchscreen.current.primaryTouch;
-            return EventSystem.current.IsPointerOverGameObject(touch.touchId.ReadValue());
+            foreach (var touch in Touchscreen.current.touches)
+            {
+                if (touch.press.isPressed && EventSystem.current.IsPointerOverGameObject(touch.touchId.ReadValue()))
+                {
+                    return true;
+                }
+            }
         }
 
-        // Fallback for Mouse (PC / Editor)
+        // Fallback for Mouse (PC / Unity Editor)
         return EventSystem.current.IsPointerOverGameObject();
     }
 
-    void checkPointer()
+    private void CheckPointer()
     {
+        // Don't enable camera drag if touching UI
         if (IsPointerOverUI())
         {
             moving = false;
             return;
         }
-        else
-        {
-            moving = true;
-        }
+
+        moving = true;
     }
-    //only for mouse input but not touchscreen
-    void zoomCamera(Vector2 scrollDelta)
+
+    private void ZoomCamera(Vector2 scrollDelta)
     {
         if (IsPointerOverUI()) return;
 
         float zoomAmount = scrollDelta.y;
-
         float newSize = cinemachine.Lens.OrthographicSize - (zoomAmount * zoomSpeed);
-
-        // Clamp the size between your min and max bounds
         cinemachine.Lens.OrthographicSize = Mathf.Clamp(newSize, minZoom, maxZoom);
-
     }
-    void moveCamera()
+
+    private void PinchZoom()
     {
-        
+        if (Touchscreen.current == null) return;
+
+        var touchscreen = Touchscreen.current;
+        var touch0 = touchscreen.touches[0];
+        var touch1 = touchscreen.touches[1];
+
+        if (!touch0.press.isPressed || !touch1.press.isPressed) return;
+
+        // Abort pinch zoom if any finger is touching UI
+        if (IsPointerOverUI()) return;
+
+        Vector2 position0 = touch0.position.ReadValue();
+        Vector2 position1 = touch1.position.ReadValue();
+
+        float currentDistance = Vector2.Distance(position0, position1);
+
+        Vector2 previousPosition0 = position0 - touch0.delta.ReadValue();
+        Vector2 previousPosition1 = position1 - touch1.delta.ReadValue();
+
+        float previousDistance = Vector2.Distance(previousPosition0, previousPosition1);
+        float delta = currentDistance - previousDistance;
+
+        float newSize = cinemachine.Lens.OrthographicSize - (delta * zoomSpeed);
+        cinemachine.Lens.OrthographicSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+    }
+
+    private void MoveCamera()
+    {
         if (BuildingControl.IsBeingDragged)
         {
-            Debug.Log("Camera blocked by IsBeingDragged = true");
             return;
         }
 
-        //CAMERA STILL KEEP MOVING EVEN IF NOT DRAGGING
         if (moving)
         {
+            // Safeguard: stop moving if dragging onto UI mid-gesture
+            if (IsPointerOverUI())
+            {
+                moving = false;
+                return;
+            }
+
             Vector2 move = inputs.Mobile.MoveDelta.ReadValue<Vector2>();
             if (move != Vector2.zero)
             {
-                //Get the percentage of screen rather than pixel units
                 move.x /= Screen.width;
                 move.y /= Screen.height;
 
-                // Grab the current zoom level to scale our movement
                 float currentZoom = cinemachine.Lens.OrthographicSize;
-
-                // Multiply the movement by the currentZoom so it speeds up when zoomed out 
-                // and slows down when zoomed in
                 Vector3 moveDirection = (-transform.right * move.x * moveSpeedx * currentZoom) + (-transform.forward * move.y * moveSpeedy * currentZoom);
 
                 float distance = moveDirection.magnitude;
 
-                // Only move if there is no wall in the target path
                 if (!Physics.SphereCast(transform.position, cameraRadius, moveDirection.normalized, out RaycastHit hit, distance, wallLayer))
                 {
                     transform.position += moveDirection;
@@ -124,11 +147,20 @@ public class CameraControl : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
-        moveCamera();
-        
+        // Active 2-finger check for mobile pinch zoom
+        if (Touchscreen.current != null &&
+            Touchscreen.current.touches.Count >= 2 &&
+            Touchscreen.current.touches[0].press.isPressed &&
+            Touchscreen.current.touches[1].press.isPressed)
+        {
+            moving = false; // Disable camera panning during pinch
+            PinchZoom();
+        }
+        else
+        {
+            MoveCamera();
+        }
     }
-
-
 }
