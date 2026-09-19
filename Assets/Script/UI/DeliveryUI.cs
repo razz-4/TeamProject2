@@ -41,6 +41,8 @@ public class DeliveryUI : MonoBehaviour
         buyerNameLabel = root.Q<Label>("NameLabel");
         totalValueLabel = root.Q<Label>("ValueLabel");
 
+        deliveryUIPanel.AddToClassList("SettingUp");
+
         sellBtn.RegisterCallback<ClickEvent>(OnSellPressed);
         closeBtn.RegisterCallback<ClickEvent>(OnClosePressed);
 
@@ -166,7 +168,7 @@ public class DeliveryUI : MonoBehaviour
 
     private void OnClosePressed(ClickEvent evt)
     {
-        deliveryUIPanel.style.display = DisplayStyle.None;
+        deliveryUIPanel.AddToClassList("SettingUp");
         SoundManager.PlaySound(SoundType.UI);
     }
 
