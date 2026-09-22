@@ -33,7 +33,7 @@ public class StorageUI : MonoBehaviour
 
         EventManager.Instance.OnInventoryChanged += RefreshLists;
 
-        
+        storageUIPanel.AddToClassList("MainPanelUp");
 
         SetupListView(ingredientListView, ItemManager.Instance.ingredients);
         SetupListView(drugListView, ItemManager.Instance.drugs);
@@ -86,13 +86,13 @@ public class StorageUI : MonoBehaviour
 
     void CloseStorageUI(ClickEvent evt)
     {
-        storageUIPanel.style.display = DisplayStyle.None;
+        storageUIPanel.AddToClassList("MainPanelUp");
         SoundManager.PlaySound(SoundType.UI);
     }
 
     void OpenStorageUI(ClickEvent evt)
     {
-        storageUIPanel.style.display = DisplayStyle.Flex;
+        storageUIPanel.RemoveFromClassList("MainPanelUp");
         SoundManager.PlaySound(SoundType.UI);
     }
 }

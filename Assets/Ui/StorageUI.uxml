@@ -2,8 +2,9 @@
     <Style src="project://database/Assets/Ui/UI%20USS/StrorageUI.uss?fileID=7433441132597879392&amp;guid=ac6ad14ae75ddc34482a05582677883d&amp;type=3#StrorageUI"/>
     <Style src="project://database/Assets/Ui/UI%20USS/tabs.uss?fileID=7433441132597879392&amp;guid=a06c8e8998b43964d97642a3297e6f5c&amp;type=3#tabs"/>
     <Style src="project://database/Assets/Ui/UI%20USS/UIDesigns.uss?fileID=7433441132597879392&amp;guid=04b8dc8cb9869c841bb514368a127c05&amp;type=3#UIDesigns"/>
+    <Style src="project://database/Assets/Ui/UI%20USS/PanelAnimations.uss?fileID=7433441132597879392&amp;guid=830ea111bacbe2c4f81cb6c8c1d5afb4&amp;type=3#PanelAnimations"/>
     <ui:VisualElement picking-mode="Ignore" style="flex-grow: 1; display: flex;">
-        <ui:VisualElement name="StorageUiPanel" class="mainPanel" style="flex-grow: 1; top: 50%; left: 50%; translate: -50% -50% 3px; max-width: 79%; max-height: 75%; background-color: rgba(0, 0, 0, 0); display: none; padding-left: 2.5%; padding-right: 2.5%; padding-top: 17%; padding-bottom: 2%;">
+        <ui:VisualElement name="StorageUiPanel" class="mainPanel MainPanelUp">
             <ui:VisualElement name="StorageTopPanel" style="flex-grow: 1; min-height: 10%; max-height: 10%; background-color: rgba(0, 0, 0, 0); padding-top: 1%; padding-right: 3%; padding-bottom: 1%; padding-left: 7%; flex-direction: row; background-image: url(&quot;project://database/Assets/ArtAssets/UISprite/UI%201.png?fileID=1977660974&amp;guid=bb0eb52fcf641a0489c974d9638d0592&amp;type=3#Menu_2&quot;);">
                 <ui:VisualElement name="LeftPanel" style="flex-grow: 1;">
                     <ui:Label text="Storage" name="StorageLabel" style="color: rgb(255, 255, 255); font-size: 20px;"/>

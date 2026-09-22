@@ -58,6 +58,7 @@ public class UIBuildingManager : MonoBehaviour
     {
         root = DeliveryUI.rootVisualElement;
         DeliveryUIPanel = root.Q<VisualElement>("DeliveryUIPanel");
+        DeliveryUIPanel.AddToClassList("SettingUp");
     }
     public void HideUI()
     {
@@ -128,7 +129,8 @@ public class UIBuildingManager : MonoBehaviour
                 break;
 
             case "Delivery":
-                DeliveryUIPanel.style.display = DisplayStyle.Flex;
+                DeliveryUIPanel.RemoveFromClassList("SettingUp");
+
                 //Add Delivery menu...
                 break;
 
