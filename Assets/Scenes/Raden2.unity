@@ -1548,12 +1548,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1597,7 +1597,7 @@ GameObject:
   - component: {fileID: 506812624}
   - component: {fileID: 506812623}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: ThirdAreaVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2692,7 +2692,7 @@ GameObject:
   - component: {fileID: 870164470}
   - component: {fileID: 870164469}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: FourthAreaVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3758,7 +3758,7 @@ GameObject:
   - component: {fileID: 1238584160}
   - component: {fileID: 1238584159}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: SecondAreaVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5560,7 +5560,7 @@ MonoBehaviour:
     isUnlocked: 0
     visualIndicator: {fileID: 870164468}
   playerGold: 500
-  buyButtonPrefab: {fileID: 5347101947657630111, guid: 1023504b35f35fd4396e682d2d2fef03, type: 3}
+  buyButtonPrefab: {fileID: 3812292737758215744, guid: 461be11b9c0645f4db9682378eee9665, type: 3}
 --- !u!4 &1757376420
 Transform:
   m_ObjectHideFlags: 0
