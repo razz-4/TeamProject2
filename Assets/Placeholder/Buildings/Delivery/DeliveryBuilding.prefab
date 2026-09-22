@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3954762284215240691}
   - component: {fileID: 8205539633537546595}
   - component: {fileID: 719844481180197468}
+  - component: {fileID: -3121032359865275721}
   m_Layer: 3
   m_Name: DeliveryBuilding
   m_TagString: Untagged
@@ -155,3 +156,18 @@ MonoBehaviour:
   _baseArea: {fileID: 0}
   _levels: []
   spawnGridPosition: {x: 40, y: 45}
+--- !u!114 &-3121032359865275721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6391057333293584943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b242c9c391f3cd944838ab3d206ae627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingEditGlow
+  _renderers: []
+  _pulseSpeed: 2
+  _maxDarkenAmount: 0.8

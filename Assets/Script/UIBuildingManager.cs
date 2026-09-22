@@ -22,6 +22,9 @@ public class UIBuildingManager : MonoBehaviour
     private string currentBuildingType;
     private BuildingClass currentBuildingClass;
 
+    //Tutorial
+    private bool TutorialDone = false;
+
     private void Awake()
     {
         
@@ -91,7 +94,8 @@ public class UIBuildingManager : MonoBehaviour
             if (levelUpButton != null) levelUpButton.SetActive(false);
         }
 
-
+        //Tutrorial section
+        if (!TutorialDone) { TutorialManager.Instance.SetGlowRingPosition(1); TutorialDone = true; }
     }
 
     //Change the button Text

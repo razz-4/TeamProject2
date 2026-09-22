@@ -288,9 +288,9 @@ RectTransform:
   - {fileID: 1793184347}
   m_Father: {fileID: 996442512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 305, y: -78.0075}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72647894
@@ -1005,6 +1005,8 @@ MonoBehaviour:
   glowingRingData:
   - locationName: Action Button
     position: {x: -220, y: -683, z: 0}
+  - locationName: Open Building UI
+    position: {x: 61, y: -244, z: 0}
 --- !u!1 &381410784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,7 +3106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &996442512
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3125,7 +3127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 267.06137}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 487}
   m_SizeDelta: {x: 800, y: 156.015}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &996442513
@@ -4220,9 +4222,9 @@ RectTransform:
   - {fileID: 1616318997}
   m_Father: {fileID: 996442512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 615, y: -78.0075}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1353552258
@@ -4689,9 +4691,9 @@ RectTransform:
   - {fileID: 468782967}
   m_Father: {fileID: 996442512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 160, y: -78.0075}
   m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1428425327
@@ -5106,11 +5108,20 @@ MonoBehaviour:
   dialogueParts:
   - partName: Part 1
     lines:
-    - Hello, welcome to Drug Empire
-    - Is this your first time playing?
+    - Welcome to Drug Empire
+    - You are destined to be the next Heisenburger and become a drug lord
+    - But first you will need ingredients to create drugs.
+    - Go ahead and build yourself a greenhouse.
   - partName: Part 2
     lines:
-    - This is part 2.
+    - Good job.
+    - Now tap on the greenhouseand go ahead a plant something
+  - partName: Part 3
+    lines:
+    - Now that you have some ingredients its time to cook!
+    - Here are some cash for you to build a factory.
+    - Same as the greenhouse just tap on it and select any drugs you want to create.
+    - Given that you have enough ingredients.
   - partName: 
     lines: []
 --- !u!114 &1541249811
@@ -6278,9 +6289,9 @@ RectTransform:
   - {fileID: 1389476099}
   m_Father: {fileID: 996442512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 460, y: -78.0075}
   m_SizeDelta: {x: 120, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1955904830
@@ -6330,6 +6341,18 @@ MonoBehaviour:
       - m_Target: {fileID: 645287646}
         m_TargetAssemblyTypeName: UIBuildingManager, Assembly-CSharp
         m_MethodName: OpenUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 364651371}
+        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
+        m_MethodName: GlowingRingPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479063bd79d9cd44d983b41edbc75335, type: 3}
   m_Name: Khat
   m_EditorClassIdentifier: Assembly-CSharp::Drug
-  itemName: Kiss
+  itemName: Khat
   id: 0008
   icon: {fileID: 644867301, guid: 5cad1a9bba9083046831ddeeeba2fa61, type: 3}
   quantity: 19

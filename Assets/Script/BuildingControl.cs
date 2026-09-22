@@ -248,7 +248,7 @@ namespace DevelopersHub.ClashOfWhatecer
                 BuildingControl bc = hit.collider.GetComponentInParent<BuildingControl>();
                 if (bc == this)
                 {
-                    BuildingModeManager.SelectBuilding(this);
+                    BuildingModeControl.SelectBuilding(this);
                     IsBeingDragged = true;
                     _isDragging = true;
                     StartMovingOnGrid();

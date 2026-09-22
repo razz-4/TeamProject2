@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Building
   buildingName: Delivery
   icon: {fileID: 1393947605, guid: bb0eb52fcf641a0489c974d9638d0592, type: 3}
-  cost: 0
+  cost: 300
   id: 3
   buildingPrefab: {fileID: 6391057333293584943, guid: 0648afca4168fcb4e88797e09382dd3b, type: 3}

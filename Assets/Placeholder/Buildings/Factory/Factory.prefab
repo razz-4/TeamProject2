@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5068660245402348734}
   - component: {fileID: 8356013150986980784}
   - component: {fileID: 9090280690735532121}
+  - component: {fileID: 479514888205579760}
   m_Layer: 3
   m_Name: Factory
   m_TagString: Untagged
@@ -205,6 +206,21 @@ MonoBehaviour:
   popUpPrefab: {fileID: 7803559214441295009, guid: 46663ab75a68e424d9d6932d5e17b1e6, type: 3}
   popUpSpawnPoint: {fileID: 0}
   defaultOffset: {x: 0, y: 4, z: 0}
+--- !u!114 &479514888205579760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535503830481214260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b242c9c391f3cd944838ab3d206ae627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingEditGlow
+  _renderers: []
+  _pulseSpeed: 2
+  _maxDarkenAmount: 0.8
 --- !u!1001 &8721928387110490148
 PrefabInstance:
   m_ObjectHideFlags: 0

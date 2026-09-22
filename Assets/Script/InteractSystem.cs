@@ -30,7 +30,7 @@ public class InteractSystem : MonoBehaviour
 
     private void onInteract(InputAction.CallbackContext ctx)
     {
-        //if (BuildingControl.IsBuildingMode) return;
+        if (BuildingControl.IsBuildingMode) return;
         // Check if the tap landed on a UI element
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {

@@ -71,25 +71,46 @@ public class MainUI : MonoBehaviour
 
     private void OnBuildingSlotClicked(Building building)
     {
-        var buildingTemplate = building.buildingPrefab;
-        if(!GameManager.Instance.SpendGold(building.cost))
+        // Check if player has enough gold first.
+        if (!GameManager.Instance.SpendGold(building.cost))
         {
             return;
         }
-        buildingTemplate = Instantiate(buildingTemplate, new Vector3(0, 0, 0), buildingTemplate.transform.rotation); //, Quaternion.Euler(0,0,0)
 
-        var bc = buildingTemplate.GetComponent<BuildingControl>();
-        if (bc != null && BuildGrid.Instance != null)
+        // Spawn the building.
+        GameObject spawnedBuilding = Instantiate(building.buildingPrefab,Vector3.zero,building.buildingPrefab.transform.rotation);
+
+        // Get BuildingControl.
+        BuildingControl buildingControl = spawnedBuilding.GetComponent<BuildingControl>();
+
+        if (buildingControl == null)
         {
-            
-            //bc.PlaceOnGrid(0, 0);
-            
-            BuildingControl.IsBuildingMode = true;
-            SoundManager.PlaySound(SoundType.BUILD);
+            Debug.LogError("Spawned building does not have BuildingControl!");
 
-
+            Destroy(spawnedBuilding);
+            return;
         }
+
+        if (BuildGrid.Instance == null)
+        {
+            Debug.LogError("BuildGrid.Instance is null!" );
+
+            Destroy(spawnedBuilding);
+            return;
+        }
+
+        // Enter building/edit mode.
+        BuildingControl.IsBuildingMode = true;
+
+        // Select the newly spawned building.
+        // This also starts its black pulsing glow.
+        BuildingModeControl.SelectNewBuilding(buildingControl);
+
+        SoundManager.PlaySound(SoundType.BUILD);
+
+        Debug.Log("Spawned and selected building: " + spawnedBuilding.name );
     }
+
 
     private void onBuildingBtnPress(ClickEvent evt)
     {
@@ -109,7 +130,7 @@ public class MainUI : MonoBehaviour
         SoundManager.PlaySound(SoundType.UI);
 
         //Tutorial part
-        if (!dialogPlayed) { TutorialManager.Instance.GoNextDialog(); }
+        if (!dialogPlayed) { TutorialManager.Instance.GoNextDialog(); dialogPlayed = true; }
     }
     private void onShopBtnPress(ClickEvent evt)
     {

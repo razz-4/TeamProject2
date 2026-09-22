@@ -61,6 +61,12 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    public void SetGlowRingPosition(int index)
+    {
+        glowingRing.SetPosition(glowingRingData[index].position);
+        glowingRing.ShowRing();
+    }
+
     public void GlowingRingPressed()
     {
         glowingRing.HideRing();
