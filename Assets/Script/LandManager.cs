@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using TMPro;
 public class LandManager : MonoBehaviour
 {
     public static LandManager Instance { get; private set; }
@@ -116,9 +116,9 @@ public class LandManager : MonoBehaviour
         Vector3 screenPos = Camera.main.WorldToScreenPoint(centerWorld);
         currentBuyButtonInstance.transform.position = screenPos;
 
-        Text btnText = currentBuyButtonInstance.GetComponentInChildren<Text>();
+        TextMeshProUGUI btnText = currentBuyButtonInstance.GetComponentInChildren<TextMeshProUGUI>();
         if (btnText != null)
-            btnText.text = $"buy {p.plotName}\n{p.cost}coin";
+            btnText.text = $"Buy\n{p.cost} coin";
 
         Button btn = currentBuyButtonInstance.GetComponent<Button>();
         btn.onClick.RemoveAllListeners();

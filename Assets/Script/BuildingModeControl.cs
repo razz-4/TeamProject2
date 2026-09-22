@@ -91,15 +91,31 @@ public class BuildingModeManager : MonoBehaviour
 
     private void Update()
     {
-
-        if (BuildingControl.IsBuildingMode && !BuildingControl.IsBeingDragged)
+        if (_selectedBuilding != null && Camera.main != null)
         {
-
+            UpdateButtonPositions();
         }
     }
 
+    private void UpdateButtonPositions()
+    {
+        Vector3 worldPos = _selectedBuilding.transform.position;
 
-    
+        worldPos += new Vector3(0f, 0f, 0f); 
+
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+
+        if (screenPos.z < 0f)
+        {
+            Confirmbtm.gameObject.SetActive(false);
+            Cancelbtm.gameObject.SetActive(false);
+            return;
+        }
+
+        Confirmbtm.transform.position = screenPos + new Vector3(-80f, -80f, 0f);
+        Cancelbtm.transform.position = screenPos + new Vector3(80f, -80f, 0f);
+    }
+
 
 
 }
