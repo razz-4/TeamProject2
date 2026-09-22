@@ -956,6 +956,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313752195}
   m_CullTransparentMesh: 1
+--- !u!1 &364651369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 364651370}
+  - component: {fileID: 364651371}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &364651370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364651369}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 936008516}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &364651371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364651369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4895d725b476640b71816fe55500d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialManager
+  glowingRing: {fileID: 1239593027}
+  dialog: {fileID: 1541249810}
+  glowingRingData:
+  - locationName: Action Button
+    position: {x: -220, y: -683, z: 0}
 --- !u!1 &381410784
 GameObject:
   m_ObjectHideFlags: 0
@@ -2960,6 +3009,7 @@ Transform:
   - {fileID: 1191352719}
   - {fileID: 1381841983}
   - {fileID: 1033766213}
+  - {fileID: 364651370}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980847891
@@ -3823,6 +3873,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1239593025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2663224522723973021, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+  m_PrefabInstance: {fileID: 394431272389400769}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1239593026
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239593025}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &1239593027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2142835247983082356, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+  m_PrefabInstance: {fileID: 394431272389400769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239593025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8d9e626b227ae41bde6dc8faca98a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1280446706
 GameObject:
   m_ObjectHideFlags: 0
@@ -5024,12 +5102,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dialog
   textComponent: {fileID: 771642819}
-  lines:
-  - Welcome to Drug Empire!
-  - Im going to teach you how to play.
-  - First, you need a greenhouse in order to get ingredients.
-  - Click on the building button and click on the greenhouse to place the building.
   textSpeed: 0.05
+  dialogueParts:
+  - partName: Part 1
+    lines:
+    - Hello, welcome to Drug Empire
+    - Is this your first time playing?
+  - partName: Part 2
+    lines:
+    - This is part 2.
+  - partName: 
+    lines: []
 --- !u!114 &1541249811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5675,7 +5758,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!224 &1790843630
 RectTransform:
@@ -6804,6 +6887,18 @@ PrefabInstance:
       value: 39.798
       objectReference: {fileID: 0}
     - target: {fileID: 2147417185537339045, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.3333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147417185537339045, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.3333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147417185537339045, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.3333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147417185537339045, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -6833,11 +6928,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2147417185537339045, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0004768372
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2147417185537339045, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00038146976
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2147417185537339045, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6857,12 +6952,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2663224522723973021, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435741912482421334, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435741912482421334, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435741912482421334, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104025157582811339, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+      propertyPath: endScale
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2663224522723973021, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1239593026}
   m_SourcePrefab: {fileID: 100100000, guid: 3891e204fd75b4c4e924c4524bedae42, type: 3}
 --- !u!1001 &5186999016005189641
 PrefabInstance:

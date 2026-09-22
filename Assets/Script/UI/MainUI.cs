@@ -18,6 +18,10 @@ public class MainUI : MonoBehaviour
     private VisualElement shopPanel;
 
     private ScrollView buildingScrollView;
+
+    //Variables for TutorialManager
+    private bool usedOnce = false;
+    private bool dialogPlayed = false;
     void Start()
     {
         root = uiDocument.rootVisualElement;
@@ -82,6 +86,8 @@ public class MainUI : MonoBehaviour
             
             BuildingControl.IsBuildingMode = true;
             SoundManager.PlaySound(SoundType.BUILD);
+
+
         }
     }
 
@@ -89,12 +95,21 @@ public class MainUI : MonoBehaviour
     {
         buildingPanel.style.display = DisplayStyle.Flex;
         SoundManager.PlaySound(SoundType.UI);
+
+        if (!usedOnce) 
+        {
+            TutorialManager.Instance.GlowingRingPressed();
+            usedOnce = true;
+        }
     }
 
     private void onBuildingCloseBtnPress(ClickEvent evt)
     {
         buildingPanel.style.display = DisplayStyle.None;
         SoundManager.PlaySound(SoundType.UI);
+
+        //Tutorial part
+        if (!dialogPlayed) { TutorialManager.Instance.GoNextDialog(); }
     }
     private void onShopBtnPress(ClickEvent evt)
     {

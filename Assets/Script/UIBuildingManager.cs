@@ -89,6 +89,8 @@ public class UIBuildingManager : MonoBehaviour
             if (specialButton != null) specialButton.SetActive(false);
             if (levelUpButton != null) levelUpButton.SetActive(false);
         }
+
+
     }
 
     //Change the button Text
