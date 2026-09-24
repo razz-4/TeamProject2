@@ -39,8 +39,6 @@ public class StorageUI : MonoBehaviour
         SetupListView(drugListView, ItemManager.Instance.drugs);
 
         var storageBtn = root.Q<Button>("Storage");
-        storageBtn.RegisterCallback<ClickEvent>(OpenStorageUI);
-
     }
 
     private void SetupListView<T>(ListView listView, T[] items) where T : Item
@@ -87,12 +85,6 @@ public class StorageUI : MonoBehaviour
     void CloseStorageUI(ClickEvent evt)
     {
         storageUIPanel.AddToClassList("MainPanelUp");
-        SoundManager.PlaySound(SoundType.UI);
-    }
-
-    void OpenStorageUI(ClickEvent evt)
-    {
-        storageUIPanel.RemoveFromClassList("MainPanelUp");
         SoundManager.PlaySound(SoundType.UI);
     }
 }

@@ -35,6 +35,5 @@
                 </ui:TabView>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Button text="Storage" name="Storage" style="display: flex; position: absolute; translate: 0 0%; transform-origin: center; bottom: 0; right: 0;"/>
     </ui:VisualElement>
 </ui:UXML>
