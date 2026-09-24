@@ -154,6 +154,7 @@ public class MainUI : MonoBehaviour
 
     private void onStorageBtnPress(ClickEvent evt)
     {
+        EventManager.Instance.InvokeInventoryChanged();
         storagePanel.RemoveFromClassList("MainPanelUp");
         SoundManager.PlaySound(SoundType.UI);
 
