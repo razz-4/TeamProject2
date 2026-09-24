@@ -15,10 +15,11 @@ MonoBehaviour:
   itemName: Hallucine
   id: 0005
   icon: {fileID: -1143484792, guid: af07d5a2323867f4ea731d640600b7c3, type: 3}
-  quantity: 68
-  value: 13
+  quantity: 0
+  value: 20
   perSecond: 6
   currentPerSecond: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 9b91c1368e4339b46b9163df45f64e27, type: 2}
     amount: 5
+  unlockLevel: 2

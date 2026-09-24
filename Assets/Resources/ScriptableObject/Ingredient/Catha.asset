@@ -15,9 +15,10 @@ MonoBehaviour:
   itemName: Catha
   id: 0006
   icon: {fileID: 0}
-  quantity: 100
+  quantity: 0
   value: 1
   perSecond: 11
   currentPerSecond: 0
-  isLocked: 0
+  isLocked: 1
   produce: 0
+  unlockLevel: 1

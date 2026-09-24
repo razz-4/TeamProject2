@@ -236,7 +236,6 @@ public class FactoryUI : MonoBehaviour
         currentFactoryObj = building;
         currentFactoryScript = currentFactoryObj.GetComponent<Factory>();
 
-        // Restore factory state for all items
         for (int i = 0; i < drugsPrefabList.Count; i++)
         {
             DrugToggle drugToggle = drugsPrefabList[i].GetComponent<DrugToggle>();
@@ -244,8 +243,19 @@ public class FactoryUI : MonoBehaviour
             drugToggle.isProducing = isSavedInBuilding;
         }
 
-        // Re-apply selection to the remembered toggle
+        RefreshAllLockStates();
+
         RestoreLastSelection();
+    }
+
+    public void RefreshAllLockStates()
+    {
+        if (currentFactoryScript == null) return;
+
+        foreach (GameObject prefab in drugsPrefabList)
+        {
+            prefab.GetComponent<ToggleDrugPrefab>()?.RefreshLockState(currentFactoryScript.level);
+        }
     }
 
     private void ProduceItem()

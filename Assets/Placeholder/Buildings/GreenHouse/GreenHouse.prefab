@@ -259,7 +259,8 @@ MonoBehaviour:
   buildingType: 
   placable: 0
   level: 0
-  coinNeededForUpgrade: 0
+  coinNeededForUpgrade: 100
+  upgradeMultiplier: 2.5
   isLock: 0
   maxToggle: 0
   maxGreenHouseStorage: 15

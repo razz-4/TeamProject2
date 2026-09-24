@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8258cabda73e31141b5b9cca9fb8a7b3, type: 3}
   m_Name: SalviaDivinorum
   m_EditorClassIdentifier: Assembly-CSharp::Items
-  itemName: Salvia Divinorum
+  itemName: Salvia
   id: 0000
   icon: {fileID: 378812504, guid: 78715a33348ebfc418e64933c62253ef, type: 3}
-  quantity: 883
+  quantity: 0
   value: 1
   perSecond: 20
   currentPerSecond: 4
-  isLocked: 0
+  isLocked: 1
   produce: 1
+  unlockLevel: 3

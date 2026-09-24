@@ -15,10 +15,11 @@ MonoBehaviour:
   itemName: Khat
   id: 0008
   icon: {fileID: 644867301, guid: 5cad1a9bba9083046831ddeeeba2fa61, type: 3}
-  quantity: 19
-  value: 7
+  quantity: 0
+  value: 25
   perSecond: 8
   currentPerSecond: 5
   recipe:
   - ingredient: {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
     amount: 3
+  unlockLevel: 3

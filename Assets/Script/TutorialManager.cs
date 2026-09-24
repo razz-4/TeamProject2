@@ -18,7 +18,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GlowingRing glowingRing;
     [SerializeField] private Dialog dialog;
     [SerializeField] private RingPositionData[] glowingRingData;
-    private int dialogPart = 0;
+    public int dialogPart = 0;
 
 
     private void OnEnable()
@@ -43,16 +43,20 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("Part 0 ended -> Move glowing ring to greenhouse.");
                 glowingRing.SetPosition(glowingRingData[0].position);
                 glowingRing.ShowRing();
+                dialogPart = 1;
                 break;
 
             case 1:
-                // Part 2 completed: enable shop UI
-                Debug.Log("Part 1 ended -> Open shop UI.");
+                // Part 2 completed: Collected Ingredients
+                dialogPart = 2;
+                Debug.Log("Ingredients Collected");
                 break;
 
             case 2:
-                // Part 3 completed: start gameplay loop
-                Debug.Log("Part 2 ended -> Complete tutorial.");
+                dialogPart = 3;
+                GameManager.Instance.AddGold(800);
+                SoundManager.PlaySound(SoundType.SOLD, 1);
+                Debug.Log("Build Factory and Delivery");
                 break;
 
             default:
@@ -74,8 +78,8 @@ public class TutorialManager : MonoBehaviour
 
     public void GoNextDialog()
     {
-        dialogPart++;
         dialog.StartDialoguePart(dialogPart);
+        Debug.Log(dialogPart);
     }
     private void Awake()
     {

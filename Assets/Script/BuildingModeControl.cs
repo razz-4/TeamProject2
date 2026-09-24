@@ -10,6 +10,7 @@ public class BuildingModeControl : MonoBehaviour
     public Button Cancelbtm;
 
     private BuildingControl _selectedBuilding;
+    private bool dialogPlayed = false;
 
     public static BuildingModeControl Instance { get; private set; }
 
@@ -130,7 +131,11 @@ public class BuildingModeControl : MonoBehaviour
         Confirmbtm.gameObject.SetActive(false);
         Cancelbtm.gameObject.SetActive(false);
 
+
         BuildingControl.IsBuildingMode = false;
+
+        //Tutorial part
+        if (!dialogPlayed) { TutorialManager.Instance.GoNextDialog(); dialogPlayed = true; TutorialManager.Instance.dialogPart = 2; }
 
         Debug.Log("Building move confirmed.");
     }
@@ -162,7 +167,12 @@ public class BuildingModeControl : MonoBehaviour
     }
 
 
+    //========= ENTER BUILDING MODE ===========
 
+    public void SetBuildingMode(BuildingControl currentBuilding)
+    {
+        _selectedBuilding = currentBuilding;
+    }
     private void EnterBuildingMode()
     {
         BuildingControl.IsBuildingMode = true;

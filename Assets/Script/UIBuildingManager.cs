@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UIElements;
+using System;
+
+
 
 public class UIBuildingManager : MonoBehaviour
 {
@@ -9,8 +12,13 @@ public class UIBuildingManager : MonoBehaviour
 
     [SerializeField] private GameObject BuildingUI;
     [SerializeField] private GameObject Canva;
-    [SerializeField] private TextMeshProUGUI SpecialButtonText;
+    [SerializeField] private UnityEngine.UI.Image SpecialButtonImage;
     [SerializeField] private UIDocument DeliveryUI;
+    [SerializeField] private Sprite[] specialButtonImageList;
+
+    [Header ("Level UP Button")]
+    [SerializeField] private LevelUpButton levelUpButtonScript;
+    [SerializeField] private TextMeshProUGUI levelUpAmount;
 
     private VisualElement root;
     private VisualElement DeliveryUIPanel;
@@ -21,13 +29,13 @@ public class UIBuildingManager : MonoBehaviour
 
     private string currentBuildingType;
     private BuildingClass currentBuildingClass;
+ 
 
     //Tutorial
     private bool TutorialDone = false;
 
     private void Awake()
     {
-        
         if (Instance != null && Instance != this)
         {
             // Destroy duplicate if one already exists
@@ -36,8 +44,6 @@ public class UIBuildingManager : MonoBehaviour
         }
 
         Instance = this;
-
-        
         if (BuildingUI != null)
         {
             Transform specialBtnTransform = BuildingUI.transform.Find("SpecialButton");
@@ -76,6 +82,17 @@ public class UIBuildingManager : MonoBehaviour
         currentBuildingType = null;
     }
 
+    public void HideBuildingUI()
+    {
+        BuildingUI.SetActive(false);
+        if (specialButton != null) specialButton.SetActive(false);
+        if (currentBuildingType != null)
+        {
+            SoundManager.PlaySound(SoundType.UI, 1);
+        }
+        currentBuildingType = null;
+    }
+
     public void ShowUI(string buildingType)
     {
         BuildingUI.SetActive(true);
@@ -87,6 +104,7 @@ public class UIBuildingManager : MonoBehaviour
             if (specialButton != null) specialButton.SetActive(true);
             if (levelUpButton != null) levelUpButton.SetActive(true);
             SetSpecialButton(currentBuildingType);
+            UpdateLevelUpUI();
         }
         else
         {
@@ -104,15 +122,15 @@ public class UIBuildingManager : MonoBehaviour
         switch (buildingType)
         {
             case "GreenHouse":
-                SpecialButtonText.text = "Green House";
+                SpecialButtonImage.sprite = specialButtonImageList[0];
                 break;
 
             case "Delivery":
-                SpecialButtonText.text = "Delivery";
+                SpecialButtonImage.sprite = specialButtonImageList[2];
                 break;
 
             case "Factory":
-                SpecialButtonText.text = "Factory";
+                SpecialButtonImage.sprite = specialButtonImageList[1];
                 break;
 
             default:
@@ -147,16 +165,18 @@ public class UIBuildingManager : MonoBehaviour
         }
     }
 
-    public void upgradeBuilding()
-    {
-        currentBuildingClass.level++;
-        Debug.Log("Building Type:" + currentBuildingClass.buildingType + "Building Level: " + currentBuildingClass.level);
-    }
     //Set building type that is selected
     public void setBuildingClass(BuildingClass buildingClass)
     {
         currentBuildingClass = buildingClass;
+        levelUpButtonScript.SetCurrentBuildingClass(buildingClass);
+        Debug.Log(buildingClass);
+
     }
 
-
+    public void UpdateLevelUpUI()
+    {
+        if (currentBuildingClass == null) return;
+        levelUpAmount.text = $"{currentBuildingClass.coinNeededForUpgrade}";
+    }
 }

@@ -129,8 +129,7 @@ public class MainUI : MonoBehaviour
         buildingPanel.style.display = DisplayStyle.None;
         SoundManager.PlaySound(SoundType.UI);
 
-        //Tutorial part
-        if (!dialogPlayed) { TutorialManager.Instance.GoNextDialog(); dialogPlayed = true; }
+
     }
     private void onShopBtnPress(ClickEvent evt)
     {

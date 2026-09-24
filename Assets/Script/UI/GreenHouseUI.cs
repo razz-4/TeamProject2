@@ -11,6 +11,8 @@ public class GreenHouseUI : MonoBehaviour
 
     [SerializeField] private Transform itemList;
 
+    private GreenHouse currentGreenHouse;
+
     private void Awake()
     {
 
@@ -20,20 +22,42 @@ public class GreenHouseUI : MonoBehaviour
     {
         SpawnIngredientList();
         gameObject.SetActive(false);
+        
     }
     void SpawnIngredientList()
     {
         if (ingredientPrefabList.Count > 0) return;
-        foreach(Ingredient ingredient in ItemManager.Instance.ingredients)
-        {
-            GameObject spawnedIngredients = Instantiate(ingredientPrefab, itemList);
-            ToggleIngredientPrefab currentIngredientPrefab = spawnedIngredients.GetComponent<ToggleIngredientPrefab>();
-            Toggle toggleComponent = spawnedIngredients.GetComponent<Toggle>();
 
-            //Assign Ingredient to prefab
-            currentIngredientPrefab.ingredientAssigned = ingredient;
+        foreach (Ingredient ingredient in ItemManager.Instance.ingredients)
+        {
+            GameObject spawnedIngredients =
+                Instantiate(ingredientPrefab, itemList);
+
+            ToggleIngredientPrefab currentIngredientPrefab =
+                spawnedIngredients.GetComponent<ToggleIngredientPrefab>();
+
+            currentIngredientPrefab.SetupIngredient(ingredient);
 
             ingredientPrefabList.Add(spawnedIngredients);
         }
     }
+
+    public void SetGreenHouse(GreenHouse greenhouse)
+    {
+        currentGreenHouse = greenhouse;
+        Debug.Log($"SetGreenHouse called, level = {greenhouse.level}");
+        RefreshAllLockStates();
+    }
+
+    public void RefreshAllLockStates()
+    {
+        if (currentGreenHouse == null) return;
+
+        foreach (GameObject prefab in ingredientPrefabList)
+        {
+            prefab.GetComponent<ToggleIngredientPrefab>()?.RefreshLockState(currentGreenHouse.level);
+        }
+    }
+
+
 }

@@ -12,17 +12,21 @@ public class DeliveryUI : MonoBehaviour
     [SerializeField] VisualTreeAsset itemDisplayTemplate;
 
     [SerializeField] int buyerCount = 5;
+    [SerializeField] int amountNeeded = 5;
     [SerializeField] int minItemsPerBuyer = 1;
-    [SerializeField] int maxItemsPerBuyer = 6;
+    [SerializeField] int maxItemsPerBuyer = 3;
     [SerializeField] int minAmountPerItem = 10;
-    [SerializeField] int maxAmountPerItem = 100;
+    [SerializeField] int maxAmountPerItem = 50;
+    [SerializeField] private float refreshTime = 30f;
 
     private VisualElement root;
     private VisualElement deliveryUIPanel;
     private VisualElement itemDisplayPanel;
     private ScrollView buyerScrollView;
+    private Coroutine _refreshRoutine;
     private Label buyerNameLabel;
     private Label totalValueLabel;
+
 
     private Buyer selectedBuyer;
     private List<Buyer> currentBuyers = new List<Buyer>();
@@ -49,11 +53,29 @@ public class DeliveryUI : MonoBehaviour
         EventManager.Instance.refreshBuyerList += HandleRefreshBuyers;
         HandleRefreshBuyers();
 
+        _refreshRoutine = StartCoroutine(AutoRefreshRoutine());
     }
 
     private void HandleRefreshBuyers()
     {
         RefreshBuyers(GenerateBuyers());
+    }
+
+    private System.Collections.IEnumerator AutoRefreshRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(refreshTime);
+            HandleRefreshBuyers();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_refreshRoutine != null)
+            StopCoroutine(_refreshRoutine);
+
+        EventManager.Instance.refreshBuyerList -= HandleRefreshBuyers;
     }
 
     private void RefreshBuyers(List<Buyer> buyers)
@@ -97,6 +119,12 @@ public class DeliveryUI : MonoBehaviour
     {
         var buyers = new List<Buyer>();
 
+        //Concat combines Drugs and Ingredients into one single list so this list contains both drugs and ingredients.
+        //Cast treats the drugs and ingredients as an Item allowing them to be in one list.
+        //Where make sure about 10 or more amount exist to make it to the list
+        List<Item> eligibleItems = ItemManager.Instance.drugs.Cast<Item>().Concat(ItemManager.Instance.ingredients.Cast<Item>())
+        .Where(item => item.quantity > amountNeeded).ToList();
+
         for (int i = 0; i < buyerCount; i++)
         {
             bool isIllegal = UnityEngine.Random.value < GameManager.Instance.illegalRate;
@@ -104,13 +132,17 @@ public class DeliveryUI : MonoBehaviour
             var requestedItems = new List<ItemSlot>();
             int itemCount = UnityEngine.Random.Range(minItemsPerBuyer, maxItemsPerBuyer + 1);
 
+            // Copy so removals here don't affect other buyers or the master list.
+            List<Item> availableForThisBuyer = new List<Item>(eligibleItems);
+
             for (int j = 0; j < itemCount; j++)
             {
-                bool wantsDrug = UnityEngine.Random.value < GameManager.Instance.drugRate;
+                if (availableForThisBuyer.Count == 0)
+                    break; // no more unique items left to give this buyer
 
-                Item chosenItem = wantsDrug
-                    ? ItemManager.Instance.drugs[UnityEngine.Random.Range(0, ItemManager.Instance.drugs.Length)]
-                    : ItemManager.Instance.ingredients[UnityEngine.Random.Range(0, ItemManager.Instance.ingredients.Length)];
+                int index = UnityEngine.Random.Range(0, availableForThisBuyer.Count);
+                Item chosenItem = availableForThisBuyer[index];
+                availableForThisBuyer.RemoveAt(index); // prevents picking it again for this buyer
 
                 int amount = UnityEngine.Random.Range(minAmountPerItem, maxAmountPerItem + 1);
 
@@ -125,7 +157,7 @@ public class DeliveryUI : MonoBehaviour
 
             buyers.Add(new Buyer
             {
-                buyerName = GenerateBuyerName(), //isIllegal
+                buyerName = GenerateBuyerName(),
                 isIllegal = isIllegal,
                 requestedItem = requestedItems,
                 totalValue = payout
@@ -159,6 +191,9 @@ public class DeliveryUI : MonoBehaviour
 
         SoundManager.PlaySound(SoundType.SOLD);
         GameManager.Instance.AddGold(selectedBuyer.totalValue);
+
+        //Tutorial Part
+        if (TutorialManager.Instance.dialogPart == 3) { TutorialManager.Instance.GoNextDialog(); }
 
         EventManager.Instance.InvokeInventoryChanged();
 

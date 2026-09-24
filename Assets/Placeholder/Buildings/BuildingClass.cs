@@ -6,5 +6,11 @@ public class BuildingClass : MonoBehaviour
     public bool placable;
     public int level;
     public int coinNeededForUpgrade;
+    public float upgradeMultiplier;
     public bool isLock;
+
+    public virtual void LevelUp()
+    {
+        Debug.Log("LevelUp");
+    }
 }

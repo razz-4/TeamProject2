@@ -7,7 +7,9 @@ public enum SoundType
     BUILD,
     COLLECT,
     SOLD,
-    DIALOG
+    DIALOG,
+    DECLINE,
+    CHEMICAL
 }
 
 [RequireComponent(typeof(AudioSource))]

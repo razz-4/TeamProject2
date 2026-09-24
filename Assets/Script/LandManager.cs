@@ -48,7 +48,6 @@ public class LandManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Update running");
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 

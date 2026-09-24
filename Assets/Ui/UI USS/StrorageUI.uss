@@ -28,3 +28,15 @@
 .MainPanelUp {
     translate: -50% -200%;
 }
+
+
+
+VisualElement > #StorageUiPanel > #BottomPanel > #TabView > #IngredientTab > #IngredientListView > .unity-collection-view__scroll-view > #unity-content-and-vertical-scroll-container > .unity-disabled {
+    display: none;
+    opacity: 0;
+}
+
+VisualElement > #StorageUiPanel > #BottomPanel > #TabView > #DrugTab > #DrugListView > .unity-collection-view__scroll-view > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller {
+    display: none;
+    opacity: 0;
+}

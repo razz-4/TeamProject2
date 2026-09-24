@@ -40,12 +40,14 @@ public class Dialog : MonoBehaviour
             if (textComponent.text == lines[index])
             {
                 NextLine();
+                SoundManager.PlaySound(SoundType.UI, 1);
             }
             // If line is still typing, instantly complete the current line
             else
             {
                 StopAllCoroutines();
                 textComponent.text = lines[index];
+                SoundManager.PlaySound(SoundType.UI, 1);
             }
         }
     }

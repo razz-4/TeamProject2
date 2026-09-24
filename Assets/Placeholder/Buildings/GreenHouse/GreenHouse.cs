@@ -41,7 +41,6 @@ public class GreenHouse : BuildingClass
         buildingType = "GreenHouse";
         placable = true;
         level = 1;
-        coinNeededForUpgrade = 10;
         isLock = false;
     }
 
@@ -162,6 +161,9 @@ public class GreenHouse : BuildingClass
             {
                 StartTimer();
             }
+
+            //Tutorial part
+            if (TutorialManager.Instance.dialogPart == 2) { TutorialManager.Instance.GoNextDialog(); }
         }
     }
 
@@ -195,4 +197,25 @@ public class GreenHouse : BuildingClass
     {
         return timerController.GetTimer();
     }
+
+
+    public override void LevelUp()
+    {
+        level++;
+
+        Debug.Log("GreenHouse Level Up! New Level: " + level);
+
+        GreenHouseUI greenHouseUI = FindAnyObjectByType<GreenHouseUI>(FindObjectsInactive.Include);
+
+        if (greenHouseUI != null)
+        {
+            greenHouseUI.RefreshAllLockStates();
+        }
+        else
+        {
+            Debug.LogWarning("Could not find GreenHouseUI!");
+        }
+    }
+
+
 }

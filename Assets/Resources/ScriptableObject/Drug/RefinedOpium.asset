@@ -15,12 +15,9 @@ MonoBehaviour:
   itemName: Obium
   id: 0003
   icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
-  quantity: 100
+  quantity: 0
   value: 7
   perSecond: 12
   currentPerSecond: 9
-  recipe:
-  - ingredient: {fileID: 11400000, guid: ddfc4e8549f36ca4d84f4e603fff1cda, type: 2}
-    amount: 5
-  - ingredient: {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
-    amount: 5
+  recipe: []
+  unlockLevel: 1

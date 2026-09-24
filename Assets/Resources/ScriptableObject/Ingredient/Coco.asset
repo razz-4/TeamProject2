@@ -15,9 +15,10 @@ MonoBehaviour:
   itemName: Coco
   id: 0001
   icon: {fileID: -1421661032, guid: 266092e958aa6be468db1fd902997c5d, type: 3}
-  quantity: 868
+  quantity: 0
   value: 1
   perSecond: 30
   currentPerSecond: 2
   isLocked: 0
   produce: 1
+  unlockLevel: 1

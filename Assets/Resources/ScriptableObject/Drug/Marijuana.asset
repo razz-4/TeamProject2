@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Miguana
   id: 0001
   icon: {fileID: 432119103, guid: 6332e48dd1810a846978607aeea580d8, type: 3}
-  quantity: 163
+  quantity: 0
   value: 8
   perSecond: 13
   currentPerSecond: 11

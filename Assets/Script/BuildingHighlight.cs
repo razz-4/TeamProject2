@@ -35,4 +35,10 @@ public class BuildingHighlight : MonoBehaviour
         if (state) EnableHighlight();
         else DisableHighlight();
     }
+
+    public void RefreshOutline()
+    {
+        if (outline == null) return;
+        outline.RecalculateRenderers();
+    }
 }

@@ -57,9 +57,6 @@ namespace DevelopersHub.ClashOfWhatecer
 
 
 
-
-
-
         private void Awake()
         {
             if (_baseArea != null)
@@ -138,8 +135,21 @@ namespace DevelopersHub.ClashOfWhatecer
 
            
         }
-        
 
+        public void UpdateLevelVisual(int newLevel)
+        {
+            if (_levels == null || _levels.Length == 0) return;
+
+            foreach (Level lvl in _levels)
+            {
+                if (lvl.mesh != null)
+                    lvl.mesh.SetActive(lvl.level == newLevel);
+            }
+
+            BuildingHighlight highlight = GetComponent<BuildingHighlight>();
+            if (highlight != null)
+                highlight.RefreshOutline();
+        }
         private void Start()
         {
             int maxX = BuildGrid.Instance._columns - _columns;
@@ -166,6 +176,8 @@ namespace DevelopersHub.ClashOfWhatecer
                 if (_baseArea != null)
                     _baseArea.material.color = defaultColor; 
                 Debug.Log($"building {name} makesure got place ({_currentX}, {_currentY})");
+
+
             }
             else
             {
@@ -309,5 +321,14 @@ namespace DevelopersHub.ClashOfWhatecer
 
         }
 
+        public void EnterEditMode()
+        {
+            IsBuildingMode = true;
+            BuildingModeControl.SelectBuilding(this);
+            IsBeingDragged = true;
+            _isDragging = true;
+            StartMovingOnGrid();
+            _dragBaseLocalPos = _grid.transform.InverseTransformPoint(transform.position);
+        }
     }     
 }

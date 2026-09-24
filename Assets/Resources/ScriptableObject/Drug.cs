@@ -4,4 +4,5 @@ using UnityEngine;
 public class Drug : Item
 {
     public IngredientRequirement[] recipe;
+    public int unlockLevel = 1;
 }

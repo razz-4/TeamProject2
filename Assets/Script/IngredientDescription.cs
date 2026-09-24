@@ -23,6 +23,7 @@ public class IngredientDescription : MonoBehaviour
     private void OnPlantToggleChanged(bool state)
     {
         if (currentGreenHouse == null || currentIngredient == null) return;
+        if (currentIngredient.unlockLevel > currentGreenHouse.level) return;
 
         if (state)
         {

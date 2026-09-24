@@ -135,8 +135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Delivery
   buildingType: 
   placable: 0
-  level: 0
-  coinNeededForUpgrade: 0
+  level: 1
+  coinNeededForUpgrade: 200
+  upgradeMultiplier: 0
   isLock: 0
 --- !u!114 &719844481180197468
 MonoBehaviour:

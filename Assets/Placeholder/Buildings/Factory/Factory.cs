@@ -1,3 +1,4 @@
+using DevelopersHub.ClashOfWhatecer;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -38,7 +39,6 @@ public class Factory : BuildingClass
         buildingType = "Factory";
         placable = true;
         level = 1;
-        coinNeededForUpgrade = 10;
         isLock = false;
         timerController.StopProductionTimer();
     }
@@ -211,6 +211,9 @@ public class Factory : BuildingClass
             currentDrug.quantity += currentFactoryStorage;
             popUpSpawner.SpawnPopUp(currentDrug.icon, currentFactoryStorage);
 
+            //PLay Sound
+            SoundManager.PlaySound(SoundType.CHEMICAL, 1);
+
             Debug.Log($"Collected {currentFactoryStorage} {currentDrug.name}. New total: {currentDrug.quantity}");
 
             currentFactoryStorage = 0;
@@ -241,5 +244,20 @@ public class Factory : BuildingClass
     public LoadingTimer GetTimer()
     {
         return timerController.GetTimer();
+    }
+
+    public override void LevelUp()
+    {
+        level++;
+
+        BuildingControl bc = GetComponent<BuildingControl>();
+        if (bc != null)
+            bc.UpdateLevelVisual(level);
+
+        FactoryUI factoryUI = FindAnyObjectByType<FactoryUI>(FindObjectsInactive.Include);
+        if (factoryUI != null)
+        {
+            factoryUI.RefreshAllLockStates();
+        }
     }
 }

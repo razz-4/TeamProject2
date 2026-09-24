@@ -252,7 +252,38 @@ public class Outline : MonoBehaviour {
     return smoothNormals;
   }
 
-  void CombineSubmeshes(Mesh mesh, Material[] materials) {
+    public void RecalculateRenderers()
+    {
+
+        if (renderers != null)
+        {
+            foreach (var renderer in renderers)
+            {
+                if (renderer == null) continue;
+                var materials = renderer.sharedMaterials.ToList();
+                materials.Remove(outlineMaskMaterial);
+                materials.Remove(outlineFillMaterial);
+                renderer.materials = materials.ToArray();
+            }
+        }
+
+        renderers = GetComponentsInChildren<Renderer>();
+
+        if (enabled)
+        {
+            foreach (var renderer in renderers)
+            {
+                var materials = renderer.sharedMaterials.ToList();
+                materials.Add(outlineMaskMaterial);
+                materials.Add(outlineFillMaterial);
+                renderer.materials = materials.ToArray();
+            }
+        }
+
+        LoadSmoothNormals();
+    }
+
+    void CombineSubmeshes(Mesh mesh, Material[] materials) {
 
     // Skip meshes with a single submesh
     if (mesh.subMeshCount == 1) {

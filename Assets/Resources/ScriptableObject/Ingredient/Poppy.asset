@@ -15,9 +15,10 @@ MonoBehaviour:
   itemName: Poppy
   id: 0002
   icon: {fileID: 2142287095, guid: 8a62ea42806fb934d92f0cb04859cb78, type: 3}
-  quantity: 1000
+  quantity: 0
   value: 1
   perSecond: 50
   currentPerSecond: 8
-  isLocked: 0
+  isLocked: 1
   produce: 1
+  unlockLevel: 3

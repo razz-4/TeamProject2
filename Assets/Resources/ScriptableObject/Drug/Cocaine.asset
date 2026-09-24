@@ -15,10 +15,11 @@ MonoBehaviour:
   itemName: Coak
   id: 0002
   icon: {fileID: -1951486609, guid: e774972535b498e4c9cc0e8d20677c4d, type: 3}
-  quantity: 100
+  quantity: 0
   value: 19
   perSecond: 11
   currentPerSecond: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 90d19bea77958e74682be7bca8dd4a02, type: 2}
     amount: 3
+  unlockLevel: 1

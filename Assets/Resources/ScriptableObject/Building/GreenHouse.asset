@@ -15,5 +15,7 @@ MonoBehaviour:
   buildingName: Greenhouse
   icon: {fileID: -870452629, guid: 66dc1ef563d2d674e94b780c60e5a2f0, type: 3}
   cost: 100
+  upgradeCost: 100
+  level: 1
   id: 0
   buildingPrefab: {fileID: 5346632590392817249, guid: 35c397fb0d35cea428aad21108a44bf6, type: 3}

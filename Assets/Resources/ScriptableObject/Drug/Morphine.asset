@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Phines
   id: 0004
   icon: {fileID: -875494390, guid: 2c944b0cc7c03c14dbaebaaca712f874, type: 3}
-  quantity: 100
+  quantity: 0
   value: 9
   perSecond: 12
   currentPerSecond: 20
