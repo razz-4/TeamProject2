@@ -1,0 +1,10 @@
+# ninja log v5
+65	2705	8119376586737177	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	25045a43a097fe9b
+39	2718	8119376586886866	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c58aab6058f7293
+25	2789	8119376587665359	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	552b28b8bb0fde2e
+94	2791	8119376587695756	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	1d363065e2d63821
+11	2822	8119376588025181	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	4dc996e337afdacc
+79	2975	8119376589599877	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	c6c1a9abdb361370
+52	3039	8119376590222351	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	c6d3ea31bf12ca02
+0	3142	8119376591225459	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	5081d7e7d3eb00bc
+3143	3269	8119376592546469	D:/Game Projects/Unity/DrugEmpire/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3y626z2h/obj/arm64-v8a/libgame.so	91c92ce67c4e22b9

@@ -17,7 +17,7 @@ public class ItemDisplaySlotUI
 
     public void SetItem(ItemSlot itemSlot)
     {
-        itemQuantity.text = "x" + itemSlot.amount;
+        itemQuantity.text = "x" + itemSlot.amount + "/" + ;
 
         if (itemSlot.item.icon != null)
         {

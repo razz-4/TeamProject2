@@ -1155,6 +1155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainUI
   uiDocument: {fileID: 381410787}
   buildingSlotTemplate: {fileID: 9197481963319205126, guid: 53543ddded5bd124db00090fee35229c, type: 3}
+  storageUiDocument: {fileID: 1145176860}
   _grid: {fileID: 1737699424}
   buildingPreload: []
 --- !u!114 &381410787

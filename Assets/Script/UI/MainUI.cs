@@ -9,13 +9,17 @@ public class MainUI : MonoBehaviour
 {
     [SerializeField] UIDocument uiDocument;
     [SerializeField] VisualTreeAsset buildingSlotTemplate;
+    [SerializeField] UIDocument storageUiDocument;
     private VisualElement root;
+    private VisualElement storageRoot;
     [SerializeField] public BuildGrid _grid = null;
 
     public Building[] buildingPreload;
     // Panels
     private VisualElement buildingPanel;
     private VisualElement shopPanel;
+    private VisualElement storagePanel;
+    
 
     private ScrollView buildingScrollView;
 
@@ -26,6 +30,8 @@ public class MainUI : MonoBehaviour
     {
         root = uiDocument.rootVisualElement;
 
+        storageRoot = storageUiDocument.rootVisualElement;
+
         buildingPreload = Utils.GetAllBuildingInstances<Building>();
         buildingPreload = buildingPreload.OrderBy(p => p.id).ToArray();
 
@@ -35,15 +41,18 @@ public class MainUI : MonoBehaviour
         // Buttons
         var buildingBtn = root.Q<VisualElement>("Building-button");
         var shopBtn = root.Q<VisualElement>("Shop-Button");
+        var storageBtn = root.Q<VisualElement>("StorageButton");
         var buildingCloseBtn = root.Q<VisualElement>("Close-button");
         var shopCloseBtn = root.Q<VisualElement>("ShopClose-Button");
 
         // Panels 
         buildingPanel = root.Q<VisualElement>("BuildingPanel-Panel");
         shopPanel = root.Q<VisualElement>("Shop-Panel");
+        storagePanel = storageRoot.Q<VisualElement>("StorageUiPanel");
 
         buildingScrollView = root.Q<ScrollView>("Building-ScrollView");
 
+        storageBtn.RegisterCallback<ClickEvent>(onStorageBtnPress);
         buildingBtn.RegisterCallback<ClickEvent>(onBuildingBtnPress);
         shopBtn.RegisterCallback<ClickEvent>(onShopBtnPress);
         buildingCloseBtn.RegisterCallback<ClickEvent>(onBuildingCloseBtnPress);
@@ -142,5 +151,14 @@ public class MainUI : MonoBehaviour
         shopPanel.style.display = DisplayStyle.None;
         SoundManager.PlaySound(SoundType.UI);
     }
+
+    private void onStorageBtnPress(ClickEvent evt)
+    {
+        EventManager.Instance.InvokeInventoryChanged();
+        storagePanel.RemoveFromClassList("MainPanelUp");
+        SoundManager.PlaySound(SoundType.UI);
+
+    }
+
 }
 
