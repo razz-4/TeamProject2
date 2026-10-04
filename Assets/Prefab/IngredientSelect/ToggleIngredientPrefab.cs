@@ -37,6 +37,6 @@ public class ToggleIngredientPrefab : MonoBehaviour
             toggle.interactable = !locked;
 
         if (image != null)
-            image.color = locked ? new Color(1f, 1f, 1f, 0.4f) : Color.white;
+            image.color = locked ? Color.black : Color.white;
     }
 }

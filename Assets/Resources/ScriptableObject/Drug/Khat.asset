@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Khat
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Khat
-  id: 0008
+  id: 0004
   icon: {fileID: 644867301, guid: 5cad1a9bba9083046831ddeeeba2fa61, type: 3}
   quantity: 0
   value: 25

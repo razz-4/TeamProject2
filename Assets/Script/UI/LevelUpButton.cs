@@ -39,6 +39,8 @@ public class LevelUpButton : MonoBehaviour
             (int)(currentBuildingClass.coinNeededForUpgrade *
                   currentBuildingClass.upgradeMultiplier);
 
+        currentBuildingClass.price = currentBuildingClass.coinNeededForUpgrade;
+
         SoundManager.PlaySound(SoundType.SOLD, 1);
 
         UIBuildingManager.Instance.UpdateLevelUpUI();

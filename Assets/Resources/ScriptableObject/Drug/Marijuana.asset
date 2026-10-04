@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Marijuana
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Miguana
-  id: 0001
+  id: 0002
   icon: {fileID: 432119103, guid: 6332e48dd1810a846978607aeea580d8, type: 3}
   quantity: 0
   value: 8
@@ -22,3 +22,4 @@ MonoBehaviour:
   recipe:
   - ingredient: {fileID: 11400000, guid: 42730769d6217624cbc092d4f38f2ec1, type: 2}
     amount: 3
+  unlockLevel: 1

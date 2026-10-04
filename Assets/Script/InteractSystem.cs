@@ -102,6 +102,15 @@ public class InteractSystem : MonoBehaviour
 
     public void deleteBuilding()
     {
+        if (buildingSelected == null) return;
+
+        BuildingClass building = buildingSelected.GetComponent<BuildingClass>();
+        if (building != null)
+        {
+            int refundAmount = building.price;
+            GameManager.Instance.AddGold(refundAmount);
+        }
+
         Destroy(buildingSelected);
         UIBuildingManagerComp.HideUI();
     }

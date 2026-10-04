@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ibogaine
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Iborg
-  id: 0010
+  id: 5
   icon: {fileID: -1297329562, guid: a4a2e6ba7c254f346b6122c483a98770, type: 3}
   quantity: 0
   value: 25

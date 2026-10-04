@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SalviaDivinorum
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Salvia
-  id: 0000
+  id: 0005
   icon: {fileID: 378812504, guid: 78715a33348ebfc418e64933c62253ef, type: 3}
   quantity: 0
   value: 1

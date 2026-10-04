@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Poppy
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Poppy
-  id: 0002
+  id: 0004
   icon: {fileID: 2142287095, guid: 8a62ea42806fb934d92f0cb04859cb78, type: 3}
   quantity: 0
   value: 1

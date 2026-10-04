@@ -54,7 +54,7 @@ public class TutorialManager : MonoBehaviour
 
             case 2:
                 dialogPart = 3;
-                GameManager.Instance.AddGold(800);
+                GameManager.Instance.AddGold(80000);
                 SoundManager.PlaySound(SoundType.SOLD, 1);
                 Debug.Log("Build Factory and Delivery");
                 break;

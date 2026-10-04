@@ -17,8 +17,8 @@ MonoBehaviour:
   icon: {fileID: -2133191381, guid: 3cb1b53405f4b3347a280f57778320e7, type: 3}
   quantity: 0
   value: 2
-  perSecond: 4
-  currentPerSecond: 0
+  perSecond: 50
+  currentPerSecond: 4
   isLocked: 1
   produce: 1
   unlockLevel: 2

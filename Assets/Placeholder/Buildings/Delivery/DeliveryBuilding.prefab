@@ -136,6 +136,7 @@ MonoBehaviour:
   buildingType: 
   placable: 0
   level: 1
+  price: 200
   coinNeededForUpgrade: 200
   upgradeMultiplier: 0
   isLock: 0

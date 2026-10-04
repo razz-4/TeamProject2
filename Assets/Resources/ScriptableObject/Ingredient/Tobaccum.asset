@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tobaccum
   m_EditorClassIdentifier: Assembly-CSharp::Items
   itemName: Tobaccum
-  id: 0004
+  id: 0002
   icon: {fileID: -2003130815, guid: 3b68ae021d767e140b8ec008dc1643c1, type: 3}
   quantity: 0
   value: 1

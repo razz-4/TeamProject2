@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hallucinogen
   m_EditorClassIdentifier: Assembly-CSharp::Drug
   itemName: Hallucine
-  id: 0005
+  id: 0003
   icon: {fileID: -1143484792, guid: af07d5a2323867f4ea731d640600b7c3, type: 3}
   quantity: 0
   value: 20

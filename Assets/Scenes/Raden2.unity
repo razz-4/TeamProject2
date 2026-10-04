@@ -4831,11 +4831,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   ingredients:
-  - {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
   - {fileID: 11400000, guid: 90d19bea77958e74682be7bca8dd4a02, type: 2}
+  - {fileID: 11400000, guid: 42730769d6217624cbc092d4f38f2ec1, type: 2}
   - {fileID: 11400000, guid: 9b91c1368e4339b46b9163df45f64e27, type: 2}
   - {fileID: 11400000, guid: ddfc4e8549f36ca4d84f4e603fff1cda, type: 2}
-  - {fileID: 11400000, guid: 42730769d6217624cbc092d4f38f2ec1, type: 2}
+  - {fileID: 11400000, guid: 4705f8e21bccceb4387802fd6657da0a, type: 2}
   drugs:
   - {fileID: 11400000, guid: 8ff161244922c2945ac6fe7e70d5e230, type: 2}
   - {fileID: 11400000, guid: 5b5204618737f3b4e8e5ce2e95096a39, type: 2}
