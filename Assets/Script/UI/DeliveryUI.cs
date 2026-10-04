@@ -214,6 +214,7 @@ public class DeliveryUI : MonoBehaviour
         BuyerName randomAsset = buyerNameAssets[UnityEngine.Random.Range(0, buyerNameAssets.Length)];
         string randomName = randomAsset.GetRandomName();
 
+
         return isIllegal ? "Illegal " + randomName : randomName;
     }
 }
