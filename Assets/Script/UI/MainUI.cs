@@ -137,8 +137,6 @@ public class MainUI : MonoBehaviour
     {
         buildingPanel.style.display = DisplayStyle.None;
         SoundManager.PlaySound(SoundType.UI);
-
-
     }
     private void onShopBtnPress(ClickEvent evt)
     {
@@ -157,8 +155,6 @@ public class MainUI : MonoBehaviour
         EventManager.Instance.InvokeInventoryChanged();
         storagePanel.RemoveFromClassList("MainPanelUp");
         SoundManager.PlaySound(SoundType.UI);
-
     }
-
 }
 

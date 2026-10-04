@@ -157,7 +157,7 @@ public class DeliveryUI : MonoBehaviour
 
             buyers.Add(new Buyer
             {
-                buyerName = GenerateBuyerName(),
+                buyerName = GenerateBuyerName(isIllegal),
                 isIllegal = isIllegal,
                 requestedItem = requestedItems,
                 totalValue = payout
@@ -208,21 +208,12 @@ public class DeliveryUI : MonoBehaviour
     }
 
 
-    private string GenerateBuyerName() //bool isIllegal
+    private string GenerateBuyerName(bool isIllegal) //bool isIllegal
     {
         BuyerName[] buyerNameAssets = Utils.GetAllBuyerNameInstances();
-
-
         BuyerName randomAsset = buyerNameAssets[UnityEngine.Random.Range(0, buyerNameAssets.Length)];
         string randomName = randomAsset.GetRandomName();
 
-        string temp = randomName;
-
-        //if (isIllegal)
-        //{
-        //    temp = "Illegal " + randomName;
-        //}
-
-        return temp;
+        return isIllegal ? "Illegal " + randomName : randomName;
     }
 }

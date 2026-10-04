@@ -1,5 +1,3 @@
-using NUnit.Framework;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,7 +15,6 @@ public class StorageUI : MonoBehaviour
     private ListView drugListView;
 
     
-
     void Start()
     {
         root = storageUI.rootVisualElement;

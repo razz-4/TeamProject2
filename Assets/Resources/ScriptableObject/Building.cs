@@ -11,6 +11,5 @@ public class Building : ScriptableObject
     public string id;
     public GameObject buildingPrefab;
     
-
     public static bool IsBeingDragged { get; internal set; }
 }

@@ -26,9 +26,6 @@ public class StorageSlotUI
         itemName.text = item.itemName;
         amount.text = quantity.ToString();
 
-
-
-
         if (item.icon != null)
         {
             itemImage.sprite = item.icon;
